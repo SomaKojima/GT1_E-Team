@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         //vel = transform.rotation * vel;
         //this.transform.Translate(vel);
         float dist = rigid.velocity.magnitude;
-        if (dist < MaxSpeed)
+        //if (dist < MaxSpeed)
         {
             rigid.AddForce(this.transform.rotation * vel);
         }
