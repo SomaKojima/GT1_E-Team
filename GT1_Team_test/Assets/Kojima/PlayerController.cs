@@ -21,11 +21,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 vel = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             vel.z = speed;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.S))
         {
             vel.x = speed;
         }
@@ -40,6 +40,14 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.Space))
         {
             rigid.velocity = Vector3.zero;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            this.transform.rotation *= Quaternion.AngleAxis(-3.0f, this.transform.up);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            this.transform.rotation *= Quaternion.AngleAxis(3.0f, this.transform.up);
         }
 
         //vel = transform.rotation * vel;
