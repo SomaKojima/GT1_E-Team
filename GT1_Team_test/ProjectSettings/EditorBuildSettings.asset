@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Hashimoto/Scene/HashimotoScene.unity
+    guid: 98b86b33d463c22459a6de67cbb8098b
+  - enabled: 1
+    path: Assets/Wada/changeScene/Scenes/Play/PlayScene1.unity
+    guid: 010c6a372acc11e4b9825f87a218f985
+  - enabled: 1
+    path: Assets/Hashimoto/Scene/Result/ResultScene.unity
+    guid: e781af9b423311844be797ed927afcc6
   m_configObjects: {}

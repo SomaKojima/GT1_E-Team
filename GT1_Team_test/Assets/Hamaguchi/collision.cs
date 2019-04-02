@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class collision : MonoBehaviour
 {
-    int dustCounter;
+    [SerializeField]
+    private int lightPower = 2;
+    public int dustCounter;
+    private Light light;
     // Start is called before the first frame update
     void Start()
     {
         dustCounter = 0;
+        light = this.GetComponent<Light>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -24,6 +27,7 @@ public class collision : MonoBehaviour
             Destroy(collision.gameObject);
             dustCounter++;
             Debug.Log(dustCounter); // ログを表示する
+            light.range = (dustCounter + 1) * lightPower;
         }
     }
 }
