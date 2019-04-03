@@ -43,7 +43,7 @@ public class FadeController : MonoBehaviour
             if (isFadeOut == true)
             {
                 StartFadeOut();
-                Invoke("ChangeScene", 1.5f);
+                Invoke("ChangeScene", 3.5f);
             }
         }
     
@@ -61,6 +61,7 @@ public class FadeController : MonoBehaviour
 
     void StartFadeOut()
     {
+        Debug.Log("out");
         fadeImage.enabled = true;   // a)パネルの表示をオンにする
         alfa += fadeSpeed;          // b)不透明度を徐々に上げる
         SetAlpha();                 // c)変更した透明度をパネルに反映する
@@ -77,6 +78,6 @@ public class FadeController : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("PlayScene1");
+        SceneManager.LoadScene("Play");
     }
 }

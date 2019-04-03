@@ -23,9 +23,10 @@ public class CameCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Quaternion q = Quaternion.Inverse(target.transform.rotation);
+        //Quaternion q = Quaternion.Inverse(target.transform.rotation);
         Vector3 vec = target.transform.position - this.transform.position;
-        vec = q * vec;
+        vec.y = 0;
+        //vec = q * vec;
         float length = vec.magnitude;
         Vector3 vec_normal = vec.normalized;
 
@@ -38,12 +39,12 @@ public class CameCont : MonoBehaviour
             // ターゲットに向けて移動
             Vector3 move_vec = vec_normal * move_length;
             
-            move_vec = target.transform.rotation * move_vec;
+            //move_vec = target.transform.rotation * move_vec;
             this.transform.position += move_vec;
         }
 
-        Vector3 offset_pos = target.transform.position + (target.transform.rotation * offset);
-        this.transform.position = new Vector3(this.transform.position.x, offset_pos.y, this.transform.position.z);
+        //Vector3 offset_pos = target.transform.position + (target.transform.rotation * offset);
+        //this.transform.position = new Vector3(this.transform.position.x, offset_pos.y, this.transform.position.z);
         this.transform.LookAt(target.transform.position, target.transform.up);
     }
 }
