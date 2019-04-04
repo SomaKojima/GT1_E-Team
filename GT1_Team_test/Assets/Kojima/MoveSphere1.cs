@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MoveSphere : MonoBehaviour {
+public class MoveSphere1 : MonoBehaviour {
     // サイズ
     private float scale = 0.0f;
     // 動くスピード
     private  float SPEED = 0.05f;
     // サイズの範囲
-    private const float MIU = 0.0f;     // 最小値
-    private const float MAX = 10.0f;    // 球の大きさ
+    public float MIU = 0.0f;     // 最小値
+    public float MAX = 10.0f;    // 球の大きさ
 
     bool flag = false;
     void Start ()
@@ -32,16 +32,16 @@ public class MoveSphere : MonoBehaviour {
 
 
         // 範囲の宣言
-        if (scale < MIU) { scale = MIU; SPEED *= -1; }
-        if (scale > MAX) { scale = MAX; SPEED *= -1; }
+        //if (scale < MIU) { scale = MIU; SPEED *= -1; }
+        //if (scale > MAX) { scale = MAX; SPEED *= -1; }
 
-        if(scale == MAX)
+        if(Input.GetKey(KeyCode.Space))
         {
-            SceneManager.LoadScene("ResultScene");
+            SceneManager.LoadScene("ResultScene 1");
         }
 
         //  サイズを変える
-        this.transform.localScale = new Vector3(scale,scale,scale);
+        //this.transform.localScale = new Vector3(scale,scale,scale);
     }
     
    

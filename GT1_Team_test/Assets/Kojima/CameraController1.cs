@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class CameraController1 : MonoBehaviour
 {
-    // カメラのターゲット
+    /// <summary>
+    /// カメラのターゲット    
+    /// </summary>
     public GameObject target;
+
+    public float angle = 30.0f;
+
 
     // ターゲット（初期位置）からカメラ（初期位置）までの距離
     Vector3 startDistance;
@@ -20,13 +25,32 @@ public class CameraController1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
+        // 向きの更新
+        Vector3 vec = this.transform.position - target.transform.position;
+        Vector3 vecNormal = vec.normalized;
+
+
         // カメラの座標
-        Vector3 pos = target.transform.position + (target.transform.rotation * startDistance);
+        Vector3 pos = target.transform.position + startDistance;
 
-        //座標の更新
-        this.transform.position = pos;
+        float cosine = Vector3.Dot(target.transform.up, -this.transform.forward);
 
-        // カメラの向きを変える
-        this.transform.LookAt(target.transform.position);
+        float size = Mathf.Cos(Mathf.Deg2Rad * angle);
+        if (cosine < size &&
+            cosine > -size)
+        {
+            //座標の更新
+            this.transform.position = Vector3.Slerp(this.transform.position, pos, 0.1f);
+        }
+
+        Quaternion q = Quaternion.identity;
+        q = Quaternion.FromToRotation(-this.transform.forward, vecNormal);
+        q = q * this.transform.rotation;
+        this.transform.rotation = q;
     }
 }
