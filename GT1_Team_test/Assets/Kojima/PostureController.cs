@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PostureController : MonoBehaviour
 {
-
-    [SerializeField]
-    GameObject center;
-
-    [SerializeField]
-    GameObject demo;
-
-    GameObject[] planets;
-
     GameObject targetPlanet;
 
     float time = 0;
@@ -20,7 +11,6 @@ public class PostureController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planets = GameObject.FindGameObjectsWithTag("Planet");
     }
 
     // Update is called once per frame
@@ -41,7 +31,6 @@ public class PostureController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        // 一番近い惑星を更新
         if (other.name == "PostureCollision")
         {
             targetPlanet = other.transform.parent.gameObject;
