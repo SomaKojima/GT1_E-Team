@@ -6,18 +6,21 @@ public class collision : MonoBehaviour
 {
     [SerializeField]
     private int lightPower = 2;
-    public int dustCounter;
-    private Light light;
+    [SerializeField]
+    private Light slight;
+
+    private int dustCounter = 0;
+    private bool flagA = false;
     // Start is called before the first frame update
     void Start()
     {
-        dustCounter = 0;
-        light = this.GetComponent<Light>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        slight.spotAngle = (dustCounter + 2) * lightPower;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -27,7 +30,21 @@ public class collision : MonoBehaviour
             Destroy(collision.gameObject);
             dustCounter++;
             Debug.Log(dustCounter); // ログを表示する
-            light.range = (dustCounter + 1) * lightPower;
         }
+    }
+
+    public void SetTalkFlag()
+    {
+        flagA = true;
+    }
+
+    public bool GetTalkFlag()
+    {
+        return flagA;
+    }
+
+    public int GetDustCount()
+    {
+        return dustCounter;
     }
 }
