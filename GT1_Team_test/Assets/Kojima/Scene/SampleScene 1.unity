@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 534669907}
   - component: {fileID: 534669906}
   - component: {fileID: 534669909}
-  - component: {fileID: 534669908}
   - component: {fileID: 534669910}
   m_Layer: 0
   m_Name: Main Camera
@@ -193,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.33034417, y: 0.6251981, z: -0.3303444, w: 0.6251981}
-  m_LocalPosition: {x: -6.300002, y: 74.9, z: 0}
+  m_LocalPosition: {x: -13.8, y: 84.8, z: 0}
   m_LocalScale: {x: 1.0000005, y: 1.0000002, z: 1.0000004}
   m_Children: []
   m_Father: {fileID: 0}
@@ -228,20 +227,6 @@ MonoBehaviour:
   Distance: 5
   Height: 2
   AttenRate: 3
---- !u!114 &534669908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15a19d25863f88e48923a5db34b20449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1948387235}
-  angle: 30
 --- !u!114 &534669909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,8 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1948387235}
   planet: {fileID: 1646377560}
-  distance: 10
-  offset: {x: 0, y: 8, z: 0}
+  max_distance: 10
+  offset_y: 20
 --- !u!135 &534669910
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1501,15 +1486,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948387235}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 65.1, z: -0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 65.1, z: 10.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1481674992}
   - {fileID: 968555785}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1948387241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1522,8 +1507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eee2e2996871142b3283c3db8a76f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 0}
-  demo: {fileID: 0}
 --- !u!114 &1948387242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,7 +1519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad2047d7764dc94594d5e881e43f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 0}
   speed: 100
   MaxSpeed: 10
 --- !u!1 &1998142542

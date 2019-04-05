@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    public GameObject camera;
+
     Rigidbody rigid;
 
     [SerializeField]
     float speed = 5.0f;
     [SerializeField]
     float MaxSpeed = 5.0f;
+
+    [SerializeField]
+    float rotation_speed = 0.3f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +25,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    private void FixedUpdate()
+    {
         Vector3 vel = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             vel.z = speed;
         }
-        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             vel.x = speed;
         }
@@ -33,7 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             vel.x = -speed;
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             vel.z = -speed;
         }
@@ -49,14 +58,10 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.rotation *= Quaternion.AngleAxis(3.0f, Vector3.up);
         }
-
-        //vel = transform.rotation * vel;
-        //this.transform.Translate(vel);
         float dist = rigid.velocity.magnitude;
-        //if (dist < MaxSpeed)
+        if (dist < MaxSpeed)
         {
             rigid.AddForce(this.transform.rotation * vel);
         }
-
     }
 }
