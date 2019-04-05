@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public 
     Rigidbody rigid;
 
     [SerializeField]
@@ -43,11 +44,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.rotation *= Quaternion.AngleAxis(-3.0f, this.transform.up);
+            this.transform.rotation *= Quaternion.AngleAxis(-3.0f, Vector3.up);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            this.transform.rotation *= Quaternion.AngleAxis(3.0f, this.transform.up);
+            this.transform.rotation *= Quaternion.AngleAxis(3.0f, Vector3.up);
         }
 
         //vel = transform.rotation * vel;
