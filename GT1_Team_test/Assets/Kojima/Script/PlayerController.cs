@@ -34,21 +34,21 @@ public class PlayerController : MonoBehaviour
         Vector3 vel = Vector3.zero;
         if(PlayerMove(out vel))
         {
-            //// 回転
-            //Quaternion inv = Quaternion.Inverse(this.transform.rotation);
-            //// カメラからプレイヤーまでのベクトル
-            //Vector3 vec = this.transform.position - camera.transform.position;
-            //// プレイヤーを原点としたローカル座標に変換
-            //vec = inv * vec;
-            //// Y軸の値をなくす
-            //vec.y = 0;
-            //// ワールド座標に戻す
-            //vec = this.transform.rotation * vec;
-            //// 移動方向とベクトルから回転を行う
-            //Vector3 vec_nomalize = vec.normalized;
-            //Vector3 vel_nomalize = vel.normalized;
-            //float cosine = Vector3.Dot(vec_nomalize, vel_nomalize);
-            //this.transform.rotation *= Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), this.transform.up);
+            // 回転
+            Quaternion inv = Quaternion.Inverse(this.transform.rotation);
+            // カメラからプレイヤーまでのベクトル
+            Vector3 vec = this.transform.position - camera.transform.position;
+            // プレイヤーを原点としたローカル座標に変換
+            vec = inv * vec;
+            // Y軸の値をなくす
+            vec.y = 0;
+            // ワールド座標に戻す
+            vec = this.transform.rotation * vec;
+            // 移動方向とベクトルから回転を行う
+            Vector3 vec_nomalize = vec.normalized;
+            Vector3 vel_nomalize = vel.normalized;
+            float cosine = Vector3.Dot(vec_nomalize, vel_nomalize);
+            this.transform.rotation *= Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), this.transform.up);
         }
 
         if (Input.GetKey(KeyCode.A))
