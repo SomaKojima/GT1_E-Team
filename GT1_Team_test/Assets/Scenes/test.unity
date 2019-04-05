@@ -162,7 +162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0376fcb345803c045b6b56c95e01abf6, type: 2}
+  - {fileID: 2100000, guid: 4d17f532ae19f4d4eaeb47f1ef5a896c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -503,6 +503,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1295530521}
   text: {fileID: 2122643440}
+  mw: {fileID: 0}
+  UI: {fileID: 0}
 --- !u!65 &337046826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1322,7 +1324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05fa62a9f3be6634a87b6f4849d321be, type: 2}
+  - {fileID: 2100000, guid: 302dca7b79c54b649b152e8737f0c6a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1406,7 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightPower: 20
-  dustCounter: 0
+  slight: {fileID: 0}
 --- !u!108 &1948387244
 Light:
   m_ObjectHideFlags: 0
