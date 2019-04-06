@@ -26,7 +26,6 @@ public class PostureController : MonoBehaviour
         q = Quaternion.FromToRotation(transform.up, vecNormal);
 
         this.transform.rotation = q * this.transform.rotation;
-        
     }
 
     private void OnTriggerStay(Collider other)

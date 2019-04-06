@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject camera;
+    public GameObject planet;
 
     Rigidbody rigid;
 
@@ -29,43 +30,93 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         // 移動
         Vector3 vel = Vector3.zero;
-        if(PlayerMove(out vel))
+        if(PlayerCameraMove(out vel))
         {
-            // 回転
-            Quaternion inv = Quaternion.Inverse(this.transform.rotation);
-            // カメラからプレイヤーまでのベクトル
-            Vector3 vec = this.transform.position - camera.transform.position;
-            // プレイヤーを原点としたローカル座標に変換
-            vec = inv * vec;
-            // Y軸の値をなくす
-            vec.y = 0;
-            // ワールド座標に戻す
-            vec = this.transform.rotation * vec;
-            // 移動方向とベクトルから回転を行う
-            Vector3 vec_nomalize = vec.normalized;
-            Vector3 vel_nomalize = vel.normalized;
-            float cosine = Vector3.Dot(vec_nomalize, vel_nomalize);
-            this.transform.rotation *= Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), this.transform.up);
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.transform.rotation *= Quaternion.AngleAxis(-3.0f, Vector3.up);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            this.transform.rotation *= Quaternion.AngleAxis(3.0f, Vector3.up);
+            Vector3 dir = vel.normalized;
+            Quaternion q = Quaternion.identity;
+            if (this.transform.up.y < 0)
+            {
+                float cosine = Vector3.Dot(dir, this.transform.forward);
+                Vector3 axis = Vector3.Cross(dir, this.transform.forward);
+                //q = Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis);
+                q = Quaternion.FromToRotation(dir, this.transform.forward);
+            }
+            else
+            {
+                float cosine = Vector3.Dot(this.transform.forward, dir);
+                Vector3 axis = Vector3.Cross(this.transform.forward, dir);
+                //q = Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis);
+                q = Quaternion.FromToRotation(this.transform.forward, dir);
+            }
+            this.transform.rotation *= q;
         }
     }
     
     /// <summary>
-    /// 
+    /// カメラ視点で移動する
     /// </summary>
     /// <param name="vel">速度</param>
     /// <returns>移動していたならTrue</returns>
+    bool PlayerCameraMove(out Vector3 vel)
+    {
+        Vector3 dir = Vector3.zero;
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            dir.y = 1;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            dir.x = 1;
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            dir.x = -1;
+        }
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            dir.y = -1;
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rigid.velocity = Vector3.zero;
+        }
+        if(dir == Vector3.zero)
+        {
+            // 何もキーが押されていなければ関数を終わる
+            vel = Vector3.zero;
+            return false;
+        }
+        // 正規化
+        dir = dir.normalized;
+        // カメラ向きに合わせる
+        dir = camera.transform.rotation * dir;
+        // プレイヤーから惑星までのベクトル
+        Vector3 vec = planet.transform.position - this.transform.position; 
+        Vector3 vec_nomalize = vec.normalized;
+        // 内積外積を用いて回転する("カメラの前方向" と "プレイヤーから惑星までのベクトル" を使用)
+        float cosine = Vector3.Dot(camera.transform.forward, vec_nomalize);
+        Vector3 axis = Vector3.Cross(camera.transform.forward, vec_nomalize);
+        dir = Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis) * dir;
+
+        // 速度を計算する
+        vel = dir * speed;
+
+        float dist = rigid.velocity.magnitude;
+        if (dist < MaxSpeed)
+        {
+            rigid.AddForce(vel);
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// プレイヤー視点で移動する
+    /// </summary>
+    /// <param name="vel"></param>
+    /// <returns></returns>
     bool PlayerMove(out Vector3 vel)
     {
         vel = Vector3.zero;
