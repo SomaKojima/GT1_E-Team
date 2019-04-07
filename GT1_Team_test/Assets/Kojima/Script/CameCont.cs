@@ -42,14 +42,19 @@ public class CameCont : MonoBehaviour
     /// </summary>
     void CameraMove()
     {
-        // ターゲットの逆回転
-        Quaternion q = Quaternion.Inverse(target.transform.rotation);
-        // カメラのローカル座標を計算（ターゲットを原点とした座標）
+
+        // 惑星からプレイヤーまでの回転(ワールド座標に戻す用)
+        Quaternion q = Quaternion.FromToRotation(Vector3.up, (target.transform.position - planet.transform.position).normalized);
+        // 逆回転(ローカル座標に戻す用)
+        Quaternion inv = Quaternion.Inverse(q);
+        // カメラのローカル座標を計算
         Vector3 localPos = this.transform.position - target.transform.position;
-        localPos = q * localPos;
+        localPos = inv * localPos;
+        // Y軸は固定（高さは固定）
         localPos.y = offset_y;
         // ベクトルを計算
         Vector3 vec = -localPos;
+        // Y軸の動きをなくす
         vec.y = 0;
         float length = vec.magnitude;
         Vector3 vec_normal = vec.normalized;
@@ -63,9 +68,9 @@ public class CameCont : MonoBehaviour
             Vector3 move_vec = vec_normal * move_length;
             
             // ローカル座標をワールド座標に戻す
-            Vector3 worldPos = target.transform.position + (target.transform.rotation * localPos);
+            Vector3 worldPos = target.transform.position + (q * localPos);
 
-            Vector3 pos = worldPos + (target.transform.rotation * move_vec);
+            Vector3 pos = worldPos + (q * move_vec);
             this.transform.position = Vector3.Slerp(this.transform.position, pos, 1.0f);
         }
     }

@@ -34,23 +34,10 @@ public class PlayerController : MonoBehaviour
         Vector3 vel = Vector3.zero;
         if(PlayerCameraMove(out vel))
         {
+            // 速度の向き
             Vector3 dir = vel.normalized;
-            Quaternion q = Quaternion.identity;
-            if (this.transform.up.y < 0)
-            {
-                float cosine = Vector3.Dot(dir, this.transform.forward);
-                Vector3 axis = Vector3.Cross(dir, this.transform.forward);
-                //q = Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis);
-                q = Quaternion.FromToRotation(dir, this.transform.forward);
-            }
-            else
-            {
-                float cosine = Vector3.Dot(this.transform.forward, dir);
-                Vector3 axis = Vector3.Cross(this.transform.forward, dir);
-                //q = Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis);
-                q = Quaternion.FromToRotation(this.transform.forward, dir);
-            }
-            this.transform.rotation *= q;
+            // 回転
+            PlayerRotation(dir);
         }
     }
     
@@ -98,7 +85,9 @@ public class PlayerController : MonoBehaviour
         // 内積外積を用いて回転する("カメラの前方向" と "プレイヤーから惑星までのベクトル" を使用)
         float cosine = Vector3.Dot(camera.transform.forward, vec_nomalize);
         Vector3 axis = Vector3.Cross(camera.transform.forward, vec_nomalize);
-        dir = Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis) * dir;
+        Quaternion q = Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis);
+        //Quaternion q = Quaternion.FromToRotation(camera.transform.forward, vec_nomalize);
+        dir = q * dir;
 
         // 速度を計算する
         vel = dir * speed;
@@ -154,5 +143,26 @@ public class PlayerController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+
+    /// <summary>
+    /// プレイヤーの回転
+    /// </summary>
+    /// <param name="dir">dirの向きに回転</param>
+    void PlayerRotation(Vector3 dir)
+    {
+        Quaternion q = Quaternion.identity;
+
+        float cosine = Vector3.Dot(dir, this.transform.forward);
+        
+        if (cosine > 0.99f) return;
+
+        float radian = Mathf.Acos(cosine);
+        float angle = Mathf.Rad2Deg * radian;
+
+        q = Quaternion.AngleAxis(angle ,Vector3.up);
+
+        this.transform.rotation = this.transform.rotation * q;
     }
 }
