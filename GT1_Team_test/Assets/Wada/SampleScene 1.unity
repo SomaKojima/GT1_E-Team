@@ -2125,7 +2125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2232916cd42b9b41966cd08478fdde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1948387235}
   accelerationScale: 100
 --- !u!1 &1913371023
 GameObject:
@@ -2546,8 +2545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eee2e2996871142b3283c3db8a76f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 0}
-  demo: {fileID: 0}
 --- !u!114 &1948387242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2560,8 +2557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad2047d7764dc94594d5e881e43f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 534669902}
+  planet: {fileID: 1859461912}
   speed: 100
   MaxSpeed: 10
+  rotation_speed: 0.3
 --- !u!1 &1998142542
 GameObject:
   m_ObjectHideFlags: 0
