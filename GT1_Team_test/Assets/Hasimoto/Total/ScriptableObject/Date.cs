@@ -13,6 +13,12 @@ public class Date : ScriptableObject
     /// メンバー変数
     /// </summary>
 
+        [Header("惑星のタグ名"), SerializeField]
+        private string planetTag = "Planet";
+
+        [Header("星のタグ名"), SerializeField]
+        private string starTag = "dust";
+
         [Header("惑星の半径"),SerializeField]
         private float radius = 62.5f;
 
@@ -65,6 +71,11 @@ public class Date : ScriptableObject
     /// <summary>
     /// 取得関数
     /// </summary>
+
+        // 惑星のタグ名
+        public string PlanetTag { get { return planetTag; } private set { planetTag = value; } } 
+        // 星のタグ名
+        public string StarTag { get { return starTag; } private set { starTag = value; } }
 
         // 惑星の半径
         public float Radius { get { return radius; } private set { radius = value; } }

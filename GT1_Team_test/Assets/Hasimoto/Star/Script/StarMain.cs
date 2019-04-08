@@ -29,7 +29,7 @@ public class StarMain : MonoBehaviour
     void Start()
     {
         // 惑星を呼ぶ
-        planet = GameObject.FindGameObjectWithTag("Planet");
+        planet = GameObject.FindGameObjectWithTag(_Date.PlanetTag);
 
         // 新しい星を作成する時間
         timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
@@ -51,10 +51,15 @@ public class StarMain : MonoBehaviour
         }
 
         // 複数の星を呼ぶ
-        foreach (GameObject star in GameObject.FindGameObjectsWithTag("Star"))
+        foreach (GameObject star in GameObject.FindGameObjectsWithTag(_Date.StarTag))
         {
+
             // 星のデータ
             StarDate starDate = star.GetComponent<StarDate>();
+
+            if (star == null) Debug.Log("NULL");
+            if (starDate == null) Debug.Log("NULL");
+
             // 星の生存時間
             float startime = starDate.Time;
             
