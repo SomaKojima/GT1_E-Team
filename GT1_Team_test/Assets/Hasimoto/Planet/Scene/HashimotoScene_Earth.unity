@@ -468,8 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916f85d85f7447e42a87bc30ecc1c91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Planet: {fileID: 1778056443}
-  _Date: {fileID: 11400000, guid: f2ef451ef51e4a8428033f5f6e2ca922, type: 2}
+  _Date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
 --- !u!4 &1783936876
 Transform:
   m_ObjectHideFlags: 0
