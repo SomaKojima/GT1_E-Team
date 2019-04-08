@@ -537,6 +537,7 @@ MonoBehaviour:
   text: {fileID: 1927397555}
   mw: {fileID: 1561569398}
   UI: {fileID: 2132607959}
+  GameDirecter: {fileID: 0}
 --- !u!65 &337046826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1535,6 +1536,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 4d663e1884ccc3e42b6e8f0846b2a077, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d663e1884ccc3e42b6e8f0846b2a077, type: 3}
+      propertyPath: m_TagString
+      value: Planet
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4d663e1884ccc3e42b6e8f0846b2a077, type: 3}
       propertyPath: m_LocalPosition.x
