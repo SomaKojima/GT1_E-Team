@@ -11,16 +11,24 @@ public class collision : MonoBehaviour
 
     private int dustCounter = 0;
     private bool flagA = false;
+    private Vector3 startPos;
     // Start is called before the first frame update
     void Start()
     {
-       
+        startPos = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         slight.spotAngle = (dustCounter + 2) * lightPower;
+
+        float dis = Vector3.Distance(this.transform.position, Vector3.zero);
+        if(dis<40.0f)
+        {
+            this.transform.position = startPos;
+            Debug.Log("penalty"); // ログを表示する
+        }
     }
 
     void OnCollisionEnter(Collision collision)
