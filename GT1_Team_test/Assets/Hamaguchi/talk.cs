@@ -9,7 +9,14 @@ public class talk : MonoBehaviour
     private GameObject icon;
     [SerializeField]
     private GameObject text;
-    
+    [SerializeField]
+    private GameObject mw;
+    [SerializeField]
+    private GameObject UI;
+
+
+    private bool flag = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +42,11 @@ public class talk : MonoBehaviour
     {
         if (col.tag == "player")
         {
+            flag = true;
             icon.SetActive(false);
             text.SetActive(false);
+            mw.SetActive(false);
+            UI.SetActive(true);
             Debug.Log("talk.ng"); // ログを表示する
         }
     }
@@ -47,16 +57,32 @@ public class talk : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                text.SetActive(true);
-                if (col.gameObject.GetComponent<collision>().dustCounter>=3)
+                if (flag)
                 {
-                    text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
-                    Debug.Log("game clear"); // ログを表示する
+                    flag = false;
+                    mw.SetActive(true);
+                    text.SetActive(true);
+                    UI.SetActive(false);
+
+                    if (col.gameObject.GetComponent<collision>().GetDustCount() >= 3)
+                    {
+                        text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
+                        Debug.Log("game clear"); // ログを表示する
+                    }
+                    else
+                    {
+                        text.GetComponent<Text>().text = "星のかけらをあと" + (3 - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                        Debug.Log("talk.now"); // ログを表示する
+                        col.gameObject.GetComponent<collision>().SetTalkFlag();
+                    }
                 }
                 else
                 {
-                    text.GetComponent<Text>().text = "星のかけらを３つ持ってきてね";
-                    Debug.Log("talk.now"); // ログを表示する
+                    UI.SetActive(true);
+                    flag = true;
+                    text.SetActive(false);
+                    mw.SetActive(false);
+                    Debug.Log("talk.cancel"); // ログを表示する
                 }
             }
         }

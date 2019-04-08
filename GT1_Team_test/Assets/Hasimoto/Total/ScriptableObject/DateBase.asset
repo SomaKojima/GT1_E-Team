@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104e7794934f44d4f99f4a78041365fb, type: 3}
+  m_Name: DateBase
+  m_EditorClassIdentifier: 
+  DIRECTION: 10
+  RADIUS: 5
+  FALLTIME: 180
+  XZDEGREE: 1
+  YDEGREE: 0.05
+  LightPos: {x: 0, y: 5.5, z: 0}
+  SpeedSwitchOn: 0.1
