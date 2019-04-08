@@ -26,5 +26,5 @@ MonoBehaviour:
   degreeXZ_Miu: 1
   degreeY_Max: 5
   degreeY_Miu: 1
-  lightPos: {x: 0, y: 5.5, z: 0}
-  speedSwitchOn: 0.1
+  lightPos: {x: 0, y: 55, z: 0}
+  speedSwitchOn: 0.5

@@ -60,7 +60,7 @@ public class Date : ScriptableObject
         private Vector3 lightPos = new Vector3(33.0f, 55.0f, 0.0f);
 
         [Tooltip("明かりを灯す速さ"),SerializeField]
-        private float speedSwitchOn = 0.1f;
+        private float speedSwitchOn = 0.5f;
 
     /// <summary>
     /// 取得関数
