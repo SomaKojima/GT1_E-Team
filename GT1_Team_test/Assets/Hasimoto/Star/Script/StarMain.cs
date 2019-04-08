@@ -34,12 +34,13 @@ public class StarMain : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
         // <落ちる時に必用になる処理> ----------------------------------------------------------------------------       
         //--------------------------------------------------------------------------------------------------------
-        
+
         // 3秒ごとに星を新しく作成する
-        if(time == 180.0f)
+
+        if (time == 180.0f)
         {
             Create();
             time = 0.0f;
@@ -79,7 +80,7 @@ public class StarMain : MonoBehaviour
         // 星と惑星の距離 と 現在の星と惑星の距離
         starDate.Direction = starDate.Radius = 10.0f;
         // 1フレームに縮む半径の長さを求める
-        starDate.RadiusShrinkage = (starDate.Direction - _Date.RADIUS) / (float)starDate.TimeFalling;
+        starDate.RadiusShrinkage = (starDate.Direction - _Date.radius) / (float)starDate.TimeFalling;
 
         // 1フレームにX軸(もしくはZ軸)に進む角速度
         starDate.AngularVelocity_DegreeXZ = Random.Range(1.0f, 5.0f);//1.0f
