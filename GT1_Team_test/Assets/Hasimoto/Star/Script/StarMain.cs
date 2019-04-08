@@ -53,6 +53,32 @@ public class StarMain : MonoBehaviour
         // 複数の星を呼ぶ
         foreach (GameObject star in GameObject.FindGameObjectsWithTag(_Date.StarTag))
         {
+            foreach (Transform child in transform)
+            {
+                // スポットライトを探す
+                Light light = child.GetComponent<Light>();
+
+                if (light != null)
+                {
+                    Vector3 direction = star.transform.position - planet.transform.position;
+                    direction.Normalize();
+
+                    // Xの角度
+                    float radianX = Mathf.Atan2(direction.z, direction.x);
+                    // 三角形XZの斜辺の長さ
+                    float radiusXZ = direction.x / Mathf.Cos(radianX);
+                    // Yの角度
+                    float radianY = Mathf.Atan2(direction.y, radiusXZ);
+                    // Zの角度
+                    float radianZ = 90.0f * Mathf.Deg2Rad - radianX;
+
+                    // ラジアンからデグリーへ変換
+                    Vector3 degree = new Vector3(radianX, radianY, radianZ) * Mathf.Rad2Deg;
+
+                    // スポットライトの向きを調整する
+                    light.transform.rotation = Quaternion.Euler(degree);
+                }
+            }
 
             // 星のデータ
             StarDate starDate = star.GetComponent<StarDate>();
