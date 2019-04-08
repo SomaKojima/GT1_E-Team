@@ -35,12 +35,8 @@ public class SwitchOnLight : MonoBehaviour
 
     void Update()
     {
+        // 惑星に明かりに灯す
         SwitchOnPlanet();
-
-        // 常に明かりの領域を広げる
-        speed += _Date.SpeedSwitchOn;
-        // 反映させる
-        planet.GetComponent<Renderer>().material.SetFloat("_Radiuas", speed);
     }
 
     /// <summary>
