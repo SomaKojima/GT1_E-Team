@@ -15,11 +15,15 @@ public class PlayerUI : MonoBehaviour
     private float rimitTime = 0;
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private GameObject nMission;
 
     private int count = 0;
     private bool flagA = true;
     private bool menuFlag = true;
     private int menuState = 0;
+    private int StartScreenWidth = 980;
+    private int StartScreenHeight = 551;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +34,10 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Screen.width + ":" + Screen.height); // ログを表示する
+        float screenMoveW = (float)Screen.width / (float)StartScreenWidth;
+        Debug.Log(screenMoveW);
+
         rimitTime = rimitTime - Time.deltaTime;
         DustCounter.GetComponent<Text>().text = "ｘ"+(player.GetComponent<collision>().GetDustCount())+"こ";
         Timer.GetComponent<Text>().text = "" + ((int)rimitTime / 60).ToString("00") + ":" + ((int)rimitTime % 60).ToString("00");
@@ -44,7 +52,8 @@ public class PlayerUI : MonoBehaviour
             {
                 if(!menuFlag)
                 {
-                    mission.transform.Translate(300.0f, 0, 0);
+                    mission.transform.Translate(300.0f*screenMoveW, 0, 0);
+                    nMission.transform.Translate(-300.0f * screenMoveW, 0, 0);
                 }
                 menuState = 2;
                 menuFlag = true;
@@ -59,11 +68,13 @@ public class PlayerUI : MonoBehaviour
             {
                 if (menuFlag)
                 {
-                    mission.transform.Translate(20.0f, 0, 0);
+                    mission.transform.Translate(20.0f * screenMoveW, 0, 0);
+                    nMission.transform.Translate(-20.0f * screenMoveW, 0, 0);
                 }
                 else
                 {
-                    mission.transform.Translate(-20.0f, 0, 0);
+                    mission.transform.Translate(-20.0f * screenMoveW, 0, 0);
+                    nMission.transform.Translate(20.0f * screenMoveW, 0, 0);
                 }
             }
             else

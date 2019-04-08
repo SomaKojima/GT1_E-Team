@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class talk : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class talk : MonoBehaviour
 
 
     private bool flag = true;
+    private bool clear = false;
+    private Color ambient = new Color(0, 0, 0, 1);
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,17 @@ public class talk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(clear)
+        {
+            ambient.r++;
+            ambient.b++;
+            ambient.g++;
+            RenderSettings.ambientLight = new Color(ambient.r / 120, ambient.g / 120, ambient.b / 120, 1);
+            if(ambient.r==140)
+            {
+                SceneManager.LoadScene("ResultScene 1");
+            }
+        }
     }
 
     void OnTriggerEnter(Collider col)
@@ -70,6 +83,10 @@ public class talk : MonoBehaviour
                     {
                         text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
                         Debug.Log("game clear"); // ログを表示する
+                        //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
+                        GameDirecter.SetActive(true);
+                        col.gameObject.GetComponent<collision>().Clear();
+                        clear = true;
                     }
                     else
                     {

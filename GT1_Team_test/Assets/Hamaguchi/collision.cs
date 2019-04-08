@@ -13,6 +13,8 @@ public class collision : MonoBehaviour
     private bool flagA = false;
     private Vector3 startPos;
     private bool dustFlag = false;
+    private bool clear = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +24,17 @@ public class collision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slight.spotAngle = (dustCounter + 2) * lightPower;
-        if(dustFlag)
+        if (clear)
+        {
+            slight.spotAngle++;
+        }
+        else
+        {
+            slight.spotAngle = (dustCounter + 2) * lightPower;
+        }
+
+
+        if (dustFlag)
         {
             dustCounter++;
             dustFlag = false;
@@ -40,6 +51,8 @@ public class collision : MonoBehaviour
             }
             Debug.Log("penalty"); // ログを表示する
         }
+
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -65,5 +78,10 @@ public class collision : MonoBehaviour
     public int GetDustCount()
     {
         return dustCounter;
+    }
+
+    public void Clear()
+    {
+        clear = true;
     }
 }
