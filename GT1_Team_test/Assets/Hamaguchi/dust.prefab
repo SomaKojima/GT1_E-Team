@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7752070672643186083}
   - component: {fileID: 7752070672643186080}
   - component: {fileID: 7752070672643186081}
+  - component: {fileID: 905237898324979193}
   m_Layer: 0
   m_Name: dust
   m_TagString: dust
@@ -91,3 +92,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &905237898324979193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752070672643186142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92f43f3229474646831d421a3a72219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  radius: 0
+  radiusShrinkage: 0
+  timeMove: 0
+  timeFalling: 0
+  timeState: 10800
+  time: 0
+  angularVelocity_DegreeXZ: 0
+  angularVelocity_DegreeY: 0
+  degreeXZ: 0
+  degreeY: 0

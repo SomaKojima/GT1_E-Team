@@ -22,7 +22,7 @@ public class SwitchOnLight : MonoBehaviour
     void Start()
     {
         // 惑星を呼ぶ
-        planet = GameObject.FindGameObjectWithTag("Planet");
+        planet = GameObject.FindGameObjectWithTag(_Date.PlanetTag);
 
         // 明かりを灯す中点を反映させる
         planet.GetComponent<Renderer>().material.SetFloat("_LightPosX", _Date.LightPos.x);

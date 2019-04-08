@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e7794934f44d4f99f4a78041365fb, type: 3}
   m_Name: New Date
   m_EditorClassIdentifier: 
+  planetTag: Planet
+  starTag: dust
   radius: 62.5
   direction_Max: 90
   direction_Miu: 90
