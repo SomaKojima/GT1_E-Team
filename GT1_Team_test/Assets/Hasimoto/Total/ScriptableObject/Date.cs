@@ -14,21 +14,21 @@ public class Date : ScriptableObject
     /// </summary>
 
         [Header("惑星の半径"),SerializeField]
-        private float radius = 5.0f;
+        private float radius = 120.0f;
 
         [Header("現在、星と惑星の距離"), SerializeField]
-        private float direction_Max = 10.0f;
+        private float direction_Max = 180.0f;
         [SerializeField]
-        private float direction_Miu = 10.0f;
+        private float direction_Miu = 180.0f;
 
         [Header("新しい星を作成する時間"), SerializeField]
         private float timeCreate_Max = 180.0f;
         private float timeCreate_Miu = 180.0f;
 
         [Header("星が宇宙上に動く時間"), SerializeField]
-        private float timeMove_Max = 0.0f;
+        private float timeMove_Max = 300.0f;
         [SerializeField]
-        private float timeMove_Miu = 0.0f;
+        private float timeMove_Miu = 300.0f;
 
         [Header("星が惑星上に落ちるまでの時間"), SerializeField]
         private float timeFall_Max = 180.0f;
@@ -57,7 +57,7 @@ public class Date : ScriptableObject
 
         [Header("◆明かりを灯す処理")]
         [Tooltip("明かりを灯す中点"),SerializeField]
-        private Vector3 lightPos = new Vector3(0.0f, 5.5f, 0.0f);
+        private Vector3 lightPos = new Vector3(33.0f, 55.0f, 0.0f);
 
         [Tooltip("明かりを灯す速さ"),SerializeField]
         private float speedSwitchOn = 0.1f;

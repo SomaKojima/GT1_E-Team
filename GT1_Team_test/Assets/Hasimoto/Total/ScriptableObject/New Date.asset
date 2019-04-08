@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 120
   direction_Max: 180
-  direction_Miu: 10
+  direction_Miu: 180
   timeCreate_Max: 180
   timeMove_Max: 300
   timeMove_Miu: 300
