@@ -20,42 +20,76 @@ public class StarMain : MonoBehaviour
     // 星のデータ
     private StarDate starDate;
 
-    // 仮の時間
-    private float time = 180.0f;
-    int i = 0;
+    // 新しい星を作成する時間
+    private float timecreate = 0.0f;
+
+    // 現在のフレーム
+    private float frame = 180.0f;
+
     void Start()
     {
         // 惑星を呼ぶ
         planet = GameObject.FindGameObjectWithTag("Planet");
 
-        // 現在星が動く半径
-       // nowradius = _Date.DIRECTION;
-
+        // 新しい星を作成する時間
+        timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
     }
 
     void Update()
     {
-        // <落ちる時に必用になる処理> ----------------------------------------------------------------------------       
-        //--------------------------------------------------------------------------------------------------------
-
-        // 3秒ごとに星を新しく作成する
-
-        if (time == 180.0f)
+        // 時間ごとに星を新しく作成する
+        if (frame == timecreate)
         {
+            // 星を新しく作成する
             Create();
-            time = 0.0f;
+            
+            // 改めて新しい星を作成する時間を決める
+            timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
+            
+            // 時間をリセットする
+            frame = 0.0f;
         }
-        
-        // 円に沿って星が動く
-        ParallelToCircle();
 
-        // 星を消す
-        Destroy();
+        // 複数の星を呼ぶ
+        foreach (GameObject star in GameObject.FindGameObjectsWithTag("Star"))
+        {
+            // 星のデータ
+            StarDate starDate = star.GetComponent<StarDate>();
+            // 星の生存時間
+            float startime = starDate.Time;
+            // 星が宇宙上に動く時間
+            float timeMove = starDate.TimeMove;
+            // 星が宇宙上に動き始めてから惑星上に落ちるまでの時間
+            float timeMoveFalling = timeMove + starDate.TimeFalling;
+            // 星が宇宙上に動き始めてから惑星上に生存するまでの時間
+            float timeMoveState = timeMoveFalling + starDate.TimeState;
 
-        // 時間を計る
-        time++;
+            // 星が宇宙上に動き始めてから惑星上に落ちるまで
+            if (startime < timeMoveFalling)
+            {
+                // 円に沿って星が動く
+                ParallelToCircle(star);
 
+                // 星が落ち始める準備
+                if (startime >= timeMove)
+                {
+                    // 星が軌道する半径を縮む
+                    starDate.Radius -= starDate.RadiusShrinkage;
+                }
+            }
 
+            // 星を消す
+            if(startime > timeMoveState)
+            {
+                Destroy(star);
+            }
+
+            // 星の生存時間を計る
+            starDate.Time++;
+        }
+
+        // フレームを計る
+        frame++;
     }
 
     /// <summary>
@@ -71,21 +105,21 @@ public class StarMain : MonoBehaviour
         StarDate starDate = obj.GetComponent<StarDate>();
 
         // 星が宇宙上に動く時間
-        starDate.TimeMove = 0.0f;
+        starDate.TimeMove = Random.Range(_Date.TimeMove_Miu, _Date.TimeMove_Max);
         // 星が宇宙から惑星に落ちる時間
-        starDate.TimeFalling = 180.0f;
+        starDate.TimeFalling = Random.Range(_Date.TimeFall_Miu,_Date.TimeFall_Max);
         // 星が惑星上に滞在する時間
-        starDate.TimeState = 10800.0f;
+        starDate.TimeState = Random.Range(_Date.TimeState_Miu, _Date.TimeState_Miu);
 
         // 星と惑星の距離 と 現在の星と惑星の距離
-        starDate.Direction = starDate.Radius = 10.0f;
+        starDate.Direction = starDate.Radius = Random.Range(_Date.Direction_Miu, _Date.Direction_Max);
         // 1フレームに縮む半径の長さを求める
-        starDate.RadiusShrinkage = (starDate.Direction - _Date.radius) / (float)starDate.TimeFalling;
+        starDate.RadiusShrinkage = (starDate.Direction - _Date.Radius) / (float)starDate.TimeFalling;
 
         // 1フレームにX軸(もしくはZ軸)に進む角速度
-        starDate.AngularVelocity_DegreeXZ = Random.Range(1.0f, 5.0f);//1.0f
+        starDate.AngularVelocity_DegreeXZ = Random.Range(_Date.DegreeXZ_Miu, _Date.DegreeXZ_Max);//1.0f
         // 1フレームにY軸に進む角速度
-        starDate.AngularVelocity_DegreeY = Random.Range(1.0f, 5.0f);//3.0f
+        starDate.AngularVelocity_DegreeY = Random.Range(_Date.DegreeXZ_Miu, _Date.DegreeXZ_Max);//3.0f
         // 現在X軸(もしくはZ軸)による角度
         starDate.DegreeXZ = Random.Range(0, 360);
         // 現在Y軸による角度
@@ -97,74 +131,40 @@ public class StarMain : MonoBehaviour
     /// <summary>
     /// 円に沿って星が動く
     /// </summary>
-    private void ParallelToCircle()
+    private void ParallelToCircle(GameObject star)
     {
 
-        foreach (GameObject star in GameObject.FindGameObjectsWithTag("Star"))
-        {
-            // 星のデータ
-            StarDate starDate = star.GetComponent<StarDate>();
+        // 星のデータ
+        StarDate starDate = star.GetComponent<StarDate>();
 
-            // 星が宇宙上に動き始めてから惑星上に落ちるまでの時間
-            float timeMoveFalling = starDate.TimeMove + starDate.TimeFalling;
+        // XZ軸方向に進む角度をデグリーからラジアンに変換
+        float XZradian = starDate.DegreeXZ * Mathf.Deg2Rad;
+        // Y軸方向に進む角度をデグリーからラジアンに変換
+        float Yradian = starDate.DegreeY * Mathf.Deg2Rad;
+        // 現在の星と惑星の距離
+        float radius = starDate.Radius;
 
-            if (starDate.Time < timeMoveFalling)
-            {
+        // 星の位置
+        Vector3 starpos = new Vector3(radius * Mathf.Cos(Yradian) * Mathf.Sin(XZradian),
+                                      radius * Mathf.Sin(Yradian),
+                                      radius * Mathf.Cos(Yradian) * Mathf.Cos(XZradian));
 
-                // XZ軸方向に進む角度をデグリーからラジアンに変換
-                float XZradian = starDate.DegreeXZ * Mathf.Deg2Rad;
-                // Y軸方向に進む角度をデグリーからラジアンに変換
-                float Yradian = starDate.DegreeY * Mathf.Deg2Rad;
-                // 現在の星と惑星の距離
-                float radius = starDate.Radius;
+        //  [現在の星の位置]    =       [惑星の位置]        + [星の位置]  
+        star.transform.position = planet.transform.position + starpos;
 
-                // 星の位置
-                Vector3 starpos = new Vector3(radius * Mathf.Cos(Yradian) * Mathf.Sin(XZradian),
-                                              radius * Mathf.Sin(Yradian),
-                                              radius * Mathf.Cos(Yradian) * Mathf.Cos(XZradian));
-
-                //  [現在の星の位置]    =       [惑星の位置]        + [星の位置]  
-                star.transform.position =  planet.transform.position + starpos;
-
-                // XZ軸方向に進む
-                starDate.DegreeXZ += starDate.AngularVelocity_DegreeXZ;
-                // Y軸方向に進む
-                starDate.DegreeY += starDate.AngularVelocity_DegreeY;
-
-                // <落ちる時に必用になる処理> ----------------------------------------------------------------------------
-                
-                // 半径を縮む
-                starDate.Radius -= starDate.RadiusShrinkage;
-                // 時間を進める
-                //starDate.Time++;
-                
-                // ----------------------------------------------------------------------------------------
-            }
-        }
+        // XZ軸方向に進む
+        starDate.DegreeXZ += starDate.AngularVelocity_DegreeXZ;
+        // Y軸方向に進む
+        starDate.DegreeY += starDate.AngularVelocity_DegreeY;        
     }
 
     /// <summary>
     /// 星を消す
     /// </summary>
-    private void Destroy()
+    private void Destroy(GameObject star)
     {
-        foreach (GameObject star in GameObject.FindGameObjectsWithTag("Star"))
-        {   
-            // 星のデータ
-            StarDate starDate = star.GetComponent<StarDate>();
-
-            // 星が宇宙上に動き始めてから惑星上に生存するまでの時間
-            float timeMoveState = starDate.TimeMove + starDate.TimeFalling + starDate.TimeState;
-
-            if (starDate.Time > timeMoveState)
-            {
-                // 星を消す
-                Destroy(star);
-                
-            }
-            starDate.Time++;
-        }
-
+       // 星を消す
+       Destroy(star);
     }
 
  }

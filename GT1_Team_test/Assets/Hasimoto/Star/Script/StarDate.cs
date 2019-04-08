@@ -18,37 +18,37 @@ public class StarDate : MonoBehaviour
     /// メンバー変数
     /// </summary>
 
-    // ○星と惑星の距離
-    [SerializeField] private float direction = 0.0f;
-    // ◇現在の星と惑星の距離
-    [SerializeField] private float radius = 0.0f;
-    // ○1フレームに縮む半径の長さ
-    [SerializeField] private float radiusShrinkage = 0.0f;
+        // ○星と惑星の距離
+        [SerializeField] private float direction = 0.0f;
+        // ◇現在の星と惑星の距離
+        [SerializeField] private float radius = 0.0f;
+        // ○1フレームに縮む半径の長さ
+        [SerializeField] private float radiusShrinkage = 0.0f;
 
-    // ○星が宇宙上に動く時間
-    [SerializeField] private float timeMove = 0.0f;
-    // ○星が宇宙から惑星に落ちる時間
-    [SerializeField] private float timeFalling = 0.0f;
-    // ○星が惑星上に滞在する時間
-    [SerializeField] private float timeState = 0.0f;
-    // □星の生存時間
-    [SerializeField] private float time = 0.0f;
+        // ○星が宇宙上に動く時間
+        [SerializeField] private float timeMove = 0.0f;
+        // ○星が宇宙から惑星に落ちる時間
+        [SerializeField] private float timeFalling = 0.0f;
+        // ○星が惑星上に滞在する時間
+        [SerializeField] private float timeState = 0.0f;
+        // □星の生存時間
+        [SerializeField] private float time = 0.0f;
 
-    // ○1フレームにX軸(もしくはZ軸)に進む角速度
-    [SerializeField] private float angularVelocity_DegreeXZ = 0.0f;
-    // ○1フレームにY軸に進む角速度
-    [SerializeField] private float angularVelocity_DegreeY = 0.0f;
-    // ◇現在X軸(もしくはZ軸)による角度
-    [SerializeField] private float degreeXZ = 0.0f;
-    // ◇現在Y軸による角度
-    [SerializeField] private float degreeY = 0.0f;
+        // ○1フレームにX軸(もしくはZ軸)に進む角速度
+        [SerializeField] private float angularVelocity_DegreeXZ = 0.0f;
+        // ○1フレームにY軸に進む角速度
+        [SerializeField] private float angularVelocity_DegreeY = 0.0f;
+        // ◇現在X軸(もしくはZ軸)による角度
+        [SerializeField] private float degreeXZ = 0.0f;
+        // ◇現在Y軸による角度
+        [SerializeField] private float degreeY = 0.0f;
 
     /// <summary>
     /// 取得・設定関数
     /// </summary>
 
-    // ○星と惑星の距離
-    public float Direction       { get { return direction;       } set { direction = value;       } }
+        // ○星と惑星の距離
+        public float Direction       { get { return direction;       } set { direction = value;       } }
         // ◇現在の星と惑星の距離
         public float Radius          { get { return radius;          } set { radius = value;          } }
         // ○1フレームに縮む半径の長さ
@@ -71,4 +71,5 @@ public class StarDate : MonoBehaviour
         public float DegreeXZ                   { get { return degreeXZ;  }                set { degreeXZ = value;  } }
         // ◇現在Y軸による角度
         public float DegreeY                    { get { return degreeY;   }                set { degreeY = value;   } }
+
 }
