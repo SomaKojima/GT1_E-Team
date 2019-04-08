@@ -154,14 +154,24 @@ public class PlayerController : MonoBehaviour
     {
         Quaternion q = Quaternion.identity;
 
+        // 角度を求める
         float cosine = Vector3.Dot(dir, this.transform.forward);
-        
+
+        // 向いている向きと進む向きが同じ場合は何もしない
         if (cosine > 0.99f) return;
 
         float radian = Mathf.Acos(cosine);
         float angle = Mathf.Rad2Deg * radian;
 
-        q = Quaternion.AngleAxis(angle ,Vector3.up);
+        // 時計回りの回転
+        q = Quaternion.AngleAxis(angle, Vector3.up);
+        // 反時計回転をする時（左回転）軸を変えて計算をし直す
+        if (Vector3.Dot(dir, this.transform.right) < 0)
+        {
+            q = Quaternion.AngleAxis(angle, Vector3.down);
+        }
+        
+        Debug.Log(angle);
 
         this.transform.rotation = this.transform.rotation * q;
     }
