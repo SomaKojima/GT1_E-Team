@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e7794934f44d4f99f4a78041365fb, type: 3}
   m_Name: New Date
   m_EditorClassIdentifier: 
-  radius: 60
-  direction_Max: 10
+  radius: 120
+  direction_Max: 180
   direction_Miu: 10
   timeCreate_Max: 180
   timeMove_Max: 300

@@ -73,7 +73,7 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(KeyCode.X)) || (Input.GetButtonDown("joystick button 0")))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (menuState == 0)
             {
