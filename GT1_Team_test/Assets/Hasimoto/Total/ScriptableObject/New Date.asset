@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e7794934f44d4f99f4a78041365fb, type: 3}
   m_Name: New Date
   m_EditorClassIdentifier: 
-  radius: 120
-  direction_Max: 180
-  direction_Miu: 180
+  radius: 62.5
+  direction_Max: 90
+  direction_Miu: 90
   timeCreate_Max: 180
   timeMove_Max: 300
   timeMove_Miu: 300
@@ -22,9 +22,9 @@ MonoBehaviour:
   timeFall_Miu: 180
   timeState_Max: 10800
   timeState_Miu: 10800
-  degreeXZ_Max: 5
-  degreeXZ_Miu: 1
-  degreeY_Max: 5
-  degreeY_Miu: 1
+  degreeXZ_Max: 2
+  degreeXZ_Miu: 0.1
+  degreeY_Max: 2
+  degreeY_Miu: 0.1
   lightPos: {x: 0, y: 55, z: 0}
   speedSwitchOn: 0.5
