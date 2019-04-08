@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 6561919722352661158, guid: 6a32cf280e9d87e409f4ea56c31af2e5,
     type: 3}
-  _Date: {fileID: 11400000, guid: f2ef451ef51e4a8428033f5f6e2ca922, type: 2}
+  _Date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
 --- !u!4 &229315234
 Transform:
   m_ObjectHideFlags: 0

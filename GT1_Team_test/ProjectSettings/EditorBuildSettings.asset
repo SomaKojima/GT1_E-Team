@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ResultScene 1.unity
     guid: d1304782c7fd0bd4bb67e4ea25dbcd11
   - enabled: 0
-    path: Assets/Hashimoto/Scene/HashimotoScene.unity
+    path: Assets/Hasimoto/Planet/Scene/HashimotoScene_Earth.unity
     guid: 98b86b33d463c22459a6de67cbb8098b
   - enabled: 0
     path: Assets/Wada/changeScene/Scenes/Play/PlayScene1.unity
