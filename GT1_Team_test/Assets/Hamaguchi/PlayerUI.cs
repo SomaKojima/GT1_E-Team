@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerUI : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private GameObject nMission;
+    [SerializeField]
+    private GameObject panel;
 
     private int count = 0;
     private bool flagA = true;
@@ -44,6 +47,8 @@ public class PlayerUI : MonoBehaviour
         if(rimitTime<0)
         {
             Timer.GetComponent<Text>().text = "終了です";
+            //SceneManager.LoadScene("GameOver");
+            panel.GetComponent<FadeController>().SetFlag(2);
         }
 
         if ((player.GetComponent<collision>().GetTalkFlag()) && (flagA))
@@ -99,5 +104,15 @@ public class PlayerUI : MonoBehaviour
                 menuState = 1;
             }
         }
+    }
+
+    public float GetTime()
+    {
+        return rimitTime;
+    }
+
+    public int GetDust()
+    {
+        return player.GetComponent<collision>().GetDustCount();
     }
 }
