@@ -12,6 +12,8 @@ public class FadeController : MonoBehaviour
     public bool isFadeOut = false; // フェードアウト処理の開始、完了を管理するフラグ
     public bool isFadeIn = false;  // フェードイン処理の開始、完了を管理するフラグ
 
+    private bool isChangeScene = false;
+
     Image fadeImage;    // 透明度を変更するパネルのイメージ
 
     float time = 0.0f;
@@ -32,21 +34,28 @@ public class FadeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time++;
-        if(isFadeIn)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            StartFadeIn();
+            isChangeScene = true;
         }
-        if (time > 2.0f)
+
+        if (isChangeScene)
         {
-            isFadeOut = true;
-            if (isFadeOut == true)
+            time++;
+            if (isFadeIn)
             {
-                StartFadeOut();
-                Invoke("ChangeScene", 3.5f);
+                StartFadeIn();
+            }
+            if (time > 2.0f)
+            {
+                isFadeOut = true;
+                if (isFadeOut == true)
+                {
+                    StartFadeOut();
+                    Invoke("ChangeScene", 3.5f);
+                }
             }
         }
-    
     }
     void StartFadeIn()
     {
