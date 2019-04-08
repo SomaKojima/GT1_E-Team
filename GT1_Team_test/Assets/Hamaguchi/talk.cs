@@ -55,7 +55,7 @@ public class talk : MonoBehaviour
     {
         if (col.tag == "player")
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if ((Input.GetKeyDown(KeyCode.Z))||(Input.GetButtonDown("joystick button 1")))
             {
                 if (flag)
                 {
