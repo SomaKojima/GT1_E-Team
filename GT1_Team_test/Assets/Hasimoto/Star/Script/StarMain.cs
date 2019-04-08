@@ -83,9 +83,6 @@ public class StarMain : MonoBehaviour
             // 星のデータ
             StarDate starDate = star.GetComponent<StarDate>();
 
-            if (star == null) Debug.Log("NULL");
-            if (starDate == null) Debug.Log("NULL");
-
             // 星の生存時間
             float startime = starDate.Time;
             
