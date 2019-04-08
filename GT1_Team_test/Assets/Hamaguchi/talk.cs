@@ -76,7 +76,7 @@ public class talk : MonoBehaviour
                         text.GetComponent<Text>().text = "星のかけらをあと" + (3 - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
                         Debug.Log("talk.now"); // ログを表示する
                         col.gameObject.GetComponent<collision>().SetTalkFlag();
-                        GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
+                        //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
                     }
                 }
                 else
