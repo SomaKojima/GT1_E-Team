@@ -16,7 +16,7 @@ public class Date : ScriptableObject
         [Header("惑星の半径"),SerializeField]
         private float radius = 5.0f;
 
-        [Space(10), Header("現在、星と惑星の距離"), SerializeField]
+        [Header("現在、星と惑星の距離"), SerializeField]
         private float direction_Max = 10.0f;
         [SerializeField]
         private float direction_Miu = 10.0f;

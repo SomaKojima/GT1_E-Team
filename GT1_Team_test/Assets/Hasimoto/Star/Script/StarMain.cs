@@ -57,6 +57,7 @@ public class StarMain : MonoBehaviour
             StarDate starDate = star.GetComponent<StarDate>();
             // 星の生存時間
             float startime = starDate.Time;
+            
             // 星が宇宙上に動く時間
             float timeMove = starDate.TimeMove;
             // 星が宇宙上に動き始めてから惑星上に落ちるまでの時間
@@ -83,9 +84,11 @@ public class StarMain : MonoBehaviour
             {
                 Destroy(star);
             }
-
-            // 星の生存時間を計る
-            starDate.Time++;
+            else
+            {
+                // 星の生存時間を計る
+                starDate.Time++;
+            }
         }
 
         // フレームを計る
@@ -156,15 +159,6 @@ public class StarMain : MonoBehaviour
         starDate.DegreeXZ += starDate.AngularVelocity_DegreeXZ;
         // Y軸方向に進む
         starDate.DegreeY += starDate.AngularVelocity_DegreeY;        
-    }
-
-    /// <summary>
-    /// 星を消す
-    /// </summary>
-    private void Destroy(GameObject star)
-    {
-       // 星を消す
-       Destroy(star);
     }
 
  }

@@ -15,6 +15,7 @@ MonoBehaviour:
   radius: 5
   direction_Max: 10
   direction_Miu: 10
+  timeCreate_Max: 180
   timeMove_Max: 0
   timeMove_Miu: 0
   timeFall_Max: 180
@@ -23,6 +24,7 @@ MonoBehaviour:
   timeState_Miu: 10800
   degreeXZ_Max: 5
   degreeXZ_Miu: 1
+  degreeY_Max: 5
   degreeY_Miu: 1
   lightPos: {x: 0, y: 5.5, z: 0}
   speedSwitchOn: 0.1
