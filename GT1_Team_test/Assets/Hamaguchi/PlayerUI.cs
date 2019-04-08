@@ -73,7 +73,7 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (menuState == 0)
             {

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: New Date
   m_EditorClassIdentifier: 
   radius: 120
-  direction_Max: 150
-  direction_Miu: 150
+  direction_Max: 180
+  direction_Miu: 10
   timeCreate_Max: 180
   timeMove_Max: 300
   timeMove_Miu: 300
@@ -26,5 +26,5 @@ MonoBehaviour:
   degreeXZ_Miu: 1
   degreeY_Max: 5
   degreeY_Miu: 1
-  lightPos: {x: 30, y: 55, z: 0}
+  lightPos: {x: 0, y: 5.5, z: 0}
   speedSwitchOn: 0.1

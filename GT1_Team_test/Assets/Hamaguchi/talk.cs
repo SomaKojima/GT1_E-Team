@@ -13,6 +13,8 @@ public class talk : MonoBehaviour
     private GameObject mw;
     [SerializeField]
     private GameObject UI;
+    [SerializeField]
+    private GameObject GameDirecter;
 
 
     private bool flag = true;
@@ -74,6 +76,7 @@ public class talk : MonoBehaviour
                         text.GetComponent<Text>().text = "星のかけらをあと" + (3 - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
                         Debug.Log("talk.now"); // ログを表示する
                         col.gameObject.GetComponent<collision>().SetTalkFlag();
+                        GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
                     }
                 }
                 else
