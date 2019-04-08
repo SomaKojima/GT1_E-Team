@@ -36,7 +36,7 @@ public class SwitchOnLight : MonoBehaviour
     void Update()
     {
         // 惑星に明かりに灯す
-        SwitchOnPlanet();
+        //SwitchOnPlanet();
     }
 
     /// <summary>
