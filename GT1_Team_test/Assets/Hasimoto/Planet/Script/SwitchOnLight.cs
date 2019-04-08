@@ -35,6 +35,8 @@ public class SwitchOnLight : MonoBehaviour
 
     void Update()
     {
+        SwitchOnPlanet();
+
         // 常に明かりの領域を広げる
         speed += _Date.SpeedSwitchOn;
         // 反映させる
