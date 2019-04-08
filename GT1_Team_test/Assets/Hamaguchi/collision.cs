@@ -12,6 +12,7 @@ public class collision : MonoBehaviour
     private int dustCounter = 0;
     private bool flagA = false;
     private Vector3 startPos;
+    private bool dustFlag = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,21 @@ public class collision : MonoBehaviour
     void Update()
     {
         slight.spotAngle = (dustCounter + 2) * lightPower;
+        if(dustFlag)
+        {
+            dustCounter++;
+            dustFlag = false;
+        }
 
         float dis = Vector3.Distance(this.transform.position, Vector3.zero);
         if(dis<40.0f)
         {
             this.transform.position = startPos;
+            dustCounter -= 3;
+            if(dustCounter<0)
+            {
+                dustCounter = 0;
+            }
             Debug.Log("penalty"); // ログを表示する
         }
     }
@@ -35,8 +46,8 @@ public class collision : MonoBehaviour
     {
         if (collision.gameObject.tag == "dust")
         {
+            dustFlag = true;
             Destroy(collision.gameObject);
-            dustCounter++;
             Debug.Log(dustCounter); // ログを表示する
         }
     }
