@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e7794934f44d4f99f4a78041365fb, type: 3}
   m_Name: New Date
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 60
   direction_Max: 10
   direction_Miu: 10
   timeCreate_Max: 180
-  timeMove_Max: 0
-  timeMove_Miu: 0
+  timeMove_Max: 300
+  timeMove_Miu: 300
   timeFall_Max: 180
   timeFall_Miu: 180
   timeState_Max: 10800
