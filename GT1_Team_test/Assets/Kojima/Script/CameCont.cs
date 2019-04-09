@@ -42,7 +42,6 @@ public class CameCont : MonoBehaviour
     /// </summary>
     void CameraMove()
     {
-
         // 惑星からプレイヤーまでの回転(ワールド座標に戻す用)
         Quaternion q = Quaternion.FromToRotation(Vector3.up, (target.transform.position - planet.transform.position).normalized);
         // 逆回転(ローカル座標に戻す用)
@@ -59,20 +58,23 @@ public class CameCont : MonoBehaviour
         float length = vec.magnitude;
         Vector3 vec_normal = vec.normalized;
 
+        Debug.Log(length);
+        Vector3 move_vec = Vector3.zero;
+
         // カメラの距離が遠い場合
         if (max_distance < length)
         {
             // 範囲の距離までの差分を計算
             float move_length = length - max_distance;
             // ターゲットに向けて移動量
-            Vector3 move_vec = vec_normal * move_length;
-            
-            // ローカル座標をワールド座標に戻す
-            Vector3 worldPos = target.transform.position + (q * localPos);
-
-            Vector3 pos = worldPos + (q * move_vec);
-            this.transform.position = Vector3.Slerp(this.transform.position, pos, 1.0f);
+            move_vec = vec_normal * move_length;
         }
+
+        // ローカル座標をワールド座標に戻す
+        Vector3 worldPos = target.transform.position + (q * localPos);
+
+        Vector3 pos = worldPos + (q * move_vec);
+        this.transform.position = Vector3.Slerp(this.transform.position, pos, 1.0f);
     }
 
 
