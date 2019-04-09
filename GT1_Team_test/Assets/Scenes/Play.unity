@@ -182,7 +182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u60D1\u661F\u3092\u660E\u308B\u304F\u3057\u3066\n\u3000\u3000\u3000\u3000\u3000\u3000\u2606\xD7\uFF13"
+  m_Text: "\u60D1\u661F\u3092\u660E\u308B\u304F\u3057\u3066\n\u3000\u3000\u3000\u3000\u3000\u3000\u2606\xD710"
 --- !u!222 &9121850
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -276,13 +276,18 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15556692}
-  m_LocalRotation: {x: -0.005362812, y: -0.020122075, z: -0.7857514, w: 0.61819184}
-  m_LocalPosition: {x: 60.09, y: -13.3, z: 0.04}
+  m_LocalRotation: {x: -0.01709502, y: -0.011891932, z: -0.20023379, w: 0.9795269}
+  m_LocalPosition: {x: -36.68, y: -50.35, z: -0.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -2.1920002, y: -0.943, z: -103.594}
+=======
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -2.1920002, y: -0.943, z: -23.088001}
+>>>>>>> hamaguchi
 --- !u!1 &26941557 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6,
@@ -553,7 +558,13 @@ MonoBehaviour:
   text: {fileID: 1290664748}
   mw: {fileID: 1849677988}
   UI: {fileID: 2144745183}
+<<<<<<< HEAD
   GameDirecter: {fileID: 916808547}
+=======
+  GameDirecter: {fileID: 1934888248}
+  panel: {fileID: 473114954}
+  clearStarCount: 10
+>>>>>>> hamaguchi
 --- !u!65 &337046826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -587,6 +598,135 @@ CapsuleCollider:
   m_Height: 12
   m_Direction: 2
   m_Center: {x: 0.09240606, y: 0.057003446, z: 5.7288675}
+<<<<<<< HEAD
+=======
+--- !u!1 &409303239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409303240}
+  m_Layer: 5
+  m_Name: nullMission
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &409303240
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409303239}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1.7092885, y: 1.1656066, z: 1}
+  m_Children:
+  - {fileID: 1397060978}
+  - {fileID: 643638337}
+  m_Father: {fileID: 2144745184}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -778.9999, y: -27}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &473114954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473114955}
+  - component: {fileID: 473114958}
+  - component: {fileID: 473114957}
+  - component: {fileID: 473114956}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &473114955
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473114954}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -376.30414}
+  m_LocalScale: {x: 0.7493057, y: 0.7493057, z: 0.7493057}
+  m_Children: []
+  m_Father: {fileID: 1544789385}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 267.64697, y: 150.41321}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &473114956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473114954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd89036125d0d04688a772d56ab38f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFadeOut: 1
+  isFadeIn: 0
+--- !u!114 &473114957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473114954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 2e4b27e25d484c940a947ccb4847d81a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &473114958
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473114954}
+  m_CullTransparentMesh: 0
+>>>>>>> hamaguchi
 --- !u!1 &515789589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,6 +2514,7 @@ RectTransform:
   - {fileID: 1849677989}
   - {fileID: 1290664749}
   - {fileID: 2144745184}
+  - {fileID: 473114955}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3425,8 +3566,15 @@ MonoBehaviour:
   DustCounter: {fileID: 1485429536}
   Timer: {fileID: 556255144}
   mission: {fileID: 1680039512}
+<<<<<<< HEAD
   rimitTime: 140
   player: {fileID: 1093967605}
+=======
+  rimitTime: 180
+  player: {fileID: 1948387235}
+  nMission: {fileID: 409303239}
+  panel: {fileID: 473114954}
+>>>>>>> hamaguchi
 --- !u!1001 &7752070671332587361
 PrefabInstance:
   m_ObjectHideFlags: 0

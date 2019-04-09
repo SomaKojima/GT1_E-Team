@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class talk : MonoBehaviour
 {
@@ -16,11 +15,19 @@ public class talk : MonoBehaviour
     private GameObject UI;
     [SerializeField]
     private GameObject GameDirecter;
+    [SerializeField]
+    private GameObject panel;
+
+    public int clearStarCount = 10;
 
 
     private bool flag = true;
     private bool clear = false;
     private Color ambient = new Color(0, 0, 0, 1);
+
+    public static float clearTime;
+    public static int clearDust;
+    public static int clearWish;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +46,10 @@ public class talk : MonoBehaviour
             RenderSettings.ambientLight = new Color(ambient.r / 120, ambient.g / 120, ambient.b / 120, 1);
             if(ambient.r==140)
             {
-                SceneManager.LoadScene("ResultScene 1");
+                clearWish = 1;
+                clearTime = UI.GetComponent<PlayerUI>().GetTime();
+                clearDust = UI.GetComponent<PlayerUI>().GetDust();
+                panel.GetComponent<FadeController>().SetFlag(3);
             }
         }
     }
@@ -79,7 +89,7 @@ public class talk : MonoBehaviour
                     text.SetActive(true);
                     UI.SetActive(false);
 
-                    if (col.gameObject.GetComponent<collision>().GetDustCount() >= 3)
+                    if (col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)
                     {
                         text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
                         Debug.Log("game clear"); // ログを表示する
@@ -90,7 +100,7 @@ public class talk : MonoBehaviour
                     }
                     else
                     {
-                        text.GetComponent<Text>().text = "星のかけらをあと" + (3 - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                        text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
                         Debug.Log("talk.now"); // ログを表示する
                         col.gameObject.GetComponent<collision>().SetTalkFlag();
                         //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
@@ -106,5 +116,20 @@ public class talk : MonoBehaviour
                 }
             }
         }
+    }
+
+    public static float GetTime()
+    {
+        return clearTime;
+    }
+
+    public static int GetDust()
+    {
+        return clearDust;
+    }
+
+    public static int GetWish()
+    {
+        return clearWish;
     }
 }
