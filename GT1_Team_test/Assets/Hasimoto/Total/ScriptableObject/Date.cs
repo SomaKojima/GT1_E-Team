@@ -47,9 +47,9 @@ public class Date : ScriptableObject
         private float timeMove_Miu = 300.0f;
 
         [Header("星が惑星上に落ちるまでの時間"), SerializeField]
-        private float timeFall_Max = 180.0f;
+        private float timeFall_Max = 50.0f;
         [SerializeField]
-        private float timeFall_Miu = 180.0f;
+        private float timeFall_Miu = 50.0f;
         
         [Header("星が惑星上に滞在する時間"), SerializeField]
         private float timeState_Max = 10800.0f;
