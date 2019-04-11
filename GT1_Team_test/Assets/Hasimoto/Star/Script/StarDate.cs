@@ -15,6 +15,17 @@ using UnityEngine;
 public class StarDate : MonoBehaviour
 {
     /// <summary>
+    /// 星の種類
+    /// </summary>
+    public enum Kind
+    {
+        ERR = -1,
+        ALWAYSMOVE, // 常に動く
+        MOVEANDFALL,// 動いて落ちる
+        JUSTFALL,   // すぐに落ちる
+    }
+
+    /// <summary>
     /// メンバー変数
     /// </summary>
 
@@ -42,6 +53,8 @@ public class StarDate : MonoBehaviour
         [SerializeField] private float degreeXZ = 0.0f;
         // ◇現在Y軸による角度
         [SerializeField] private float degreeY = 0.0f;
+        // ○星の種類
+        [SerializeField] private Kind kind = Kind.ALWAYSMOVE;
 
     /// <summary>
     /// 取得・設定関数
@@ -71,5 +84,7 @@ public class StarDate : MonoBehaviour
         public float DegreeXZ                   { get { return degreeXZ;  }                set { degreeXZ = value;  } }
         // ◇現在Y軸による角度
         public float DegreeY                    { get { return degreeY;   }                set { degreeY = value;   } }
-
+       
+        // ○星の種類
+        public Kind StarKind { get { return kind; } set { kind = value; } }
 }
