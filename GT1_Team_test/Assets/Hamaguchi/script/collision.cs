@@ -44,6 +44,7 @@ public class collision : MonoBehaviour
         if(dis<40.0f)
         {
             this.transform.position = startPos;
+            this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             dustCounter -= 3;
             if(dustCounter<0)
             {
