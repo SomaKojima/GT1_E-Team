@@ -55,7 +55,7 @@ public class StarMain : MonoBehaviour
             // すぐに惑星上に落ちる星の割合
             float rationstarfall = _Date.StarJustFallRatio;
 
-            if (ratio > rationstarfall)
+            if (ratio <= rationstarfall)
             {
                 // すぐに惑星上に落ちる星を新しく作成する
                 Create(Kind.JUSTFALL);
@@ -103,9 +103,28 @@ public class StarMain : MonoBehaviour
                     starDate.Radius -= starDate.RadiusShrinkage;
                 }
             }
+            else
+            // すぐに惑星上に落ちる星
+            if (starDate.StarKind == Kind.JUSTFALL)
+            {
+                // 星と惑星の距離
+                Vector3 directon = star.transform.position - planet.transform.position;
+                // 星と惑星の長さ
+                float length = directon.magnitude;
+                // 惑星の半径の長さ
+                float radius = _Date.Radius;
+
+                if(length > radius)
+                {
+                    // 距離を正規化する
+                    directon.Normalize();
+                    // 移動する
+                    star.transform.position += -directon;
+                }
+            }
 
             // 星を消す
-            if((startime > timeMoveState) && ((starDate.StarKind == Kind.MOVEANDFALL)|| (starDate.StarKind == Kind.MOVEANDFALL)))
+            if ((startime > timeMoveState) && ((starDate.StarKind == Kind.MOVEANDFALL)|| (starDate.StarKind == Kind.MOVEANDFALL)))
             {
                 Destroy(star);
             }
@@ -215,5 +234,7 @@ public class StarMain : MonoBehaviour
         // 星を配置する
         SetPosition(star);      
     }
+
+
 
  }
