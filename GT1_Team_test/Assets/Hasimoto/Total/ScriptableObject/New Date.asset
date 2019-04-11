@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetTag: Planet
   starTag: dust
-  radius: 62.5
+  bigStarRadius: 62.5
+  smallStarRadius: 1
   direction_Max: 90
   direction_Miu: 90
   lifeTotal: 5
   starJustFallRatio: 0.5
   timeCreate_Max: 180
+  timeCreate_Miu: 180
   timeMove_Max: 300
   timeMove_Miu: 300
   timeFall_Max: 180

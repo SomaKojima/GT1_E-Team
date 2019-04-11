@@ -20,7 +20,10 @@ public class Date : ScriptableObject
         private string starTag = "dust";
 
         [Header("惑星の半径"),SerializeField]
-        private float radius = 62.5f;
+        private float bigStarRadius = 62.5f;
+
+        [Header("小さい星の半径"), SerializeField]
+        private float smallStarRadius = 1.0f;
 
         [Header("現在、星と惑星の距離"), SerializeField]
         private float direction_Max = 95.0f;
@@ -35,6 +38,7 @@ public class Date : ScriptableObject
 
         [Header("新しい星を作成する時間"), SerializeField]
         private float timeCreate_Max = 180.0f;
+        [SerializeField]
         private float timeCreate_Miu = 180.0f;
 
         [Header("星が宇宙上に動く時間"), SerializeField]
@@ -84,7 +88,10 @@ public class Date : ScriptableObject
         public string StarTag { get { return starTag; } private set { starTag = value; } }
 
         // 惑星の半径
-        public float Radius { get { return radius; } private set { radius = value; } }
+        public float BigStarRadius { get { return bigStarRadius; } private set { bigStarRadius = value; } }
+        // 小さい星の半径
+        public float SmallStarRadius { get { return smallStarRadius; } private set { smallStarRadius = value; } }
+    
         // 星と惑星の距離
         public float Direction_Max{ get { return direction_Max; } private set { direction_Max = value; } }
         public float Direction_Miu { get { return direction_Miu; } private set { direction_Miu = value; } }

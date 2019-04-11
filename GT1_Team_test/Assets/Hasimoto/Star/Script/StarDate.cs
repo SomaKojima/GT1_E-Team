@@ -32,7 +32,7 @@ public class StarDate : MonoBehaviour
         // ○星と惑星の距離
         [SerializeField] private float direction = 0.0f;
         // ◇現在の星と惑星の距離
-        [SerializeField] private float radius = 0.0f;
+        [SerializeField] private float range = 0.0f;
         // ○1フレームに縮む半径の長さ
         [SerializeField] private float radiusShrinkage = 0.0f;
 
@@ -63,7 +63,7 @@ public class StarDate : MonoBehaviour
         // ○星と惑星の距離
         public float Direction       { get { return direction;       } set { direction = value;       } }
         // ◇現在の星と惑星の距離
-        public float Radius          { get { return radius;          } set { radius = value;          } }
+        public float Range          { get { return range;          } set { range = value;          } }
         // ○1フレームに縮む半径の長さ
         public float RadiusShrinkage { get { return radiusShrinkage; } set { radiusShrinkage = value; } }
 
