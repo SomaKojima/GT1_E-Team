@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.4245283, g: 0.41852084, b: 0.41852084, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0
@@ -919,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Woods (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.621
@@ -1348,6 +1352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Woods (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.565
@@ -1425,6 +1433,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Planet
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4d663e1884ccc3e42b6e8f0846b2a077, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4d663e1884ccc3e42b6e8f0846b2a077, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1498,6 +1510,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Woods (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.543
@@ -1566,6 +1582,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_Name
       value: Woods (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1984,6 +2004,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_Name
       value: Woods (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2448,6 +2472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Woods
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.095606975
@@ -2814,6 +2842,7 @@ GameObject:
   - component: {fileID: 1934888251}
   - component: {fileID: 1934888250}
   - component: {fileID: 1934888249}
+  - component: {fileID: 1934888252}
   m_Layer: 0
   m_Name: Director
   m_TagString: Untagged
@@ -2863,6 +2892,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!220 &1934888252
+LightProbeGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934888248}
+  m_Enabled: 1
+  m_SourcePositions:
+  - {x: 94.752075, y: 101.0918, z: 124.05185}
+  - {x: 96.25751, y: 101.0918, z: -123.21454}
+  - {x: 94.752075, y: -87.6033, z: 124.05185}
+  - {x: 96.25751, y: -87.6033, z: -122.97629}
+  - {x: -96.08157, y: 101.0918, z: 124.05185}
+  - {x: -96.08157, y: 101.0918, z: -123.21454}
+  - {x: -96.08157, y: -87.6033, z: 124.05185}
+  - {x: -96.08157, y: -87.6033, z: -122.97629}
+  - {x: 94.752075, y: 101.0918, z: 124.05185}
+  - {x: 96.25751, y: 101.0918, z: -123.21454}
+  - {x: 94.752075, y: -87.6033, z: 124.05185}
+  - {x: 96.25751, y: -87.6033, z: -122.97629}
+  - {x: -96.08157, y: 101.0918, z: 124.05185}
+  - {x: -96.08157, y: 101.0918, z: -123.21454}
+  - {x: -96.08157, y: -87.6033, z: 124.05185}
+  - {x: -96.08157, y: -87.6033, z: -122.97629}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  m_Dering: 0
 --- !u!1 &1948387235
 GameObject:
   m_ObjectHideFlags: 0

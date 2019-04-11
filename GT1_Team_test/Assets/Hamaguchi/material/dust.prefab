@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  radius: 0
+  range: 0
   radiusShrinkage: 0
   timeMove: 0
   timeFalling: 0
@@ -115,3 +115,5 @@ MonoBehaviour:
   angularVelocity_DegreeY: 0
   degreeXZ: 0
   degreeY: 0
+  kind: 0
+  IsfallHole: 0

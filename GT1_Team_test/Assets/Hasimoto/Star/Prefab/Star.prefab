@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6561919722352661159}
   - component: {fileID: 6561919722352661155}
   - component: {fileID: 6561919722352661164}
+  - component: {fileID: 8048816145903235269}
   m_Layer: 0
   m_Name: Star
   m_TagString: dust
@@ -219,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  radius: 0
+  range: 0
   radiusShrinkage: 0
   timeMove: 0
   timeFalling: 0
@@ -229,3 +230,43 @@ MonoBehaviour:
   angularVelocity_DegreeY: 0
   degreeXZ: 0
   degreeY: 0
+  kind: 0
+  IsfallHole: 0
+--- !u!108 &8048816145903235269
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6561919722352661158}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 3
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 20
+  m_Range: 60
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 2
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 100, y: 100}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
