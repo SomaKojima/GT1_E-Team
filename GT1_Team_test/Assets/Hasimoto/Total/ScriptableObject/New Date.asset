@@ -19,13 +19,13 @@ MonoBehaviour:
   direction_Max: 90
   direction_Miu: 90
   lifeTotal: 5
-  starJustFallRatio: 1
-  timeCreate_Max: 1
-  timeCreate_Miu: 1
+  starJustFallRatio: 0.5
+  timeCreate_Max: 10
+  timeCreate_Miu: 10
   timeMove_Max: 300
   timeMove_Miu: 300
-  timeFall_Max: 1
-  timeFall_Miu: 1
+  timeFall_Max: 180
+  timeFall_Miu: 180
   timeState_Max: 10800
   timeState_Miu: 10800
   degreeXZ_Max: 1

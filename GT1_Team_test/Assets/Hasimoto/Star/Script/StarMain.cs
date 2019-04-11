@@ -149,26 +149,7 @@ public class StarMain : MonoBehaviour
                 {
                     // 星の生存時間を計る
                     starDate.Time++;
-
-                    // ------------------------------------------------------------------------------------
-                    
-                    // 光を探す
-                    foreach(Transform child in star.transform)
-                    {
-                        Light light = child.GetComponent<Light>();
-                        // 光の向き
-                        if (light != null)
-                        {
-                            // 星と惑星の距離
-                            Vector3 rage = planet.transform.position - star.transform.position;
-                            Quaternion look = Quaternion.LookRotation(rage);
-                            // 回転する
-                            star.transform.localRotation = look;
-                        }
-
-                    }
-
-                  }
+                }
             }
             else
             // 小さい星が惑星の穴の奥まで進む
@@ -233,9 +214,9 @@ public class StarMain : MonoBehaviour
         starDate.RadiusShrinkage = (starDate.Direction - _Date.BigStarRadius) / (float)starDate.TimeFalling;
 
         // 1フレームにX軸(もしくはZ軸)に進む角速度
-        starDate.AngularVelocity_DegreeXZ = Random.Range(_Date.DegreeXZ_Miu, _Date.DegreeXZ_Max);
+        starDate.AngularVelocity_DegreeXZ = Random.Range(_Date.DegreeXZ_Miu, _Date.DegreeXZ_Max);//1.0f
         // 1フレームにY軸に進む角速度
-        starDate.AngularVelocity_DegreeY = Random.Range(_Date.DegreeXZ_Miu, _Date.DegreeXZ_Max);
+        starDate.AngularVelocity_DegreeY = Random.Range(_Date.DegreeXZ_Miu, _Date.DegreeXZ_Max);//3.0f
         // 現在X軸(もしくはZ軸)による角度
         starDate.DegreeXZ = Random.Range(0, 360);
         // 現在Y軸による角度
