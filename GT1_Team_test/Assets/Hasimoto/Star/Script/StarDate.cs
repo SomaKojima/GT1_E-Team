@@ -15,13 +15,24 @@ using UnityEngine;
 public class StarDate : MonoBehaviour
 {
     /// <summary>
+    /// 星の種類
+    /// </summary>
+    public enum Kind
+    {
+        ERR = -1,
+        ALWAYSMOVE, // 常に動く
+        MOVEANDFALL,// 動いて落ちる
+        JUSTFALL,   // すぐに落ちる
+    }
+
+    /// <summary>
     /// メンバー変数
     /// </summary>
 
         // ○星と惑星の距離
         [SerializeField] private float direction = 0.0f;
         // ◇現在の星と惑星の距離
-        [SerializeField] private float radius = 0.0f;
+        [SerializeField] private float range = 0.0f;
         // ○1フレームに縮む半径の長さ
         [SerializeField] private float radiusShrinkage = 0.0f;
 
@@ -42,6 +53,11 @@ public class StarDate : MonoBehaviour
         [SerializeField] private float degreeXZ = 0.0f;
         // ◇現在Y軸による角度
         [SerializeField] private float degreeY = 0.0f;
+        
+        // ○星の種類
+        [SerializeField] private Kind kind = Kind.ALWAYSMOVE;
+        // □惑星の穴の奥まで落ちるかどうか
+        [SerializeField] private bool IsfallHole = false;
 
     /// <summary>
     /// 取得・設定関数
@@ -50,7 +66,7 @@ public class StarDate : MonoBehaviour
         // ○星と惑星の距離
         public float Direction       { get { return direction;       } set { direction = value;       } }
         // ◇現在の星と惑星の距離
-        public float Radius          { get { return radius;          } set { radius = value;          } }
+        public float Range          { get { return range;          } set { range = value;          } }
         // ○1フレームに縮む半径の長さ
         public float RadiusShrinkage { get { return radiusShrinkage; } set { radiusShrinkage = value; } }
 
@@ -71,5 +87,11 @@ public class StarDate : MonoBehaviour
         public float DegreeXZ                   { get { return degreeXZ;  }                set { degreeXZ = value;  } }
         // ◇現在Y軸による角度
         public float DegreeY                    { get { return degreeY;   }                set { degreeY = value;   } }
+       
+        // ○星の種類
+        public Kind StarKind { get { return kind; } set { kind = value; } }
+
+        // □惑星の穴の奥まで落ちるかどうか
+        public bool IsFallHole { get { return IsfallHole; } set { IsfallHole = value; } }
 
 }

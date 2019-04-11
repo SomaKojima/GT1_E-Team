@@ -20,15 +20,25 @@ public class Date : ScriptableObject
         private string starTag = "dust";
 
         [Header("惑星の半径"),SerializeField]
-        private float radius = 62.5f;
+        private float bigStarRadius = 62.5f;
+
+        [Header("小さい星の半径"), SerializeField]
+        private float smallStarRadius = 1.0f;
 
         [Header("現在、星と惑星の距離"), SerializeField]
         private float direction_Max = 95.0f;
         [SerializeField]
         private float direction_Miu = 95.0f;
 
+        [Header("永遠に動き続ける星の数"), SerializeField]
+        private int lifeTotal = 5;
+
+        [Header("すぐに惑星に落ちる星の割合"), SerializeField, Range(0.0f, 1.0f)]
+        private float starJustFallRatio = 0.5f;
+
         [Header("新しい星を作成する時間"), SerializeField]
         private float timeCreate_Max = 180.0f;
+        [SerializeField]
         private float timeCreate_Miu = 180.0f;
 
         [Header("星が宇宙上に動く時間"), SerializeField]
@@ -37,9 +47,9 @@ public class Date : ScriptableObject
         private float timeMove_Miu = 300.0f;
 
         [Header("星が惑星上に落ちるまでの時間"), SerializeField]
-        private float timeFall_Max = 180.0f;
+        private float timeFall_Max = 50.0f;
         [SerializeField]
-        private float timeFall_Miu = 180.0f;
+        private float timeFall_Miu = 50.0f;
         
         [Header("星が惑星上に滞在する時間"), SerializeField]
         private float timeState_Max = 10800.0f;
@@ -48,14 +58,14 @@ public class Date : ScriptableObject
 
         [Header("◆それぞれの角速度")]
         [Header("1フレームにX軸(もしくはZ軸)に進む角速度"),SerializeField]
-        private float degreeXZ_Max = 2.0f;
+        private float degreeXZ_Max = 1.0f;
         [SerializeField]
-        private float degreeXZ_Miu = 0.1f;
+        private float degreeXZ_Miu = 0.05f;
 
         [Header("1フレームにY軸に進む角速度"), SerializeField]
-        private float degreeY_Max = 2.0f;
+        private float degreeY_Max = 1.0f;
         [SerializeField]
-        private float degreeY_Miu = 0.1f;
+        private float degreeY_Miu = 0.05f;
 
                 
 
@@ -78,10 +88,19 @@ public class Date : ScriptableObject
         public string StarTag { get { return starTag; } private set { starTag = value; } }
 
         // 惑星の半径
-        public float Radius { get { return radius; } private set { radius = value; } }
+        public float BigStarRadius { get { return bigStarRadius; } private set { bigStarRadius = value; } }
+        // 小さい星の半径
+        public float SmallStarRadius { get { return smallStarRadius; } private set { smallStarRadius = value; } }
+    
         // 星と惑星の距離
         public float Direction_Max{ get { return direction_Max; } private set { direction_Max = value; } }
         public float Direction_Miu { get { return direction_Miu; } private set { direction_Miu = value; } }
+           
+        // 永遠に動き続ける星の数
+        public int LifeTotal { get { return lifeTotal; } private set { lifeTotal = value; } }
+
+        // すぐに惑星に落ちる星の割合
+        public float StarJustFallRatio { get { return starJustFallRatio; } private set { starJustFallRatio = value; } }
 
         // 新しい星を作成する時間
         public float TimeCreate_Max { get { return timeCreate_Max; } private set { timeCreate_Max = value; } }
