@@ -53,8 +53,11 @@ public class StarDate : MonoBehaviour
         [SerializeField] private float degreeXZ = 0.0f;
         // ◇現在Y軸による角度
         [SerializeField] private float degreeY = 0.0f;
+        
         // ○星の種類
         [SerializeField] private Kind kind = Kind.ALWAYSMOVE;
+        // □惑星の穴の奥まで落ちるかどうか
+        [SerializeField] private bool IsfallHole = false;
 
     /// <summary>
     /// 取得・設定関数
@@ -87,4 +90,8 @@ public class StarDate : MonoBehaviour
        
         // ○星の種類
         public Kind StarKind { get { return kind; } set { kind = value; } }
+
+        // □惑星の穴の奥まで落ちるかどうか
+        public bool IsFallHole { get { return IsfallHole; } set { IsfallHole = value; } }
+
 }

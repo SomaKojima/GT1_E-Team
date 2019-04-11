@@ -82,74 +82,98 @@ public class StarMain : MonoBehaviour
             // 星のデータ
             StarDate starDate = star.GetComponent<StarDate>();
 
-            // 星の生存時間
-            float startime = starDate.Time;
-            
-            // 星が宇宙上に動く時間
-            float timeMove = starDate.TimeMove;
-            // 星が宇宙上に動き始めてから惑星上に落ちるまでの時間
-            float timeMoveFalling = timeMove + starDate.TimeFalling;
-            // 星が宇宙上に動き始めてから惑星上に生存するまでの時間
-            float timeMoveState = timeMoveFalling + starDate.TimeState;
-
-            // 星が宇宙上に動き始めてから惑星上に落ちるまで もしくは 永遠に消えない星
-            if (((starDate.StarKind == Kind.MOVEANDFALL)&&(startime < timeMoveFalling)) ||
-                 (starDate.StarKind == Kind.ALWAYSMOVE))
+            // 惑星の穴の奥まで進まない場合
+            if (!starDate.IsFallHole)
             {
-                // 円に沿って星が動く
-                ParallelToCircle(star);
+                // 星の生存時間
+                float startime = starDate.Time;
 
-                // 星が落ち始める準備 かつ 今後消える星
-                if ((startime >= timeMove) && (starDate.StarKind == Kind.MOVEANDFALL))
+                // 星が宇宙上に動く時間
+                float timeMove = starDate.TimeMove;
+                // 星が宇宙上に動き始めてから惑星上に落ちるまでの時間
+                float timeMoveFalling = timeMove + starDate.TimeFalling;
+                // 星が宇宙上に動き始めてから惑星上に生存するまでの時間
+                float timeMoveState = timeMoveFalling + starDate.TimeState;
+
+                // 星が宇宙上に動き始めてから惑星上に落ちるまで もしくは 永遠に消えない星
+                if (((starDate.StarKind == Kind.MOVEANDFALL) && (startime < timeMoveFalling)) ||
+                     (starDate.StarKind == Kind.ALWAYSMOVE))
                 {
-                    // 星が軌道する半径を縮む
-                    starDate.Range -= starDate.RadiusShrinkage;
+                    // 円に沿って星が動く
+                    ParallelToCircle(star);
+
+                    // 星が落ち始める準備 かつ 今後消える星
+                    if ((startime >= timeMove) && (starDate.StarKind == Kind.MOVEANDFALL))
+                    {
+                        // 星が軌道する半径を縮む
+                        starDate.Range -= starDate.RadiusShrinkage;
+                    }
                 }
-            }
-            else
-            // すぐに惑星上に落ちる星
-            if (starDate.StarKind == Kind.JUSTFALL)
-            {
-                // 星と惑星の距離
-                Vector3 range = star.transform.position - planet.transform.position;
-                // 星と惑星の長さ
-                float length = range.magnitude;
-                // 惑星の半径の長さ
-                float radius = _Date.BigStarRadius;
-
-                if(length > radius)
+                else
+                // すぐに惑星上に落ちる星
+                if (starDate.StarKind == Kind.JUSTFALL)
                 {
-                    // 距離を正規化する
-                    range.Normalize();
-                    // 移動する
-                    star.transform.position += -range;
+                    // 星と惑星の距離
+                    Vector3 range = star.transform.position - planet.transform.position;
+                    // 星と惑星の長さ
+                    float length = range.magnitude;
+                    // 惑星の半径の長さ
+                    float radius = _Date.BigStarRadius;
+
+                    if (length > radius)
+                    {
+                        // 距離を正規化する
+                        range.Normalize();
+                        // 移動する
+                        star.transform.position += -range;
+                    }
+                    else
+                    {
+                        // 星が穴に落ちて消すか判断する
+                        FallHoleAndDestory(star);
+                    }
+                }
+
+                // 星が穴に落ちて消すか判断する
+                if (((startime > timeMoveFalling) && (starDate.StarKind == Kind.MOVEANDFALL)))
+                {
+                    FallHoleAndDestory(star);
+                }
+
+                // 星を消す
+                if ((startime > timeMoveState) && ((starDate.StarKind == Kind.MOVEANDFALL) || (starDate.StarKind == Kind.MOVEANDFALL)))
+                {
+                    Destroy(star);
                 }
                 else
                 {
-                    // 星が穴に落ちて消すか判断する
-                    FallHoleAndDestory(star);
+                    // 星の生存時間を計る
+                    starDate.Time++;
                 }
             }
-
-            // 星が穴に落ちて消すか判断する
-            if(((startime> timeMoveFalling)&& (starDate.StarKind == Kind.MOVEANDFALL)))
-            {
-                FallHoleAndDestory(star);
-            }
-
-            // 星を消す
-            if ((startime > timeMoveState) && ((starDate.StarKind == Kind.MOVEANDFALL)|| (starDate.StarKind == Kind.MOVEANDFALL)))
-            {
-                Destroy(star);
-            }
             else
+            // 小さい星が惑星の穴の奥まで進む
             {
-                // 星の生存時間を計る
-                starDate.Time++;
+                // 星と惑星の距離
+                Vector3 range =  planet.transform.position- star.transform.position;
+                range.Normalize();
 
+                // 長さ
+                float length = (_Date.SmallStarRadius * 2) * 2;
+
+                // 小さい星が進む
+                star.transform.position += range;
+
+                // レイが当たったオブジェクトの情報
+                RaycastHit hit;
+
+                // レイとオブジェクトの当たり判定
+                if (Physics.Raycast(new Ray(star.transform.position, range), out hit, length))
+                {
+                    Destroy(star);
+                }
             }
         }
-
         // フレームを計る
         frame++;
     }
@@ -271,7 +295,7 @@ public class StarMain : MonoBehaviour
         // レイを作成する
         Ray ray = new Ray(original, direction);
         // レイを可視化する
-        Debug.DrawRay(ray.origin, ray.direction, Color.white, 10.0f);
+        //Debug.DrawRay(ray.origin, ray.direction, Color.white, 10.0f);
 
         // レイが当たったオブジェクトの情報
         RaycastHit hit;
@@ -279,8 +303,8 @@ public class StarMain : MonoBehaviour
         // レイとオブジェクトの当たり判定
         if(!Physics.Raycast(ray,out hit, length))
         {
-            // 星を消す
-            Destroy(star);
+            // 惑星の穴の奥まで落ちる設定をする
+            star.GetComponent<StarDate>().IsFallHole = true;
         }
     }
 
