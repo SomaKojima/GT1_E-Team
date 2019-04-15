@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -901,11 +901,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf3d2cd36ec600408d27903155447bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 67a284dabc486994aacab85aee74e765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1948387235}
-  planet: {fileID: 1256711358}
+  planet: {fileID: 1859461912}
   max_distance: 10
   offset_y: 20
 --- !u!1001 &555753959
