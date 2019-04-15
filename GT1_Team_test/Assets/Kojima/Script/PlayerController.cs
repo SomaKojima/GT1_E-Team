@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    enum PlayerMode
+    {
+        Normal,
+        Talk
+    };
+
     public GameObject camera;
     public GameObject planet;
 
     Rigidbody rigid;
+    PlayerMode mode;
 
     [SerializeField]
     float speed = 5.0f;
@@ -30,9 +37,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        switch (mode)
+        {
+            case PlayerMode.Normal:
+                NormalCameraUpdate();
+                break;
+            case PlayerMode.Talk:
+                break;
+        }
+    }
+
+    // 通常のカメラの更新処理
+    private void NormalCameraUpdate()
+    {
         // 移動
         Vector3 vel = Vector3.zero;
-        if(PlayerCameraMove(out vel))
+        if (PlayerCameraMove(out vel))
         {
             // 速度の向き
             Vector3 dir = vel.normalized;
@@ -40,7 +60,7 @@ public class PlayerController : MonoBehaviour
             PlayerRotation(dir);
         }
     }
-    
+
     /// <summary>
     /// カメラ視点で移動する
     /// </summary>

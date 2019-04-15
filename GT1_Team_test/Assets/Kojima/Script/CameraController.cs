@@ -17,9 +17,9 @@ public class CameraController : MonoBehaviour
     public GameObject planet;
 
     // 話しかける時の位置
-    public Vector3 talkPosition;
+    public Transform talkPosition;
     // 話しかける相手
-    public GameObject talkTarget;
+    public Transform talkTarget;
 
     // カメラのモード
     public CameraMode cameraMode = CameraMode.Nomal;
@@ -119,16 +119,17 @@ public class CameraController : MonoBehaviour
     /// </summary>
     void TalkCameraMove()
     {
-        Vector3 vec = talkTarget.transform.position - target.transform.position;
-        Quaternion q = Quaternion.FromToRotation(this.transform.forward, vec.normalized);
-        Vector3 pos = target.transform.position + (this.transform.rotation * q * talkPosition);
-
-        this.transform.position = Vector3.Lerp(this.transform.position, pos, 0.1f);
+        if (!talkPosition) return;
+        this.transform.position = Vector3.Lerp(this.transform.position, talkPosition.position, 0.1f);
     }
 
+    /// <summary>
+    /// 話す用のカメラの回転
+    /// </summary>
     void TalkCameraRotation()
     {
-        this.transform.LookAt(talkTarget.transform.position, target.transform.up);
+        if (!talkTarget) return;
+        this.transform.LookAt(talkTarget.position, target.transform.up);
     }
 
     /// <summary>
@@ -159,11 +160,12 @@ public class CameraController : MonoBehaviour
     /// </summary>
     /// <param name="talkChara">話す相手</param>
     /// <returns>変えられたかどうか</returns>
-    public bool ChangeTalkMode(GameObject talkChara)
+    public bool ChangeTalkMode(Transform talkChara, Transform cameraPos)
     {
         if (!talkChara) return false;
         cameraMode = CameraMode.Talk;
         talkTarget = talkChara;
+        talkPosition = cameraPos;
         return true;
     }
 }
