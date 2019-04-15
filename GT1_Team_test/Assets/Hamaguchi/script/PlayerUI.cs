@@ -37,9 +37,9 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Screen.width + ":" + Screen.height); // ログを表示する
+        //Debug.Log(Screen.width + ":" + Screen.height); // ログを表示する
         float screenMoveW = (float)Screen.width / (float)StartScreenWidth;
-        Debug.Log(screenMoveW);
+        //Debug.Log(screenMoveW);
 
         rimitTime = rimitTime - Time.deltaTime;
         DustCounter.GetComponent<Text>().text = "ｘ"+(player.GetComponent<collision>().GetDustCount())+"こ";
