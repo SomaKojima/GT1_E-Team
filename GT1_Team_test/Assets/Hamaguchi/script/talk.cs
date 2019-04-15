@@ -111,6 +111,7 @@ public class talk : MonoBehaviour
                 }
                 else
                 {
+                    talkFlag = false;
                     UI.SetActive(true);
                     flag = true;
                     text.SetActive(false);
