@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 631529343}
   m_Layer: 0
   m_Name: area
-  m_TagString: Untagged
+  m_TagString: area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -981,6 +981,8 @@ MonoBehaviour:
   mw: {fileID: 1729258381}
   UI: {fileID: 1856789291}
   GameDirecter: {fileID: 2055637077}
+  panel: {fileID: 0}
+  clearStarCount: 10
 --- !u!65 &631529345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3026,6 +3028,8 @@ MonoBehaviour:
   mission: {fileID: 503078569}
   rimitTime: 140
   player: {fileID: 1804517469}
+  nMission: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1 &1881470562
 GameObject:
   m_ObjectHideFlags: 0
