@@ -51,7 +51,7 @@ public class PlayerUI : MonoBehaviour
             panel.GetComponent<FadeController>().SetFlag(2);
         }
 
-        if ((player.GetComponent<collision>().GetTalkFlag()) && (flagA))
+        if ((player.GetComponent<collision>().GetFlagA()) && (flagA))
         {
             if (count == 0)
             {
