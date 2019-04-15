@@ -15,6 +15,8 @@ public class FadeController : MonoBehaviour
     //ハマグチ追加
     private bool isChangeScene = false;
     private int sceneNum = 0;
+    [SerializeField]
+    private GameObject panel;
 
     Image fadeImage;    // 透明度を変更するパネルのイメージ
 
@@ -39,6 +41,7 @@ public class FadeController : MonoBehaviour
         if (isChangeScene)
         {
             time++;
+            panel.SetActive(false);
             if (isFadeIn)
             {
                 StartFadeIn();
@@ -85,6 +88,7 @@ public class FadeController : MonoBehaviour
     void ChangeScene()
     {
         //ハマグチ追加
+
         switch (sceneNum)
         {
             case 1:

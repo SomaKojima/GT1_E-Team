@@ -58,28 +58,12 @@
 			{
 				// 反映する
 				o.Albedo = texturecolor;
-		
-				//// 黒くする
-				//texturecolor -= _BlakAmount;
-				//
-				//// 範囲を制限する
-				//if (texturecolor.x < 0.0f) texturecolor.x = 0.0f;
-				//if (texturecolor.y < 0.0f) texturecolor.y = 0.0f;
-				//if (texturecolor.z < 0.0f) texturecolor.z = 0.0f;
 			}
 			else
 			{
 				
 				// 反映する
 				o.Albedo = texturecolor * _EmissionColor;
-
-				//// 白くする
-				//texturecolor += _WhiteAmount;
-				//
-				//// 範囲を制限する
-				//if (texturecolor.x > 1.0f) texturecolor.x = 1.0f;
-				//if (texturecolor.y > 1.0f) texturecolor.y = 1.0f;
-				//if (texturecolor.z > 1.0f) texturecolor.z = 1.0f;
 			}
 		}
 		ENDCG

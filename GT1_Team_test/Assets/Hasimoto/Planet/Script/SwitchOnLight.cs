@@ -30,7 +30,7 @@ public class SwitchOnLight : MonoBehaviour
         planet.GetComponent<Renderer>().material.SetFloat("_LightPosZ", _Date.LightPos.z);
 
         // 直径を設定する
-        diameter = _Date.Radius * 2;
+        diameter = _Date.BigStarRadius * 2;
     }
 
     void Update()
