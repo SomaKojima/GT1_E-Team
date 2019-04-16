@@ -175,21 +175,21 @@ public class StarMain : MonoBehaviour
             }
         
       // -------------------------------------------------------------------------------
-            foreach (Transform child in star.transform)
-            {
-                // 光のデータ
-                Light light = child.GetComponent<Light>();
+            //foreach (Transform child in star.transform)
+            //{
+            //    // 光のデータ
+            //    Light light = child.GetComponent<Light>();
 
-                // 光のデータが存在している場合
-                if (light != null)
-                {
-                    // 星と惑星の距離と向き
-                    Vector3 range = planet.transform.position - star.transform.position;
-                    // 光を回転する
-                    Quaternion look = Quaternion.LookRotation(range);
-                    light.transform.localRotation = look;
-                }
-            }
+            //    // 光のデータが存在している場合
+            //    if (light != null)
+            //    {
+            //        // 星と惑星の距離と向き
+            //        Vector3 range = planet.transform.position - star.transform.position;
+            //        // 光を回転する
+            //        Quaternion look = Quaternion.LookRotation(range);
+            //        light.transform.localRotation = look;
+            //    }
+            //}
         // -------------------------------------------------------------------------------
 
 
