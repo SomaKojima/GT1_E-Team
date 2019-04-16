@@ -37,9 +37,9 @@ public class Date : ScriptableObject
         private float starJustFallRatio = 0.5f;
 
         [Header("新しい星を作成する時間"), SerializeField]
-        private float timeCreate_Max = 180.0f;
+        private float timeCreate_Max = 30.0f;
         [SerializeField]
-        private float timeCreate_Miu = 180.0f;
+        private float timeCreate_Miu = 30.0f;
 
         [Header("星が宇宙上に動く時間"), SerializeField]
         private float timeMove_Max = 300.0f;

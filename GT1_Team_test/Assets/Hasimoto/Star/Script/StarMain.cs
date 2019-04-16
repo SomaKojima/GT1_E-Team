@@ -29,6 +29,13 @@ public class StarMain : MonoBehaviour
     // 現在のフレーム
     private float frame = 0.0f;
 
+    #if false
+    // 現在惑星上に生存している小さい星の位置
+    //(Shaderの仕様書により型をVector4)
+    private List<Vector4> starslistpos = new List<Vector4>();
+    int i = 0;
+    #endif
+
     void Start()
     {
         // 惑星を呼ぶ
@@ -44,13 +51,48 @@ public class StarMain : MonoBehaviour
         int total = _Date.LifeTotal;
         for(int i = 0 ; i < total; i++)
         {
-            Create(Kind.ALWAYSMOVE);
+            CreateMain(Kind.ALWAYSMOVE);
         }
     }
 
     void Update()
     {
         // 時間ごとに星を新しく作成する
+        CreateEveryTime();
+
+        // 星が動く
+        Move();
+        
+        #if false
+        // リストをスプライトへ渡す
+        if (starslistpos.Count > 0)
+        {
+            Debug.Log("合計:" + starslistpos.Count);
+
+            // リストのサイズスプライトへ渡す
+            planet.GetComponent<Renderer>().material.SetVectorArray("_LightPos", starslistpos);
+            planet.GetComponent<Renderer>().material.SetInt("_ArrayLength", starslistpos.Count);
+        }
+        // リストをリセットする
+        starslistpos.Clear();
+        i = 0;
+        #endif
+        
+        // 光を星に向かせる
+        // FaceLightStar();
+
+        // フレームを計る
+        frame++;
+
+    }
+
+    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+    /// <summary>
+    /// 時間ごとに新しい星を作成する
+    /// </summary>
+    private void CreateEveryTime()
+    {
         if (frame == timecreate)
         {
             // 割合
@@ -61,21 +103,27 @@ public class StarMain : MonoBehaviour
             if (ratio <= rationstarfall)
             {
                 // すぐに惑星上に落ちる星を新しく作成する
-                Create(Kind.JUSTFALL);
+                CreateMain(Kind.JUSTFALL);
             }
             else
             {
                 // 惑星に回って落ちる星を新しく作成する
-                Create(Kind.MOVEANDFALL);
+                CreateMain(Kind.MOVEANDFALL);
             }
 
             // 改めて新しい星を作成する時間を決める
             timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
-            
+
             // 時間をリセットする
             frame = 0.0f;
         }
+    }
 
+    /// <summary>
+    /// 星が動く
+    /// </summary>
+    private void Move()
+    {
         // 複数の星を呼ぶ
         foreach (GameObject star in GameObject.FindGameObjectsWithTag(_Date.StarTag))
         {
@@ -147,6 +195,25 @@ public class StarMain : MonoBehaviour
                 }
                 else
                 {
+#if false
+                            
+                    // 惑星上に存在している星
+                    if((startime >= timeMoveFalling) && ((starDate.StarKind == Kind.MOVEANDFALL) || (starDate.StarKind == Kind.JUSTFALL)))
+                    {
+                        Debug.Log("出来上がり" + i + "番目"+" 位置"+ star.transform.position);
+
+                        // 現在惑星上に生存している小さい星の位置を保存する
+                        //Vector4 temp = new Vector4(star.transform.position.x, star.transform.position.y, star.transform.position.z, 0.0f);
+                        //Debug.Log("tmp:"+temp);
+                        //starslistpos.Add(temp);
+
+                        // テスト
+                        //starslistpos.Add(new Vector4(29.2f, 56f, -1.7f, 0.0f));
+                        //starslistpos.Add(new Vector4(35f, 50f, -1.7f, -2.0f));
+                    }
+                    //Debug.Log(i + "番目" + " 最大時間:" + timeMoveFalling + " 現在の時間:" + timeMoveFalling + " 種類" + starDate.StarKind);
+                    i++;
+#endif
                     // 星の生存時間を計る
                     starDate.Time++;
                 }
@@ -155,7 +222,7 @@ public class StarMain : MonoBehaviour
             // 小さい星が惑星の穴の奥まで進む
             {
                 // 星と惑星の距離
-                Vector3 range =  planet.transform.position- star.transform.position;
+                Vector3 range = planet.transform.position - star.transform.position;
                 range.Normalize();
 
                 // 長さ
@@ -174,19 +241,50 @@ public class StarMain : MonoBehaviour
                 }
             }
         }
-        // フレームを計る
-        frame++;
     }
+
+    /// <summary>
+    /// 光を星に向かせる
+    /// </summary>
+    private void FaceLightStar()
+    {
+        // 
+
+
+        // 光を惑星に向かせる
+        foreach (GameObject star in GameObject.FindGameObjectsWithTag(_Date.StarTag))
+        {
+            // 星のデータ
+            StarDate starDate = star.GetComponent<StarDate>();
+
+            foreach (Transform child in star.transform)
+            {
+                // 光のデータ
+                Light light = child.GetComponent<Light>();
+
+                // 光のデータが存在している場合
+                if (light != null)
+                {
+                    // 星と惑星の距離と向き
+                    Vector3 range = planet.transform.position - star.transform.position;
+                    // 光を回転する
+                    Quaternion look = Quaternion.LookRotation(range);
+                    light.transform.localRotation = look;
+                }
+            }
+        }
+    }
+
+    // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
     /// <summary>
     /// 星を作成する
     /// </summary>
-    private void Create(Kind starkind)
+    private void CreateMain(Kind starkind)
     {
         // 星を新しく作成する
         GameObject newstar = Instantiate(starPrefab) as GameObject;
 
-        // --------------------------------------------------------------------------------------------
         // 星のデータ
         StarDate starDate = newstar.GetComponent<StarDate>();
 
@@ -230,7 +328,6 @@ public class StarMain : MonoBehaviour
         // 星を配置する
         SetPosition(newstar);
 
-    // --------------------------------------------------------------------------------------------
     }
 
     /// <summary>

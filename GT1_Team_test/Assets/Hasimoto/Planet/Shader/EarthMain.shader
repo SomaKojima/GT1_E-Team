@@ -1,6 +1,5 @@
 ﻿Shader "Custom/EarhMain"
 {
-
 	// ----------------------------------------------------------------------------------------
 	//	Parameters
 	// ----------------------------------------------------------------------------------------
@@ -10,7 +9,7 @@
 		[HDR]_EmissionColor("Emission Color",Color) = (0,0,0)
 	}
 
-	SubShader
+		SubShader
 	{
 		// ----------------------------------------------------------------------------------------
 		//			Shader Settings
@@ -21,7 +20,7 @@
 		CGPROGRAM
 		#pragma surface surf Standard fullforwardshadows
 		#pragma target 3.0
-
+		
 		#include "UnityCG.cginc"
 
 		sampler2D _MainTex;
@@ -42,45 +41,56 @@
 		float _LightPosX;
 		float _LightPosY;
 		float _LightPosZ;
-		// 黒くする量
-		float _BlakAmount;
-		// 白くする量
-		float _WhiteAmount;
-		
+
+		//// 配列の長さ
+		int _ArrayLength;
+		// 明かりを灯すそれぞれの位置
+		float4 _LightPos[100];
+		// 中点からの距離
+		float dists[100];
+
 		void surf(Input IN, inout SurfaceOutputStandard o)
 		{
-			// 中点からの距離
-			float dist = distance(fixed3(_LightPosX, _LightPosY, _LightPosZ), IN.worldPos);
-			
+			// テクスチャーの色
 			fixed4 texturecolor = tex2D(_MainTex, IN.uv_MainTex);
 
-			if(_Radiuas < dist)
+			// 光を灯す位置が１つもない場合もしくは限度超えた場合、テクスチャーの色のみ描画する
+			if ((_ArrayLength == 0)||(_ArrayLength > 100))
 			{
-				// 反映する
 				o.Albedo = texturecolor;
-		
-				//// 黒くする
-				//texturecolor -= _BlakAmount;
-				//
-				//// 範囲を制限する
-				//if (texturecolor.x < 0.0f) texturecolor.x = 0.0f;
-				//if (texturecolor.y < 0.0f) texturecolor.y = 0.0f;
-				//if (texturecolor.z < 0.0f) texturecolor.z = 0.0f;
+				return;
 			}
-			else
+			
+			// 中点からの距離を設定する
+			for (int i = 0; i < _ArrayLength; i++)
 			{
-				
-				// 反映する
-				o.Albedo = texturecolor * _EmissionColor;
-
-				//// 白くする
-				//texturecolor += _WhiteAmount;
-				//
-				//// 範囲を制限する
-				//if (texturecolor.x > 1.0f) texturecolor.x = 1.0f;
-				//if (texturecolor.y > 1.0f) texturecolor.y = 1.0f;
-				//if (texturecolor.z > 1.0f) texturecolor.z = 1.0f;
+				dists[i] = distance(fixed3(_LightPos[i].x, _LightPos[i].y, _LightPos[i].z), IN.worldPos);
 			}
+			
+			//dists[0] = distance(fixed3(_LightPos[0].x, _LightPos[0].y, _LightPos[0].z), IN.worldPos);
+			
+			// ---------------------------------------------------------------------------
+
+			// 中点からの距離
+			//float dist = distance(fixed3(_LightPosX, _LightPosY, _LightPosZ), IN.worldPos);
+
+			// テクスチャーの色を付ける
+			o.Albedo = texturecolor;
+			for (int i = 0; i < _ArrayLength; i++)
+			{
+				// 指定した位置から円内に光を付けるか判断する
+				if (_Radiuas >= dists[i])
+				{
+					// 光を加える
+					o.Albedo = texturecolor * _EmissionColor;
+					
+					//o.Albedo = fixed4(1.0f,1.0f,1.0f,1.0f);
+					return;
+				}
+			}
+
+			// 光を加える
+			//if (_Radiuas >= dists[0]) o.Albedo = fixed4(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 		ENDCG
 	}
