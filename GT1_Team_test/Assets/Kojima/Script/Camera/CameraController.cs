@@ -27,6 +27,10 @@ public class CameraController : MonoBehaviour
     public float max_distance = 5;
     // カメラのローカル座標（ターゲットの座標）Y軸のオフセット
     public float offset_y = 10;
+    // プレイヤーの状態を取得するためプレイヤーのコントローラー
+    public PlayerController playerController;
+
+
     // カメラの上方向
     Vector3 up = Vector3.forward;
 
@@ -56,13 +60,12 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        switch (cameraMode)
+        switch (playerController.Mode)
         {
-            case CameraMode.Nomal:
+            case PlayerController.PlayerMode.Normal:
                 normalCamera.Update();
                 break;
-            case CameraMode.Talk:
+            case PlayerController.PlayerMode.Talk:
                 talkCamera.Update();
                 break;
         }

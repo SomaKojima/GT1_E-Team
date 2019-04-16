@@ -72,7 +72,6 @@ public class collision : MonoBehaviour
         if (col.gameObject.tag == "area")
         {
             talkFlag = col.gameObject.GetComponent<talk>().GetFlag();
-            Debug.Log(talkFlag); // ログを表示する
         }
     }
 

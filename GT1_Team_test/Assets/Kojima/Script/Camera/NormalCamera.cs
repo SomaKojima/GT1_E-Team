@@ -28,7 +28,6 @@ public class NormalCamera
     // Update is called once per frame
     public void Update()
     {
-        Debug.Log("camera");
         NormalCameraMove();
         NormalCameraRotation();
     }
@@ -53,8 +52,7 @@ public class NormalCamera
         vec.y = 0;
         float length = vec.magnitude;
         Vector3 vec_normal = vec.normalized;
-
-        Debug.Log(length);
+        
         Vector3 move_vec = Vector3.zero;
 
         // カメラの距離が遠い場合
@@ -70,7 +68,7 @@ public class NormalCamera
         Vector3 worldPos = player.transform.position + (q * localPos);
 
         Vector3 pos = worldPos + (q * move_vec);
-        camera.transform.position = Vector3.Slerp(camera.transform.position, pos, 1.0f);
+        camera.transform.position = Vector3.Slerp(camera.transform.position, pos, 0.1f);
     }
 
     /// <summary>

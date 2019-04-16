@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    enum PlayerMode
+    public enum PlayerMode
     {
         Normal,
         Talk
@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject camera;
     public GameObject planet;
+    public collision col;
 
     Rigidbody rigid;
     PlayerMode mode;
@@ -37,18 +38,26 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (col.GetTalkFlag())
+        {
+            mode = PlayerMode.Talk;
+        }
+        else
+        {
+            mode = PlayerMode.Normal;
+        }
         switch (mode)
         {
             case PlayerMode.Normal:
-                NormalCameraUpdate();
+                NormalModeUpdate();
                 break;
             case PlayerMode.Talk:
                 break;
         }
     }
 
-    // 通常のカメラの更新処理
-    private void NormalCameraUpdate()
+    // 通常のモードの更新処理
+    private void NormalModeUpdate()
     {
         // 移動
         Vector3 vel = Vector3.zero;
@@ -191,8 +200,12 @@ public class PlayerController : MonoBehaviour
             q = Quaternion.AngleAxis(angle, Vector3.down);
         }
         
-        Debug.Log(angle);
-
         this.transform.rotation = this.transform.rotation * q;
+    }
+
+    public PlayerMode Mode
+    {
+        get { return mode; }
+        set { mode = value; }
     }
 }
