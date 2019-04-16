@@ -281,6 +281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337046823}
+  - {fileID: 148365176}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -2.1920002, y: -0.943, z: -23.088001}
@@ -398,6 +399,36 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8a22a944cb6b2ad479806f842d24f7cd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 904fcf9bb3a519d4f8ad1beeec9fd9e1, type: 3}
+--- !u!1 &148365175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 148365176}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &148365176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148365175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 15556696}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &183212169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -907,11 +938,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1948387235}
   planet: {fileID: 1859461912}
-  talkPosition: {fileID: 0}
-  talkTarget: {fileID: 0}
+  talkPosition: {fileID: 1238160142}
+  talkTarget: {fileID: 148365176}
   cameraMode: 0
-  max_distance: 5
-  offset_y: 10
+  max_distance: 10
+  offset_y: 20
 --- !u!1001 &555753959
 PrefabInstance:
   m_ObjectHideFlags: 0
