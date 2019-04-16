@@ -19,7 +19,7 @@ MonoBehaviour:
   direction_Max: 90
   direction_Miu: 90
   lifeTotal: 5
-  starJustFallRatio: 0.5
+  starJustFallRatio: 1
   timeCreate_Max: 10
   timeCreate_Miu: 10
   timeMove_Max: 300

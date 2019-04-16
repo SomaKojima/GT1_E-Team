@@ -14,6 +14,7 @@ public class collision : MonoBehaviour
     private Vector3 startPos;
     private bool dustFlag = false;
     private bool clear = false;
+    private bool talkFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -66,12 +67,20 @@ public class collision : MonoBehaviour
         }
     }
 
-    public void SetTalkFlag()
+    void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.tag == "area")
+        {
+            talkFlag = col.gameObject.GetComponent<talk>().GetFlag();
+        }
+    }
+
+    public void SetFlagA()
     {
         flagA = true;
     }
 
-    public bool GetTalkFlag()
+    public bool GetFlagA()
     {
         return flagA;
     }
@@ -84,5 +93,10 @@ public class collision : MonoBehaviour
     public void Clear()
     {
         clear = true;
+    }
+
+    public bool GetTalkFlag()
+    {
+        return talkFlag;
     }
 }

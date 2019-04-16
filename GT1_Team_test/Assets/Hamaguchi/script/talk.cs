@@ -28,6 +28,7 @@ public class talk : MonoBehaviour
     public static float clearTime;
     public static int clearDust;
     public static int clearWish;
+    private  bool talkFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,7 @@ public class talk : MonoBehaviour
     {
         if (col.tag == "player")
         {
+            talkFlag = false;
             flag = true;
             icon.SetActive(false);
             text.SetActive(false);
@@ -82,6 +84,7 @@ public class talk : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                talkFlag = true;
                 if (flag)
                 {
                     flag = false;
@@ -102,12 +105,13 @@ public class talk : MonoBehaviour
                     {
                         text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
                         Debug.Log("talk.now"); // ログを表示する
-                        col.gameObject.GetComponent<collision>().SetTalkFlag();
+                        col.gameObject.GetComponent<collision>().SetFlagA();
                         //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
                     }
                 }
                 else
                 {
+                    talkFlag = false;
                     UI.SetActive(true);
                     flag = true;
                     text.SetActive(false);
@@ -131,5 +135,15 @@ public class talk : MonoBehaviour
     public static int GetWish()
     {
         return clearWish;
+    }
+
+    public bool GetFlag()
+    {
+        return talkFlag;
+    }
+
+    public GameObject GetTalk()
+    {
+        return transform.parent.gameObject;
     }
 }

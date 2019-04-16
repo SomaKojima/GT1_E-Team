@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test : MonoBehaviour
+public class ThrowStar : MonoBehaviour
 {
-    public Vector3 pos;
+    public GameObject camera;
+
     // Start is called before the first frame update
     void Start()
     {

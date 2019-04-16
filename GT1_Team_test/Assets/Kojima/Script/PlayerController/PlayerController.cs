@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerMode
+    {
+        Normal,
+        Talk
+    };
+
     public GameObject camera;
     public GameObject planet;
+    public collision col;
 
     Rigidbody rigid;
+    PlayerMode mode;
 
     [SerializeField]
     float speed = 5.0f;
@@ -30,9 +38,32 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(col.GetTalkFlag());
+        if (col.GetTalkFlag())
+        {
+            Debug.Log("talk");
+            mode = PlayerMode.Talk;
+        }
+        else
+        {
+            mode = PlayerMode.Normal;
+        }
+        switch (mode)
+        {
+            case PlayerMode.Normal:
+                NormalModeUpdate();
+                break;
+            case PlayerMode.Talk:
+                break;
+        }
+    }
+
+    // 通常のモードの更新処理
+    private void NormalModeUpdate()
+    {
         // 移動
         Vector3 vel = Vector3.zero;
-        if(PlayerCameraMove(out vel))
+        if (PlayerCameraMove(out vel))
         {
             // 速度の向き
             Vector3 dir = vel.normalized;
@@ -40,7 +71,7 @@ public class PlayerController : MonoBehaviour
             PlayerRotation(dir);
         }
     }
-    
+
     /// <summary>
     /// カメラ視点で移動する
     /// </summary>
@@ -49,15 +80,15 @@ public class PlayerController : MonoBehaviour
     bool PlayerCameraMove(out Vector3 vel)
     {
         Vector3 dir = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) )
         {
             dir.y = 1;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
         }
@@ -171,8 +202,12 @@ public class PlayerController : MonoBehaviour
             q = Quaternion.AngleAxis(angle, Vector3.down);
         }
         
-        Debug.Log(angle);
-
         this.transform.rotation = this.transform.rotation * q;
+    }
+
+    public PlayerMode Mode
+    {
+        get { return mode; }
+        set { mode = value; }
     }
 }
