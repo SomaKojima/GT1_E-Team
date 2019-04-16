@@ -902,13 +902,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf3d2cd36ec600408d27903155447bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 67a284dabc486994aacab85aee74e765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1948387235}
-  planet: {fileID: 1256711358}
-  max_distance: 10
-  offset_y: 20
+  player: {fileID: 1948387235}
+  planet: {fileID: 1859461912}
+  talkPosition: {fileID: 0}
+  talkTarget: {fileID: 0}
+  cameraMode: 0
+  max_distance: 5
+  offset_y: 10
 --- !u!1001 &555753959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1743,6 +1746,36 @@ CapsuleCollider:
   m_Height: 12
   m_Direction: 2
   m_Center: {x: 0.09240606, y: 0.057003446, z: 5.7288675}
+--- !u!1 &1238160141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238160142}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1238160142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238160141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1948387240}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1245647116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6,
@@ -3033,6 +3066,7 @@ Transform:
   m_Children:
   - {fileID: 584731146}
   - {fileID: 1249756286}
+  - {fileID: 1238160142}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -3062,6 +3096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 534669902}
   planet: {fileID: 1256711358}
+  col: {fileID: 1948387243}
   speed: 100
   MaxSpeed: 10.3
   rotation_speed: 0.3
