@@ -28,7 +28,7 @@ public class CameraController : MonoBehaviour
     // カメラのローカル座標（ターゲットの座標）Y軸のオフセット
     public float offset_y = 10;
     // プレイヤーの状態を取得するためプレイヤーのコントローラー
-    public PlayerController playerController;
+    PlayerController playerController;
 
 
     // カメラの上方向
@@ -50,6 +50,9 @@ public class CameraController : MonoBehaviour
 
         // 話す用のカメラの設定
         talkCamera.Start(this.gameObject, talkPosition, talkTarget, player);
+
+        // プレイヤーのコンポーネントを取得
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

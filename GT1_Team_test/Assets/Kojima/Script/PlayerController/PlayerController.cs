@@ -38,8 +38,10 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(col.GetTalkFlag());
         if (col.GetTalkFlag())
         {
+            Debug.Log("talk");
             mode = PlayerMode.Talk;
         }
         else
