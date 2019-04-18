@@ -81,6 +81,9 @@
 				// 指定した位置から円内に光を付けるか判断する
 				if (_Radiuas >= dists[i])
 				{
+					// 白と黒色の度合い
+
+
 					// 光を加える
 					o.Albedo = texturecolor * _EmissionColor;
 					
