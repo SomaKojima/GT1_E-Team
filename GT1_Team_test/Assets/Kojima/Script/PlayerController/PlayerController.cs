@@ -34,14 +34,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
-
-    private void FixedUpdate()
-    {
-        Debug.Log(col.GetTalkFlag());
         if (col.GetTalkFlag())
         {
-            Debug.Log("talk");
             mode = PlayerMode.Talk;
         }
         else
@@ -56,6 +50,11 @@ public class PlayerController : MonoBehaviour
             case PlayerMode.Talk:
                 break;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     // 通常のモードの更新処理
@@ -79,6 +78,7 @@ public class PlayerController : MonoBehaviour
     /// <returns>移動していたならTrue</returns>
     bool PlayerCameraMove(out Vector3 vel)
     {
+        vel = Vector3.zero;
         Vector3 dir = Vector3.zero;
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) )
         {
@@ -103,7 +103,6 @@ public class PlayerController : MonoBehaviour
         if(dir == Vector3.zero)
         {
             // 何もキーが押されていなければ関数を終わる
-            vel = Vector3.zero;
             return false;
         }
         // 正規化
@@ -121,15 +120,20 @@ public class PlayerController : MonoBehaviour
         dir = q * dir;
 
         // 速度を計算する
-        vel = dir * speed;
-
         float dist = rigid.velocity.magnitude;
+        float _speed = 0;
         if (dist < MaxSpeed)
         {
-            rigid.AddForce(vel);
-            return true;
+            _speed = speed;
         }
-        return false;
+        else
+        {
+            _speed = speed + (MaxSpeed - dist);
+        }
+        vel = dir * _speed;
+        Debug.Log(vel);
+        rigid.AddForce(vel);
+        return true;
     }
 
     /// <summary>
@@ -183,6 +187,7 @@ public class PlayerController : MonoBehaviour
     /// <param name="dir">dirの向きに回転</param>
     void PlayerRotation(Vector3 dir)
     {
+        if (dir == Vector3.zero) return;
         Quaternion q = Quaternion.identity;
 
         // 角度を求める
