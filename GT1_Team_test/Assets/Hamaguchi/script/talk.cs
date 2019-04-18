@@ -141,4 +141,9 @@ public class talk : MonoBehaviour
     {
         return talkFlag;
     }
+
+    public GameObject GetTalk()
+    {
+        return transform.parent.gameObject;
+    }
 }
