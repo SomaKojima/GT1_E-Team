@@ -700,6 +700,8 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
   - component: {fileID: 534669907}
+  - component: {fileID: 534669908}
+  - component: {fileID: 534669909}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -803,7 +805,33 @@ MonoBehaviour:
   cameraMode: 0
   max_distance: 20
   offset_y: 30
-  playerController: {fileID: 1804517472}
+--- !u!114 &534669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd12de9ac2044014991f656433227b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 534669902}
+  player: {fileID: 1804517469}
+--- !u!135 &534669909
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &563203123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1786,18 @@ CapsuleCollider:
   m_Height: 12
   m_Direction: 2
   m_Center: {x: 0.09240606, y: 0.057003446, z: 5.7288675}
+--- !u!114 &1171046822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171046817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0efb4fde70664194c0a26e35cc430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1179901039 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4017545e9c9937e41a9158b87ff4b4e8,
@@ -2221,6 +2261,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_Name
       value: Woods (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fb775c1948035b43aeb4fb7df2956f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2810,6 +2854,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 2a806f546367a474aacce88d359c6705, type: 3}
       propertyPath: m_TagString
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 2a806f546367a474aacce88d359c6705, type: 3}
+      propertyPath: m_TagString
+      value: Transparent
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2a806f546367a474aacce88d359c6705, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3414,6 +3462,31 @@ CapsuleCollider:
   m_Height: 12
   m_Direction: 2
   m_Center: {x: 0.09240606, y: 0.057003446, z: 5.7288675}
+--- !u!114 &1964428959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964428954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0efb4fde70664194c0a26e35cc430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1964428960
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964428954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.385115
+  m_Center: {x: 0.42278358, y: -0.19416484, z: 6.6948466}
 --- !u!1 &2039927493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 8fb775c1948035b43aeb4fb7df2956f6,
