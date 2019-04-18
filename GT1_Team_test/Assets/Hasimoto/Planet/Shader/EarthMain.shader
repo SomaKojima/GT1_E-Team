@@ -80,7 +80,7 @@
 					// 黒の度合い
 					float gray = texturecolor.r * 0.3f + texturecolor.g * 0.6f + texturecolor.b * 0.1f;
 					// 光の強さ	 
-					float4 emmsioncolor = (gray <= 0.35f) ? _EmissionColor * 4 : _EmissionColor;
+					float4 emmsioncolor = _EmissionColor * 5;//(gray <= 0.5f) ? _EmissionColor * 4 : _EmissionColor;
 
 					// 光を加える
 					o.Albedo = texturecolor * _EmissionColor;
