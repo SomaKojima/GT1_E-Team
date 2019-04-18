@@ -68,7 +68,7 @@ public class NormalCamera
         Vector3 worldPos = player.transform.position + (q * localPos);
 
         Vector3 pos = worldPos + (q * move_vec);
-        camera.transform.position = Vector3.Slerp(camera.transform.position, pos, 0.1f);
+        camera.transform.position = Vector3.Slerp(camera.transform.position, pos, 0.05f);
     }
 
     /// <summary>
