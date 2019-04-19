@@ -377,7 +377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15556692}
   m_LocalRotation: {x: -0.01709502, y: -0.011891932, z: -0.20023379, w: 0.9795269}
-  m_LocalPosition: {x: -36.68, y: -50.35, z: -0.13}
+  m_LocalPosition: {x: 12.1, y: 63.9, z: -3.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337046823}
@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFadeOut: 1
   isFadeIn: 0
-  panel: {fileID: 0}
+  panel: {fileID: 1562661076}
 --- !u!114 &473114957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4578,13 +4578,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Akun (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.24
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -49.55
+      value: 60.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4600,11 +4604,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9683127
+      value: -0.012988736
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.24974114
+      value: 0.99991566
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_RootOrder
@@ -4620,7 +4624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 151.076
+      value: -1.488
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9f55285a7962adc429767426fc7e3599, type: 3}
       propertyPath: m_LocalScale.z
@@ -5409,12 +5413,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6259fb1a51c36408497e607d5a1c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  text: {fileID: 0}
-  mw: {fileID: 0}
-  UI: {fileID: 0}
-  GameDirecter: {fileID: 0}
-  panel: {fileID: 0}
+  icon: {fileID: 628853313}
+  text: {fileID: 1290664748}
+  mw: {fileID: 1849677988}
+  UI: {fileID: 2144745183}
+  GameDirecter: {fileID: 1934888248}
+  panel: {fileID: 473114954}
   clearStarCount: 10
 --- !u!65 &1760802943
 BoxCollider:
