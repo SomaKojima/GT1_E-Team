@@ -67,12 +67,8 @@
 				dists[i] = distance(fixed3(_LightPos[i].x, _LightPos[i].y, _LightPos[i].z), IN.worldPos);
 			}
 			
-			//dists[0] = distance(fixed3(_LightPos[0].x, _LightPos[0].y, _LightPos[0].z), IN.worldPos);
 			
 			// ---------------------------------------------------------------------------
-
-			// 中点からの距離
-			//float dist = distance(fixed3(_LightPosX, _LightPosY, _LightPosZ), IN.worldPos);
 
 			// テクスチャーの色を付ける
 			o.Albedo = texturecolor;
@@ -81,19 +77,20 @@
 				// 指定した位置から円内に光を付けるか判断する
 				if (_Radiuas >= dists[i])
 				{
-					// 白と黒色の度合い
-
+					// 黒の度合い
+					float gray = texturecolor.r * 0.3f + texturecolor.g * 0.6f + texturecolor.b * 0.1f;
+					// 光の強さ	 
+					float4 emmsioncolor = (gray <= 0.35f) ? _EmissionColor * 4 : _EmissionColor;
 
 					// 光を加える
 					o.Albedo = texturecolor * _EmissionColor;
-					
+					// テスト用に白色にする
 					//o.Albedo = fixed4(1.0f,1.0f,1.0f,1.0f);
+					
 					return;
 				}
 			}
 
-			// 光を加える
-			//if (_Radiuas >= dists[0]) o.Albedo = fixed4(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 		ENDCG
 	}
