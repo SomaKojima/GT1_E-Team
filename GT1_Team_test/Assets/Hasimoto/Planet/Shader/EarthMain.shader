@@ -83,7 +83,7 @@
 					float4 emmsioncolor = _EmissionColor * 4;//(gray <= 0.5f) ? _EmissionColor * 4 : _EmissionColor;
 
 					// 光を加える
-					o.Albedo = texturecolor * _EmissionColor;
+					o.Albedo = texturecolor;// *_EmissionColor;
 					// テスト用に白色にする
 					//o.Albedo = fixed4(1.0f,1.0f,1.0f,1.0f);
 					
