@@ -15,7 +15,6 @@ public class collision : MonoBehaviour
     private bool dustFlag = false;
     private bool clear = false;
     private bool talkFlag = false;
-    private GameObject talk;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +25,6 @@ public class collision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(talkFlag);
         if (clear)
         {
             slight.spotAngle++;
@@ -74,25 +72,6 @@ public class collision : MonoBehaviour
         if (col.gameObject.tag == "area")
         {
             talkFlag = col.gameObject.GetComponent<talk>().GetFlag();
-            //Debug.Log(talkFlag); // ログを表示する       
-        }
-    }
-
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag == "area")
-        {
-            Debug.Log(col.gameObject.GetComponent<talk>().GetTalk().name);
-            talk = col.gameObject.GetComponent<talk>().GetTalk();
-        }
-    }
-
-    void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "area")
-        {
-            Debug.Log(col.gameObject.GetComponent<talk>().GetTalk().name);
-            talk = null;
         }
     }
 
@@ -119,10 +98,5 @@ public class collision : MonoBehaviour
     public bool GetTalkFlag()
     {
         return talkFlag;
-    }
-
-    public GameObject GetTalk()
-    {
-        return talk;
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - area
   - player
   - Gravity
+  - Transparent
   layers:
   - Default
   - TransparentFX
