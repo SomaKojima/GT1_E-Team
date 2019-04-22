@@ -14,7 +14,7 @@ public class BkunCreateTree : MonoBehaviour
     // プレイヤー
     private GameObject player;
     // 木のモデル
-    private GameObject tree;
+    private GameObject bigtree;
     // プレイヤーがB君に話しかけられたか
     private bool IsSpeak = false;
     // 一度話しかけたか
@@ -31,9 +31,9 @@ public class BkunCreateTree : MonoBehaviour
             if (child.tag == "Tree")
             {
                 // 木のモデルを保存する
-                tree = child.gameObject;
+                bigtree = child.gameObject;
                 // 木のモデルを非表示する
-                tree.SetActive(false);
+                bigtree.SetActive(false);
                 break;
             }
         }
@@ -48,7 +48,7 @@ public class BkunCreateTree : MonoBehaviour
         if ((IsSpeak) && (playercount >= starCount))
         {
             // 木のモデルを出現させる
-            tree.SetActive(true);
+            bigtree.SetActive(true);
         }
     }
 
