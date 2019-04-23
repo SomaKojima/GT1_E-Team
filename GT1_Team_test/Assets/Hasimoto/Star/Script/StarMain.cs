@@ -26,8 +26,8 @@ public class StarMain : MonoBehaviour
     // 新しい星を作成する時間
     private float timecreate = 0.0f;
 
-    // 現在のフレーム
-    private float frame = 0.0f;
+    // 現在の時間
+    private float time = 0.0f;
 
 #if false
     // 現在惑星上に生存している小さい星の位置
@@ -45,7 +45,7 @@ public class StarMain : MonoBehaviour
         timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
 
         // すぐに星を作成するように現在のフレームをずらす
-        frame = timecreate;
+        time = timecreate;
 
         // 永遠に残す星を作成する
         int total = _Date.LifeTotal;
@@ -81,8 +81,8 @@ public class StarMain : MonoBehaviour
         // 光を星に向かせる
         // FaceLightStar();
 
-        // フレームを計る
-        frame++;
+        // 時間を計る
+        time += Time.deltaTime;
 
     }
 
@@ -93,7 +93,7 @@ public class StarMain : MonoBehaviour
     /// </summary>
     private void CreateEveryTime()
     {
-        if (frame == timecreate)
+        if (time >= timecreate)
         {
             // 割合
             float ratio = Random.Range(0.0f, 1.0f);
@@ -115,7 +115,7 @@ public class StarMain : MonoBehaviour
             timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
 
             // 時間をリセットする
-            frame = 0.0f;
+            time = 0.0f;
         }
     }
 
@@ -215,7 +215,7 @@ public class StarMain : MonoBehaviour
                     i++;
 #endif
                     // 星の生存時間を計る
-                    starDate.Time++;
+                    starDate.Time += Time.deltaTime;
                 }
             }
             else
