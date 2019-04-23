@@ -98,7 +98,7 @@ public class collision : MonoBehaviour
         {
             dustFlag = true;
             Destroy(collision.gameObject);
-            Debug.Log(dustCounter); // ログを表示する
+            //Debug.Log(dustCounter); // ログを表示する
         }
     }
 

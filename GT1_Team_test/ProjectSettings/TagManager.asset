@@ -11,6 +11,8 @@ TagManager:
   - player
   - Gravity
   - Transparent
+  - Tree
+  - Rock
   layers:
   - Default
   - TransparentFX
