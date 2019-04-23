@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// B君の願いに叶うと、岩が消える
+/// B君の願いに叶うと、モデルが消える
 /// </summary>
-public class CkunDeleteStone : MonoBehaviour
+public class CkunDeleteObject: MonoBehaviour
 {
 
-    // B君の願いに叶わせるに必要になる星の数
+    // C君の願いに叶わせるに必要になる星の数
     [SerializeField]
     private int starCount = 5;
+    // 消えるモデル
+    [Header("消えるモデル"), SerializeField]
+    private GameObject obj_delete;
+
     // プレイヤー
     private GameObject player;
-    // 岩のモデル
-    private GameObject bigrock;
     // プレイヤーがB君に話しかけられたか
     private bool IsSpeak = false;
     // 一度話しかけたか
@@ -25,19 +27,8 @@ public class CkunDeleteStone : MonoBehaviour
     {
         // プレイヤーのモデル
         player = GameObject.FindGameObjectWithTag("player");
-
-        // 岩のモデルを呼ぶ
-        foreach (Transform child in transform)
-        {
-            if (child.tag == "Rock")
-            {
-                // 岩のモデルを保存する
-                bigrock = child.gameObject;
-                // 岩のモデルを表示する
-                bigrock.SetActive(true);
-                break;
-            }
-        }
+        // モデルを表示する
+        obj_delete.SetActive(true);
     }
 
     void Update()
@@ -48,7 +39,7 @@ public class CkunDeleteStone : MonoBehaviour
         if ((IsSpeak) && (playercount >= starCount))
         {
             // 岩のモデルを非表示する
-            bigrock.SetActive(false);
+            obj_delete.SetActive(false);
         }
     }
 

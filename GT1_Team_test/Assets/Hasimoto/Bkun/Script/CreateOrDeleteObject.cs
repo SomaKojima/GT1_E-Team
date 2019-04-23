@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// B君の願いに叶うと、木のモデルが生える
+/// ○○○君の願いに叶うと、モデルが出現する、もしくは消える
 /// </summary>
-public class BkunCreateTree : MonoBehaviour
+public class CreateOrDeleteObject : MonoBehaviour
 {
+    // ○○○君の願いに叶わせるに必要になる星の数
+    [Header("願いに叶わせるに必要になる星の数"), SerializeField]
+    private int starCount = 0;
+    // 出現する　もしくは 消える　
+    [Header("モデルが出現する(true) もしくは 消える(false)"), SerializeField]
+    private bool IsAppear;
+    // 出現するもしくは消えるモデル
+    [Header("出現する or 消える モデル"), SerializeField]
+    private GameObject obj;
 
-    // B君の願いに叶わせるに必要になる星の数
-    [SerializeField]
-    private int starCount = 5;
     // プレイヤー
     private GameObject player;
-    // 木のモデル
-    private GameObject bigtree;
     // プレイヤーがB君に話しかけられたか
     private bool IsSpeak = false;
     // 一度話しかけたか
@@ -25,30 +29,20 @@ public class BkunCreateTree : MonoBehaviour
         // プレイヤーのモデル
         player = GameObject.FindGameObjectWithTag("player");
 
-        // 木のモデルを呼ぶ
-        foreach (Transform child in transform)
-        {
-            if (child.tag == "Tree")
-            {
-                // 木のモデルを保存する
-                bigtree = child.gameObject;
-                // 木のモデルを非表示する
-                bigtree.SetActive(false);
-                break;
-            }
-        }
+
+        // 出現するモデル : 非表示する、消えるモデル   : 表示する
+        obj.SetActive(!IsAppear);
     }
 
     void Update()
     {
-
         // プレイヤーが持っている星の数
         int playercount = player.GetComponent<collision>().GetDustCount();
 
         if ((IsSpeak) && (playercount >= starCount))
         {
-            // 木のモデルを出現させる
-            bigtree.SetActive(true);
+            // 出現するモデル : 表示する、 消えるモデル : 非表示する
+            obj.SetActive(IsAppear);
         }
     }
 
@@ -70,7 +64,7 @@ public class BkunCreateTree : MonoBehaviour
     {
         if ((col.tag == "player") && (Input.GetKeyDown(KeyCode.Z)))
         {
-            
+
             // プレイヤーがB君に話しかけた状態にする
             IsSpeak = true;
 
