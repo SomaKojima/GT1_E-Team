@@ -7,11 +7,11 @@ using UnityEngine;
 /// </summary>
 public class CreateOrDeleteObject : MonoBehaviour
 {
-    // ○○○君の願いに叶わせるに必要になる星の数
-    [Header("願いに叶わせるに必要になる星の数"), SerializeField]
+    // ○○○君の願いを叶わせるために必要になる星の数
+    [Header("願いを叶わせるために必要になる星の数"), SerializeField]
     private int starCount = 0;
     // 出現する　もしくは 消える　
-    [Header("モデルが出現する(true) もしくは 消える(false)"), SerializeField]
+    [Header("チェック あり:モデルが出現する なし:モデルが消える"), SerializeField]
     private bool IsAppear;
     // 出現するもしくは消えるモデル
     [Header("出現する or 消える モデル"), SerializeField]

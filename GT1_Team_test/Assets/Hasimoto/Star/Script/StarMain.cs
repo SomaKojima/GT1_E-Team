@@ -153,8 +153,11 @@ public class StarMain : MonoBehaviour
                     // 星が落ち始める準備 かつ 今後消える星
                     if ((startime >= timeMove) && (starDate.StarKind == Kind.MOVEANDFALL))
                     {
+                        // 1フレームに星の軌道が縮む半径  ※1秒間にRadiusShrinkage分縮む  
+                        float radius = starDate.RadiusShrinkage * Time.deltaTime;
+
                         // 星が軌道する半径を縮む
-                        starDate.Range -= starDate.RadiusShrinkage;
+                        starDate.Range -= radius;
                     }
                 }
                 else
@@ -282,6 +285,9 @@ public class StarMain : MonoBehaviour
     /// </summary>
     private void CreateMain(Kind starkind)
     {
+        // 星のデータが存在していない場合は何もしない
+        if (starPrefab == null) return;
+
         // 星を新しく作成する
         GameObject newstar = Instantiate(starPrefab) as GameObject;
 
@@ -402,6 +408,16 @@ public class StarMain : MonoBehaviour
         {
             // 惑星の穴の奥まで落ちる設定をする
             star.GetComponent<StarDate>().IsFallHole = true;
+        }
+        else
+        {
+            Debug.Log(star.name);
+            // 石もしくは木の種類に当たった場合オブジェクトを消す
+            if ((hit.collider.tag == "Tree") || (hit.collider.tag == "Rock"))
+            {
+                Destroy(star);
+            }
+
         }
     }
 
