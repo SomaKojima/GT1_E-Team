@@ -41,6 +41,12 @@ public class FadeController : MonoBehaviour
         if (isChangeScene)
         {
             time++;
+
+            if(panel==null)
+            {
+                Debug.Log("FadeControllerクラス中にあるpanel変数がNULLです！！");
+            }
+
             panel.SetActive(false);
             if (isFadeIn)
             {

@@ -26,15 +26,15 @@ public class StarMain : MonoBehaviour
     // 新しい星を作成する時間
     private float timecreate = 0.0f;
 
-    // 現在のフレーム
-    private float frame = 0.0f;
+    // 現在の時間
+    private float time = 0.0f;
 
-    #if false
+#if false
     // 現在惑星上に生存している小さい星の位置
     //(Shaderの仕様書により型をVector4)
     private List<Vector4> starslistpos = new List<Vector4>();
     int i = 0;
-    #endif
+#endif
 
     void Start()
     {
@@ -45,7 +45,7 @@ public class StarMain : MonoBehaviour
         timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
 
         // すぐに星を作成するように現在のフレームをずらす
-        frame = timecreate;
+        time = timecreate;
 
         // 永遠に残す星を作成する
         int total = _Date.LifeTotal;
@@ -63,7 +63,7 @@ public class StarMain : MonoBehaviour
         // 星が動く
         Move();
         
-        #if false
+#if false
         // リストをスプライトへ渡す
         if (starslistpos.Count > 0)
         {
@@ -76,13 +76,13 @@ public class StarMain : MonoBehaviour
         // リストをリセットする
         starslistpos.Clear();
         i = 0;
-        #endif
+#endif
         
         // 光を星に向かせる
         // FaceLightStar();
 
-        // フレームを計る
-        frame++;
+        // 時間を計る
+        time += Time.deltaTime;
 
     }
 
@@ -93,7 +93,7 @@ public class StarMain : MonoBehaviour
     /// </summary>
     private void CreateEveryTime()
     {
-        if (frame == timecreate)
+        if (time >= timecreate)
         {
             // 割合
             float ratio = Random.Range(0.0f, 1.0f);
@@ -115,7 +115,7 @@ public class StarMain : MonoBehaviour
             timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
 
             // 時間をリセットする
-            frame = 0.0f;
+            time = 0.0f;
         }
     }
 
@@ -203,9 +203,9 @@ public class StarMain : MonoBehaviour
                         Debug.Log("出来上がり" + i + "番目"+" 位置"+ star.transform.position);
 
                         // 現在惑星上に生存している小さい星の位置を保存する
-                        //Vector4 temp = new Vector4(star.transform.position.x, star.transform.position.y, star.transform.position.z, 0.0f);
-                        //Debug.Log("tmp:"+temp);
-                        //starslistpos.Add(temp);
+                        Vector4 temp = new Vector4(star.transform.position.x, star.transform.position.y, star.transform.position.z, 0.0f);
+                        Debug.Log("tmp:"+temp);
+                        starslistpos.Add(temp);
 
                         // テスト
                         //starslistpos.Add(new Vector4(29.2f, 56f, -1.7f, 0.0f));
@@ -215,7 +215,7 @@ public class StarMain : MonoBehaviour
                     i++;
 #endif
                     // 星の生存時間を計る
-                    starDate.Time++;
+                    starDate.Time += Time.deltaTime;
                 }
             }
             else

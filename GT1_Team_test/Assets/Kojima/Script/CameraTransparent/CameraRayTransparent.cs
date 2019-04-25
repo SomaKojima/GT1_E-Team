@@ -29,6 +29,7 @@ public class CameraRayTransparent : MonoBehaviour
 
         foreach (RaycastHit hit in hits)
         {
+            //Debug.Log(hit.collider.name);
             CameraTransparentObject cameraTransparentObject = hit.collider.gameObject.GetComponent<CameraTransparentObject>();
             if (cameraTransparentObject)
             {
