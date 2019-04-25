@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class collision : MonoBehaviour
 {
@@ -8,13 +9,15 @@ public class collision : MonoBehaviour
     private int lightPower = 2;
     [SerializeField]
     private Light slight;
-
-    private int dustCounter = 0;
+    [SerializeField]
+    private int dustCounter = 3;
     private bool flagA = false;
     private Vector3 startPos;
     private bool dustFlag = false;
     private bool clear = false;
     private bool talkFlag = false;
+    private float rightTime = 10.0f;
+    private float rimitTime = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +34,42 @@ public class collision : MonoBehaviour
         }
         else
         {
-            slight.spotAngle = (dustCounter + 2) * lightPower;
+            //slight.spotAngle = (dustCounter + 2) * lightPower;
+            rightTime += Time.deltaTime;
+            slight.spotAngle = 27.0f;
+            if (rightTime>10.0f)
+            {
+                rightTime = 10.0f;
+                rimitTime += Time.deltaTime;
+                slight.spotAngle = 15.0f;
+                if (rimitTime<2.0f)
+                {
+                    slight.spotAngle = 27.0f - (12.0f * (rimitTime / 2.0f));
+                }                
+            }
         }
 
 
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = Input.mousePosition;
+        List<RaycastResult> result = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, result);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            foreach (RaycastResult raycastResult in result)
+            {
+                if (raycastResult.gameObject.name == "board1")
+                {
+                    if (dustCounter > 2)
+                    {
+                        rimitTime = 0;
+                        rightTime = 0;
+                        dustCounter-=3;
+                    }
+                }
+            }
+        }
         if (dustFlag)
         {
             dustCounter++;
@@ -63,7 +98,7 @@ public class collision : MonoBehaviour
         {
             dustFlag = true;
             Destroy(collision.gameObject);
-            Debug.Log(dustCounter); // ログを表示する
+            //Debug.Log(dustCounter); // ログを表示する
         }
     }
 

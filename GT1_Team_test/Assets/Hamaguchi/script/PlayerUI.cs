@@ -20,18 +20,28 @@ public class PlayerUI : MonoBehaviour
     private GameObject nMission;
     [SerializeField]
     private GameObject panel;
+    [SerializeField]
+    private GameObject wishSelect;
+
 
     private int count = 0;
+    private int selectCount = 0;
     private bool flagA = true;
     private bool menuFlag = true;
     private int menuState = 0;
+    private bool selectFlag = true;
+    private int selectState = 0;
     private int StartScreenWidth = 980;
     private int StartScreenHeight = 551;
 
     // Start is called before the first frame update
     void Start()
     {
+        //float screenMoveW = (float)Screen.width / (float)StartScreenWidth;
+        //wishSelect.transform.Translate(300.0f * screenMoveW, 0, 0);
+
         menuState = 0;
+        selectState = 0;
     }
 
     // Update is called once per frame
@@ -41,10 +51,10 @@ public class PlayerUI : MonoBehaviour
         float screenMoveW = (float)Screen.width / (float)StartScreenWidth;
         //Debug.Log(screenMoveW);
 
-        rimitTime = rimitTime - Time.deltaTime;
+        //rimitTime = rimitTime - Time.deltaTime;
         DustCounter.GetComponent<Text>().text = "ｘ"+(player.GetComponent<collision>().GetDustCount())+"こ";
-        Timer.GetComponent<Text>().text = "" + ((int)rimitTime / 60).ToString("00") + ":" + ((int)rimitTime % 60).ToString("00");
-        if(rimitTime<0)
+        //Timer.GetComponent<Text>().text = "" + ((int)rimitTime / 60).ToString("00") + ":" + ((int)rimitTime % 60).ToString("00");
+        if(Input.GetKeyDown(KeyCode.G))
         {
             Timer.GetComponent<Text>().text = "終了です";
             //SceneManager.LoadScene("GameOver");
@@ -89,7 +99,7 @@ public class PlayerUI : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             if (menuState == 0)
             {
@@ -104,6 +114,43 @@ public class PlayerUI : MonoBehaviour
                 menuState = 1;
             }
         }
+
+
+        if (selectState != 0)
+        {
+            selectCount++;
+            if (selectCount < 16)
+            {
+                if (selectFlag)
+                {
+                    wishSelect.transform.Translate(-20.0f * screenMoveW, 0, 0);
+                }
+                else
+                {
+                    wishSelect.transform.Translate(20.0f * screenMoveW, 0, 0);
+                }
+            }
+            else
+            {
+                selectCount = 0;
+                selectState = 0;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (selectState == 0)
+            {
+                if (selectFlag)
+                {
+                    selectFlag = false;
+                }
+                else
+                {
+                    selectFlag = true;
+                }
+                selectState = 1;
+            }
+        }
     }
 
     public float GetTime()
@@ -115,4 +162,6 @@ public class PlayerUI : MonoBehaviour
     {
         return player.GetComponent<collision>().GetDustCount();
     }
+
+
 }

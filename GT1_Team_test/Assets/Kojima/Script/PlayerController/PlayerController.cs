@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
             _speed = speed + (MaxSpeed - dist);
         }
         vel = dir * _speed;
-        Debug.Log(vel);
+        //Debug.Log(vel);
         rigid.AddForce(vel);
         return true;
     }

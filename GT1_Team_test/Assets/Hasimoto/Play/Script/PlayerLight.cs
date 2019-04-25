@@ -28,13 +28,8 @@ public class PlayerLight : MonoBehaviour
         // プレイヤーのTransform
         playerTransform = this.transform;
 
-        // 惑星で光を灯す半径
+        // 惑星上で人の周りに灯す半径
         planetMaterial.SetFloat("_Radiuas", radius);
-
-        // 惑星で光を灯す位置
-        //planetMaterial.SetFloat("_LightPosX", playerTransform.position.x);
-        //planetMaterial.SetFloat("_LightPosY", playerTransform.position.y);
-        //planetMaterial.SetFloat("_LightPosZ", playerTransform.position.z);
 
     }
 
@@ -54,11 +49,14 @@ public class PlayerLight : MonoBehaviour
         // リストをリセットする
         list.Clear();
 #endif
-        //// ------------------------------------------------------------------------------
-
-        //// 惑星で光を灯す位置
-        //planetMaterial.SetFloat("_LightPosX", playerTransform.position.x);
-        //planetMaterial.SetFloat("_LightPosY", playerTransform.position.y);
-        //planetMaterial.SetFloat("_LightPosZ", playerTransform.position.z);
     }
+
+
+    /// <summary>
+    ///  取得・設定関数
+    /// </summary>
+
+    // 惑星上で人の周りに灯す半径を反映させる
+    public float Radius { get { return radius; } set { radius = value;  planetMaterial.SetFloat("_Radiuas", radius); } }
+
 }
