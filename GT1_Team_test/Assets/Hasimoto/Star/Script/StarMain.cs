@@ -411,7 +411,7 @@ public class StarMain : MonoBehaviour
         }
         else
         {
-            Debug.Log(star.name);
+            //Debug.Log(star.name);
             // 石もしくは木の種類に当たった場合オブジェクトを消す
             if ((hit.collider.tag == "Tree") || (hit.collider.tag == "Rock"))
             {
