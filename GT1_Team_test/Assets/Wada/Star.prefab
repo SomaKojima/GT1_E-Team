@@ -150,7 +150,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8a22a944cb6b2ad479806f842d24f7cd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
   radiusShrinkage: 0
   timeMove: 0
   timeFalling: 0
-  timeState: 10800
+  timeState: 180
   time: 0
   angularVelocity_DegreeXZ: 0
   angularVelocity_DegreeY: 0
