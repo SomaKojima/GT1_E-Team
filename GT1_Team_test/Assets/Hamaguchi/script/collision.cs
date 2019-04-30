@@ -18,6 +18,7 @@ public class collision : MonoBehaviour
     private bool talkFlag = false;
     private float rightTime = 10.0f;
     private float rimitTime = 5.0f;
+    private float restartTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,13 @@ public class collision : MonoBehaviour
         pointer.position = Input.mousePosition;
         List<RaycastResult> result = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointer, result);
+
+        restartTime += Time.deltaTime;
+        if (restartTime>5.0f)
+        {
+            restartTime = 0;
+            startPos = this.transform.position; ;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
