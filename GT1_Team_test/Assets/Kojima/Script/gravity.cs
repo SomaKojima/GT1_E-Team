@@ -16,7 +16,8 @@ public class gravity : MonoBehaviour
         foreach (GameObject target in targetList)
         {
             Rigidbody rigidbody = target.GetComponent<Rigidbody>();
-            if (!rigidbody) continue;
+            NoGravity noGravity = target.GetComponent<NoGravity>();
+            if (!rigidbody || noGravity) continue;
 
             // 星に向かう向きの取得
             var direction = transform.position - target.transform.position;

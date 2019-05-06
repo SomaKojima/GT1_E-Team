@@ -6,7 +6,7 @@ public class ThrowStar : MonoBehaviour
 {
     public GameObject starPrefab;
     public float speed;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +31,10 @@ public class ThrowStar : MonoBehaviour
     void InstanceThrowStar(Vector3 targetPos)
     {
         GameObject star = Instantiate(starPrefab);
-        star.transform.position = this.transform.position + this.transform.rotation * Vector3.right;
-        Vector3 vec = targetPos - star.transform.position;
-        Vector3 dir = this.transform.forward;
-        star.GetComponent<Rigidbody>().AddForce(dir * speed);
+        Vector3 pos = this.transform.position + this.transform.right;
+        star.transform.position = pos;
+        Vector3 vec = targetPos - pos;
+        star.GetComponent<Rigidbody>().velocity = vec.normalized * speed;
+        Debug.Log(vec.normalized * speed);
     }
 }
