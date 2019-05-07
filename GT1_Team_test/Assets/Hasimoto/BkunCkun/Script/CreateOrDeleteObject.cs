@@ -23,6 +23,7 @@ public class CreateOrDeleteObject : MonoBehaviour
     private bool IsSpeak = false;
     // 一度話しかけたか
     private bool IsOnce = false;
+    private bool IsClear = false;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class CreateOrDeleteObject : MonoBehaviour
         {
             // 出現するモデル : 表示する、 消えるモデル : 非表示する
             obj.SetActive(IsAppear);
+            IsClear = true;
         }
     }
 
@@ -86,5 +88,15 @@ public class CreateOrDeleteObject : MonoBehaviour
             // 一度も話しかけていない状態に戻す
             IsOnce = false;
         }
+    }
+
+    public int GetStarTarget()
+    {
+        return starCount;
+    }
+
+    public bool GetClearFlag()
+    {
+        return IsClear;
     }
 }

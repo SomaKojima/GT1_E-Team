@@ -120,6 +120,18 @@ public class collision : MonoBehaviour
         {
             talkFlag = col.gameObject.GetComponent<talk>().GetFlag();
         }
+        if (col.gameObject.tag == "Light")
+        {
+            slight.intensity = 0;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Light")
+        {
+            slight.intensity = 5;
+        }
     }
 
     public void SetFlagA()

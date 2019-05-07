@@ -16,8 +16,9 @@ public class CharcterLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.GetComponent<CreateOrDeleteObject>().IsPlayerSpeakBkun)
+        if(this.gameObject.GetComponent<CreateOrDeleteObject>().GetClearFlag())
         {
+            //Debug.Log("oioio");
             slight.SetActive(true);
         }
     }

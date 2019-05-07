@@ -62,7 +62,7 @@ public class StarMain : MonoBehaviour
 
         // 星が動く
         Move();
-        
+
 #if false
         // リストをスプライトへ渡す
         if (starslistpos.Count > 0)
@@ -77,7 +77,7 @@ public class StarMain : MonoBehaviour
         starslistpos.Clear();
         i = 0;
 #endif
-        
+
         // 光を星に向かせる
         // FaceLightStar();
 
@@ -374,7 +374,7 @@ public class StarMain : MonoBehaviour
         starDate.DegreeY += starDate.AngularVelocity_DegreeY;
 
         // 星を配置する
-        SetPosition(star);      
+        SetPosition(star);
     }
 
     /// <summary>
