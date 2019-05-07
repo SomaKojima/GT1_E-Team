@@ -57,10 +57,13 @@ public class collision : MonoBehaviour
         EventSystem.current.RaycastAll(pointer, result);
 
         restartTime += Time.deltaTime;
-        if (restartTime>5.0f)
+        if (restartTime > 5.0f)
         {
-            restartTime = 0;
-            startPos = this.transform.position; ;
+            //if ()
+            {
+                restartTime = 0;
+                startPos = this.transform.position;
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -94,6 +97,7 @@ public class collision : MonoBehaviour
             {
                 dustCounter = 0;
             }
+            restartTime = 0;
             Debug.Log("penalty"); // ログを表示する
         }
 
