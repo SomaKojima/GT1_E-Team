@@ -357,8 +357,19 @@ public class StarMain : MonoBehaviour
                                       radius * Mathf.Sin(Yradian),
                                       radius * Mathf.Cos(Yradian) * Mathf.Cos(XZradian));
 
+#if false
+
         //  [現在の星の位置]    =       [惑星の位置]        + [星の位置]  
         star.transform.position = planet.transform.position + starpos;
+
+#else
+        // 星が動く距離
+        Vector3 dircmove = starpos - starDate.OncePos;
+        star.transform.Translate(dircmove);
+        // 以前の星の位置をもらう
+        starDate.OncePos = starpos;
+       
+#endif
     }
 
     /// <summary>
