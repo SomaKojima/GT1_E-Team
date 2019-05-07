@@ -59,6 +59,9 @@ public class StarDate : MonoBehaviour
         // □惑星の穴の奥まで落ちるかどうか
         [SerializeField] private bool IsfallHole = false;
 
+        // 星の以前の位置
+        private Vector3 oncePos = Vector3.zero;
+
     /// <summary>
     /// 取得・設定関数
     /// </summary>
@@ -94,4 +97,7 @@ public class StarDate : MonoBehaviour
         // □惑星の穴の奥まで落ちるかどうか
         public bool IsFallHole { get { return IsfallHole; } set { IsfallHole = value; } }
 
+
+        // 星の以前の位置
+        public Vector3 OncePos { get { return oncePos; } set { oncePos = value; } }
 }
