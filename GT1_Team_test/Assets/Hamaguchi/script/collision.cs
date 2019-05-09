@@ -18,6 +18,7 @@ public class collision : MonoBehaviour
     private bool talkFlag = false;
     private float rightTime = 10.0f;
     private float rimitTime = 5.0f;
+    private float restartTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,16 @@ public class collision : MonoBehaviour
         List<RaycastResult> result = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointer, result);
 
+        restartTime += Time.deltaTime;
+        if (restartTime > 5.0f)
+        {
+            //if ()
+            {
+                restartTime = 0;
+                startPos = this.transform.position;
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             foreach (RaycastResult raycastResult in result)
@@ -86,6 +97,7 @@ public class collision : MonoBehaviour
             {
                 dustCounter = 0;
             }
+            restartTime = 0;
             Debug.Log("penalty"); // ログを表示する
         }
 
@@ -107,6 +119,18 @@ public class collision : MonoBehaviour
         if (col.gameObject.tag == "area")
         {
             talkFlag = col.gameObject.GetComponent<talk>().GetFlag();
+        }
+        if (col.gameObject.tag == "Light")
+        {
+            slight.intensity = 0;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Light")
+        {
+            slight.intensity = 5;
         }
     }
 
