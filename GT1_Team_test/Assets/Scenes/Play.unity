@@ -4367,7 +4367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightPower: 3
   slight: {fileID: 2041045963}
-  dustCounter: 30
+  dustCounter: 3
 --- !u!23 &1159897427
 MeshRenderer:
   m_ObjectHideFlags: 0
