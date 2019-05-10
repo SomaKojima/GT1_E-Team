@@ -8761,6 +8761,7 @@ GameObject:
   - component: {fileID: 1934888251}
   - component: {fileID: 1934888250}
   - component: {fileID: 1934888249}
+  - component: {fileID: 1934888253}
   - component: {fileID: 1934888252}
   m_Layer: 0
   m_Name: Director
@@ -8838,6 +8839,19 @@ LightProbeGroup:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Dering: 0
+--- !u!114 &1934888253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934888248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f705a40a4c7c15e4dbdfc5e43544b7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
 --- !u!1 &1998142542
 GameObject:
   m_ObjectHideFlags: 0

@@ -3282,9 +3282,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150635225}
-  m_LocalRotation: {x: -0.000000029802326, y: -0, z: -9.313227e-10, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.16838305, y: 0.18051484, z: 0.3840016, w: 0.88972145}
+  m_LocalPosition: {x: -0.13903427, y: -29.261318, z: 6.0935197}
+  m_LocalScale: {x: 0.5, y: 0.49999994, z: 0.5}
   m_Children:
   - {fileID: 1044697662}
   - {fileID: 1223208271}
@@ -3295,8 +3295,8 @@ Transform:
   - {fileID: 1427779880}
   - {fileID: 1653452119}
   - {fileID: 367912891}
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 3630555061917928516}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1154121278
 PrefabInstance:
@@ -6369,6 +6369,7 @@ GameObject:
   - component: {fileID: 1934888251}
   - component: {fileID: 1934888250}
   - component: {fileID: 1934888249}
+  - component: {fileID: 1934888253}
   - component: {fileID: 1934888252}
   m_Layer: 0
   m_Name: Director
@@ -6446,6 +6447,19 @@ LightProbeGroup:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   m_Dering: 0
+--- !u!114 &1934888253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934888248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f705a40a4c7c15e4dbdfc5e43544b7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
 --- !u!1 &1948387235
 GameObject:
   m_ObjectHideFlags: 0
@@ -7135,7 +7149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DustCounter: {fileID: 1485429536}
   Timer: {fileID: 556255144}
-  mission: {fileID: 1680039512}
+  missionA: {fileID: 0}
+  missionB: {fileID: 0}
+  missionC: {fileID: 0}
   rimitTime: 180
   player: {fileID: 1159897422}
   nMission: {fileID: 409303239}
@@ -7335,8 +7351,9 @@ Transform:
   - {fileID: 3630555061917928512}
   - {fileID: 3630555062191562587}
   - {fileID: 3630555061595489122}
+  - {fileID: 1150635226}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 9.264001, y: -27.161001, z: -48.932003}
 --- !u!4 &3630555061917928518
 Transform:
