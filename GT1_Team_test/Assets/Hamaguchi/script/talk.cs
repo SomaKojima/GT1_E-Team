@@ -59,7 +59,7 @@ public class talk : MonoBehaviour
     {
         if (col.tag == "player")
         {
-            icon.SetActive(true);
+            //icon.SetActive(true);
             Debug.Log("talk.ok"); // ログを表示する
         }
     }
@@ -70,7 +70,7 @@ public class talk : MonoBehaviour
         {
             talkFlag = false;
             flag = true;
-            icon.SetActive(false);
+            //icon.SetActive(false);
             text.SetActive(false);
             mw.SetActive(false);
             UI.SetActive(true);
@@ -92,21 +92,45 @@ public class talk : MonoBehaviour
                     text.SetActive(true);
                     UI.SetActive(false);
 
-                    if (col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)
+                    if ((col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount))
                     {
-                        text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
-                        Debug.Log("game clear"); // ログを表示する
-                        //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
-                        GameDirecter.SetActive(true);
-                        col.gameObject.GetComponent<collision>().Clear();
-                        clear = true;
+                        if (this.gameObject.name == "areaA")
+                        {
+                            text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
+                            Debug.Log("game clear"); // ログを表示する
+                                                     //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
+                            GameDirecter.SetActive(true);
+                            col.gameObject.GetComponent<collision>().Clear();
+                            clear = true;
+                        }
+                        else if (this.gameObject.name == "areaB")
+                        {
+                            text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                        }
+                        else if (this.gameObject.name == "areaC")
+                        {
+                            text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                        }
                     }
                     else
                     {
-                        text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
-                        Debug.Log("talk.now"); // ログを表示する
-                        col.gameObject.GetComponent<collision>().SetFlagA();
-                        //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
+                        if (this.gameObject.name == "areaA")
+                        {
+                            text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            Debug.Log("talk.now"); // ログを表示する
+                            col.gameObject.GetComponent<collision>().SetFlagA();
+                            //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
+                        }
+                        else if (this.gameObject.name == "areaB")
+                        {
+                            text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            col.gameObject.GetComponent<collision>().SetFlagB();
+                        }
+                        else if (this.gameObject.name == "areaC")
+                        {
+                            text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            col.gameObject.GetComponent<collision>().SetFlagC();
+                        }
                     }
                 }
                 else
@@ -117,6 +141,14 @@ public class talk : MonoBehaviour
                     text.SetActive(false);
                     mw.SetActive(false);
                     Debug.Log("talk.cancel"); // ログを表示する
+                    if (this.gameObject.name == "areaB")
+                    {
+                        col.gameObject.GetComponent<collision>().SetFlagB();
+                    }
+                    else if (this.gameObject.name == "areaC")
+                    {
+                        col.gameObject.GetComponent<collision>().SetFlagC();
+                    }
                 }
             }
         }

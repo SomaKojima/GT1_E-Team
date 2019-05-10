@@ -12,6 +12,8 @@ public class collision : MonoBehaviour
     [SerializeField]
     private int dustCounter = 3;
     private bool flagA = false;
+    private bool flagB = false;
+    private bool flagC = false;
     private Vector3 startPos;
     private bool dustFlag = false;
     private bool clear = false;
@@ -19,6 +21,8 @@ public class collision : MonoBehaviour
     private float rightTime = 10.0f;
     private float rimitTime = 5.0f;
     private float restartTime = 0.0f;
+
+    private GameObject target = null;
 
     // Start is called before the first frame update
     void Start()
@@ -119,6 +123,7 @@ public class collision : MonoBehaviour
         if (col.gameObject.tag == "area")
         {
             talkFlag = col.gameObject.GetComponent<talk>().GetFlag();
+            target = col.gameObject;
         }
         if (col.gameObject.tag == "Light")
         {
@@ -144,6 +149,26 @@ public class collision : MonoBehaviour
         return flagA;
     }
 
+    public void SetFlagB()
+    {
+        flagB = true;
+    }
+
+    public bool GetFlagB()
+    {
+        return flagB;
+    }
+
+    public void SetFlagC()
+    {
+        flagC = true;
+    }
+
+    public bool GetFlagC()
+    {
+        return flagC;
+    }
+
     public int GetDustCount()
     {
         return dustCounter;
@@ -157,5 +182,10 @@ public class collision : MonoBehaviour
     public bool GetTalkFlag()
     {
         return talkFlag;
+    }
+
+    public GameObject GetTarget()
+    {
+        return target;
     }
 }
