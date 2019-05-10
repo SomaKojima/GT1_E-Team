@@ -11,7 +11,11 @@ public class PlayerUI : MonoBehaviour
     [SerializeField]
     private GameObject Timer;
     [SerializeField]
-    private GameObject mission;
+    private GameObject missionA;
+    [SerializeField]
+    private GameObject missionB;
+    [SerializeField]
+    private GameObject missionC;
     [SerializeField]
     private float rimitTime = 0;
     [SerializeField]
@@ -26,7 +30,9 @@ public class PlayerUI : MonoBehaviour
 
     private int count = 0;
     private int selectCount = 0;
-    private bool flagA = true;
+    private int flagA = 1;
+    private int flagB = 1;
+    private int flagC = 1;
     private bool menuFlag = true;
     private int menuState = 0;
     private bool selectFlag = true;
@@ -61,18 +67,46 @@ public class PlayerUI : MonoBehaviour
             panel.GetComponent<FadeController>().SetFlag(2);
         }
 
-        if ((player.GetComponent<collision>().GetFlagA()) && (flagA))
+        if ((player.GetComponent<collision>().GetFlagA()) && (flagA==1))
         {
             if (count == 0)
             {
                 if(!menuFlag)
                 {
-                    mission.transform.Translate(300.0f*screenMoveW, 0, 0);
+                    missionA.transform.Translate(300.0f*screenMoveW, 0, 0);
                     nMission.transform.Translate(-300.0f * screenMoveW, 0, 0);
                 }
                 menuState = 2;
                 menuFlag = true;
-                flagA = false;
+                flagA = 2;
+            }
+        }
+        if ((player.GetComponent<collision>().GetFlagB()) && (flagB == 1))
+        {
+            if (count == 0)
+            {
+                if (!menuFlag)
+                {
+                    missionB.transform.Translate(300.0f * screenMoveW, 0, 0);
+                    nMission.transform.Translate(-300.0f * screenMoveW, 0, 0);
+                }
+                menuState = 2;
+                menuFlag = true;
+                flagB = 2;
+            }
+        }
+        if ((player.GetComponent<collision>().GetFlagC()) && (flagC == 1))
+        {
+            if (count == 0)
+            {
+                if (!menuFlag)
+                {
+                    missionC.transform.Translate(300.0f * screenMoveW, 0, 0);
+                    nMission.transform.Translate(-300.0f * screenMoveW, 0, 0);
+                }
+                menuState = 2;
+                menuFlag = true;
+                flagC = 2;
             }
         }
 
@@ -83,13 +117,71 @@ public class PlayerUI : MonoBehaviour
             {
                 if (menuFlag)
                 {
-                    mission.transform.Translate(20.0f * screenMoveW, 0, 0);
+                    if (menuState == 1)
+                    {
+                        missionA.transform.Translate(20.0f * screenMoveW, 0, 0);
+                        missionB.transform.Translate(20.0f * screenMoveW, 0, 0);
+                        missionC.transform.Translate(20.0f * screenMoveW, 0, 0);
+                        if (flagA == 2)
+                        {
+                            flagA = 3;
+                        }
+                        if (flagB == 2)
+                        {
+                            flagB = 3;
+                        }
+                        if (flagC == 2)
+                        {
+                            flagC = 3;
+                        }
+                    }
+                    else if (menuState == 2)
+                    {
+                        if (flagA==2)
+                        {
+                            missionA.transform.Translate(20.0f * screenMoveW, 0, 0);
+                            if(count==15)
+                            {
+                                flagA = 3;
+                            }
+                        }
+                        if (flagB==2)
+                        {
+                            missionB.transform.Translate(20.0f * screenMoveW, 0, 0);
+                            if (count == 15)
+                            {
+                                flagB = 3;
+                            }
+                        }
+                        if (flagC==2)
+                        {
+                            missionC.transform.Translate(20.0f * screenMoveW, 0, 0);
+                            if (count == 15)
+                            {
+                                flagC = 3;
+                            }
+                        }
+                    }
                     nMission.transform.Translate(-20.0f * screenMoveW, 0, 0);
                 }
                 else
                 {
-                    mission.transform.Translate(-20.0f * screenMoveW, 0, 0);
+                    missionA.transform.Translate(-20.0f * screenMoveW, 0, 0);
+                    missionB.transform.Translate(-20.0f * screenMoveW, 0, 0);
+                    missionC.transform.Translate(-20.0f * screenMoveW, 0, 0);
                     nMission.transform.Translate(20.0f * screenMoveW, 0, 0);
+                    if (flagA == 3) 
+                    {
+                        flagA = 2;
+                    }
+                    if (flagB == 3)
+                    {
+                        flagB = 2;
+                    }
+                    if (flagC == 3)
+                    {
+                        flagC = 2;
+                    }
                 }
             }
             else
