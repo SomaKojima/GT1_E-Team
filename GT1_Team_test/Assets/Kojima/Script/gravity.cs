@@ -16,14 +16,13 @@ public class gravity : MonoBehaviour
         foreach (GameObject target in targetList)
         {
             Rigidbody rigidbody = target.GetComponent<Rigidbody>();
-            NoGravity noGravity = target.GetComponent<NoGravity>();
-            if (!rigidbody || noGravity) continue;
+            GravityObject.GravityStatus status = target.gameObject.GetComponent<GravityObject>().status;
 
             // 星に向かう向きの取得
             var direction = transform.position - target.transform.position;
             direction.Normalize();
             // 加速度与える
-            rigidbody.AddForce((accelerationScale * direction), ForceMode.Acceleration);
+            rigidbody.AddForce(((accelerationScale * status.mass) * direction), ForceMode.Acceleration);
         }
 
         // リストを初期化
@@ -32,6 +31,9 @@ public class gravity : MonoBehaviour
     
     private void OnTriggerStay(Collider other)
     {
-        targetList.Add(other.gameObject);
+        if (other.gameObject.GetComponent<GravityObject>() && other.gameObject.GetComponent<Rigidbody>())
+        {
+            targetList.Add(other.gameObject);
+        }
     }
 }

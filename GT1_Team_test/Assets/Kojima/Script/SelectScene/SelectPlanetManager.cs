@@ -13,8 +13,8 @@ public class SelectPlanetManager : MonoBehaviour
     }
 
     public List<SelectElement> selects = new List<SelectElement>();
-
-    public GameObject current;
+    
+    SelectElement currentElement;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,8 @@ public class SelectPlanetManager : MonoBehaviour
         {
             select.planet.GetComponent<Renderer>().enabled = false;
         }
-        current.GetComponent<Renderer>().enabled = true;
+        currentElement = selects[0];
+        currentElement.planet.GetComponent<Renderer>().enabled = true;
     }
 
     // Update is called once per frame
@@ -37,10 +38,16 @@ public class SelectPlanetManager : MonoBehaviour
         {
             if (select.name == _name)
             {
-                current.GetComponent<Renderer>().enabled = false;
-                current = select.planet;
-                current.GetComponent<Renderer>().enabled = true;
+                currentElement.planet.GetComponent<Renderer>().enabled = false;
+                currentElement = select;
+                currentElement.planet.GetComponent<Renderer>().enabled = true;
+                break;
             }
         }
+    }
+
+    public SelectElement GetCurrentSelectElement()
+    {
+        return currentElement;
     }
 }
