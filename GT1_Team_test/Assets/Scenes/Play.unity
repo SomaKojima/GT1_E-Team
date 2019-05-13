@@ -1898,8 +1898,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd59c0b6229652458b716de78ddc233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starPrefab: {fileID: 0}
-  speed: 0
+  starPrefab: {fileID: 1488315294}
+  speed: 30
 --- !u!1001 &546521656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6029,6 +6029,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1824039355}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &1488315302
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488315294}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1490473318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8881,6 +8897,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
+  effectPrefab_starhitplanet: {fileID: 7598248363392230487, guid: d1c91a330bf510b47b7b930f1aa1cee9,
+    type: 3}
 --- !u!1 &1998142542
 GameObject:
   m_ObjectHideFlags: 0

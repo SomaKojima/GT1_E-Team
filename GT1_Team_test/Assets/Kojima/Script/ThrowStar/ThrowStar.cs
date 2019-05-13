@@ -31,6 +31,17 @@ public class ThrowStar : MonoBehaviour
     void InstanceThrowStar(Vector3 targetPos)
     {
         GameObject star = Instantiate(starPrefab);
+
+        // 追加--------------------------------------------------------
+        
+        // 星のデータ
+        StarDate stardate = star.GetComponent<StarDate>();
+        // 星を投げるフラグを付ける
+        stardate.IsThrow = true;
+
+        //--------------------------------------------------------------
+
+
         Vector3 pos = this.transform.position + this.transform.right;
         star.transform.position = pos;
         Vector3 vec = targetPos - pos;

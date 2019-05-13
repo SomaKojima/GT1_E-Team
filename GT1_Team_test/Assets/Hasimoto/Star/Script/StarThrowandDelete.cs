@@ -9,6 +9,8 @@ public class StarThrowandDelete : MonoBehaviour
 {
     // データ
     [SerializeField] private Date date;
+    // 星が惑星に当たった時に描画するエフェクト
+    [SerializeField] private GameObject effectPrefab_starhitplanet;
     // 惑星
     private GameObject planet;
 
@@ -39,7 +41,20 @@ public class StarThrowandDelete : MonoBehaviour
             StarDate stardate = star.GetComponent<StarDate>();
 
             // 指定された星が投げられ地面に接触した場合、星を消す
-            if ((stardate.IsThrow)&&(HitStarPlanet(star))) Destroy(star);
+            if ((stardate.IsThrow) && (HitStarPlanet(star)))
+            {
+                // エフェクトを作成する
+                GameObject newEffect = Instantiate(effectPrefab_starhitplanet,Vector3.zero, Quaternion.identity) as GameObject;
+
+                // エフェクトに名前を付ける
+                newEffect.name = "Effect_StarHitPlanet";
+
+                // 位置や向きを決める
+                newEffect.GetComponent<StarEffect_HitPlanet>().DecideDirection(star, planet);
+
+                // 星を消す
+                Destroy(star);
+            }
         }
     }
 
