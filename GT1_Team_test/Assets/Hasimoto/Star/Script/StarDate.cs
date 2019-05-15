@@ -56,11 +56,12 @@ public class StarDate : MonoBehaviour
         
         // ○星の種類
         [SerializeField] private Kind kind = Kind.ALWAYSMOVE;
-        
         // □惑星の穴の奥まで落ちるかどうか
-        private bool IsfallHole = false;
-        // ◇星の以前の位置
+        [SerializeField] private bool IsfallHole = false;
+
+        // 星の以前の位置
         private Vector3 oncePos = Vector3.zero;
+       
         // ○星を投げたか
         private bool Isthrow = false;
 
@@ -98,9 +99,12 @@ public class StarDate : MonoBehaviour
 
         // □惑星の穴の奥まで落ちるかどうか
         public bool IsFallHole { get { return IsfallHole; } set { IsfallHole = value; } }
-        // ◇星の以前の位置
+
+
+        // 星の以前の位置
         public Vector3 OncePos { get { return oncePos; } set { oncePos = value; } }
         // ○星を投げたか
         public bool IsThrow { get { return Isthrow; } set { Isthrow = value; } }
+
 
 }
