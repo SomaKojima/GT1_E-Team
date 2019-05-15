@@ -29,6 +29,9 @@ public class StarMain : MonoBehaviour
     // 現在の時間
     private float time = 0.0f;
 
+    // 星をまとめるオブジェクト
+    private GameObject starParentObj;
+
 #if false
     // 現在惑星上に生存している小さい星の位置
     //(Shaderの仕様書により型をVector4)
@@ -38,6 +41,9 @@ public class StarMain : MonoBehaviour
 
     void Start()
     {
+        // 星を1箇所にまとめるオブジェクトを作成する
+        starParentObj = new GameObject("StarPrefab");
+
         // 惑星を呼ぶ
         planet = GameObject.FindGameObjectWithTag(_Date.PlanetTag);
 
@@ -290,6 +296,9 @@ public class StarMain : MonoBehaviour
 
         // 星を新しく作成する
         GameObject newstar = Instantiate(starPrefab) as GameObject;
+
+        // 星のオブジェクトを1箇所にまとめる
+        newstar.transform.parent = starParentObj.transform;
 
         // 星のデータ
         StarDate starDate = newstar.GetComponent<StarDate>();

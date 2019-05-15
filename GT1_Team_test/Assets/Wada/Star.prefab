@@ -20,7 +20,7 @@ GameObject:
   m_TagString: dust
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1248627524
 Transform:
@@ -269,4 +269,3 @@ MonoBehaviour:
   degreeXZ: 0
   degreeY: 0
   kind: 0
-  IsfallHole: 0
