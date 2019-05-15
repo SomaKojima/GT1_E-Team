@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 534669906}
   - component: {fileID: 534669907}
   - component: {fileID: 534669908}
+  - component: {fileID: 534669909}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -788,6 +789,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 534669902}
   player: {fileID: 1804517469}
+--- !u!114 &534669909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd59c0b6229652458b716de78ddc233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starPrefab: {fileID: 0}
+  speed: 0
 --- !u!1 &563203123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightPower: 3
   slight: {fileID: 189894141}
+  dustCounter: 3
 --- !u!114 &940601729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3024,6 +3040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightPower: 3
   slight: {fileID: 189894141}
+  dustCounter: 3
 --- !u!114 &1804517472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3185,6 +3202,7 @@ MonoBehaviour:
   player: {fileID: 1804517469}
   nMission: {fileID: 503078569}
   panel: {fileID: 0}
+  wishSelect: {fileID: 0}
 --- !u!1 &1881470562
 GameObject:
   m_ObjectHideFlags: 0
