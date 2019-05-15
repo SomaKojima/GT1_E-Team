@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene 1.unity
     guid: e0405e25bd4406e43870cc15f309bff6
   - enabled: 0
-    path: Assets/__DELETED_GUID_Trash/9e8f2eb91a2ad3044805db6a9e42a128
+    path: 
     guid: 9e8f2eb91a2ad3044805db6a9e42a128
   - enabled: 1
     path: Assets/Scenes/Play.unity
@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: c1ef051f41bcd1e4cb51ccd99bc129ec
+  - enabled: 1
+    path: Assets/Scenes/Play 2.unity
+    guid: ad5b070011925d545b559f2836195dec
   m_configObjects: {}

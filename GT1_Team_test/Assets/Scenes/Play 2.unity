@@ -1298,6 +1298,7 @@ GameObject:
   - component: {fileID: 534669906}
   - component: {fileID: 534669907}
   - component: {fileID: 534669908}
+  - component: {fileID: 534669909}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1391,16 +1392,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67a284dabc486994aacab85aee74e765, type: 3}
+  m_Script: {fileID: 11500000, guid: bae01400dea5bd24ab462be48e71ba57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1159897422}
   planet: {fileID: 1859461912}
-  talkPosition: {fileID: 1238160142}
-  talkTarget: {fileID: 148365176}
-  cameraMode: 0
-  max_distance: 10
-  offset_y: 20
+  cameraMode: 1
+  max_distance: 5
+  offset_y: 10
+  targets: []
 --- !u!114 &534669908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1415,6 +1415,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 534669902}
   player: {fileID: 1159897422}
+--- !u!114 &534669909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd59c0b6229652458b716de78ddc233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starPrefab: {fileID: 0}
+  speed: 0
 --- !u!1001 &546521656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2789,8 +2803,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 534669902}
+  cameraControll: {fileID: 0}
   planet: {fileID: 1407672431}
   col: {fileID: 1159897426}
+  cameraPos: {fileID: 0}
   speed: 80
   MaxSpeed: 5
   rotation_speed: 0.3
@@ -2808,6 +2824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightPower: 3
   slight: {fileID: 2041045963}
+  dustCounter: 3
 --- !u!23 &1159897427
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5596,8 +5613,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 534669902}
+  cameraControll: {fileID: 0}
   planet: {fileID: 0}
   col: {fileID: 1948387243}
+  cameraPos: {fileID: 0}
   speed: 80
   MaxSpeed: 5
   rotation_speed: 0.3
@@ -5615,6 +5634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightPower: 3
   slight: {fileID: 584731145}
+  dustCounter: 3
 --- !u!108 &1948387244
 Light:
   m_ObjectHideFlags: 0
@@ -6008,11 +6028,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DustCounter: {fileID: 1485429536}
   Timer: {fileID: 556255144}
-  mission: {fileID: 1680039512}
+  missionA: {fileID: 0}
+  missionB: {fileID: 0}
+  missionC: {fileID: 0}
   rimitTime: 180
   player: {fileID: 1159897422}
   nMission: {fileID: 409303239}
   panel: {fileID: 473114954}
+  wishSelect: {fileID: 0}
 --- !u!1001 &7752070671332587361
 PrefabInstance:
   m_ObjectHideFlags: 0

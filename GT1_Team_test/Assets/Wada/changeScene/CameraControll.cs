@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,5 +35,10 @@ public class CameraControll : MonoBehaviour
             mainCam.SetActive(true);
             subCam.SetActive(false);
         }
+    }
+
+    internal void ChangeTalkMode(Transform childTransform, GameObject cameraPos)
+    {
+        throw new NotImplementedException();
     }
 }
