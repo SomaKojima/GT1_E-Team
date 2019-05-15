@@ -66,7 +66,7 @@ public class collision : MonoBehaviour
             //if ()
             {
                 restartTime = 0;
-                startPos = this.transform.position;
+                //startPos = this.transform.position;
             }
         }
 
