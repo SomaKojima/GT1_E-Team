@@ -43,11 +43,13 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //float screenMoveW = (float)Screen.width / (float)StartScreenWidth;
+        float screenMoveH = (float)Screen.height / (float)StartScreenHeight;
         //wishSelect.transform.Translate(300.0f * screenMoveW, 0, 0);
 
         menuState = 0;
         selectState = 0;
+        missionB.transform.Translate(0, 91.9f * screenMoveH, 0);
+        missionC.transform.Translate(0, 91.9f * 2 * screenMoveH, 0);
     }
 
     // Update is called once per frame
@@ -55,6 +57,7 @@ public class PlayerUI : MonoBehaviour
     {
         //Debug.Log(Screen.width + ":" + Screen.height); // ログを表示する
         float screenMoveW = (float)Screen.width / (float)StartScreenWidth;
+        float screenMoveH = (float)Screen.height / (float)StartScreenHeight;
         //Debug.Log(screenMoveW);
 
         //rimitTime = rimitTime - Time.deltaTime;
@@ -92,6 +95,16 @@ public class PlayerUI : MonoBehaviour
                         flagC = 2;
                     }
                 }
+
+                if (flagB != 1) 
+                {
+                    missionB.transform.Translate(0, -91.9f * screenMoveH, 0);
+                }
+                if (flagC != 1)
+                {
+                    missionC.transform.Translate(0, -91.9f * screenMoveH, 0);
+                }
+
                 menuState = 2;
                 menuFlag = true;
                 flagA = 2;
@@ -122,6 +135,16 @@ public class PlayerUI : MonoBehaviour
                         flagC = 2;
                     }
                 }
+
+                if (flagA != 1)
+                {
+                    missionB.transform.Translate(0, -91.9f * screenMoveH, 0);
+                }
+                if (flagC != 1)
+                {
+                    missionC.transform.Translate(0, -91.9f * screenMoveH, 0);
+                }
+
                 menuState = 2;
                 menuFlag = true;
                 flagB = 2;
@@ -152,6 +175,16 @@ public class PlayerUI : MonoBehaviour
                         flagA = 2;
                     }
                 }
+
+                if (flagA != 1)
+                {
+                    missionC.transform.Translate(0, -91.9f * screenMoveH, 0);
+                }
+                if (flagB != 1)
+                {
+                    missionC.transform.Translate(0, -91.9f * screenMoveH, 0);
+                }
+
                 menuState = 2;
                 menuFlag = true;
                 flagC = 2;
