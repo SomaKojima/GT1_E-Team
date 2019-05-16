@@ -13,6 +13,9 @@ public class Date : ScriptableObject
     /// メンバー変数
     /// </summary>
 
+        [Header("プレイヤーのタグ名"), SerializeField]
+        private string playerTag = "player";
+
         [Header("惑星のタグ名"), SerializeField]
         private string planetTag = "Planet";
 
@@ -67,8 +70,6 @@ public class Date : ScriptableObject
         [SerializeField]
         private float degreeY_Miu = 0.05f;
 
-                
-
         // ----------------------------------------------------------------
 
         [Header("◆明かりを灯す処理")]
@@ -78,9 +79,18 @@ public class Date : ScriptableObject
         [Tooltip("明かりを灯す速さ"),SerializeField]
         private float speedSwitchOn = 0.5f;
 
+        // ----------------------------------------------------------------
+
+        [Tooltip("星の効果音を鳴らすプレイヤーと星の距離"), SerializeField]
+        private float sound_PlayerStarDirection = 15.0f;
+
+
     /// <summary>
     /// 取得関数
     /// </summary>
+
+    // プレイヤーのタグ名
+    public string PlayerTag { get { return playerTag; } private set { playerTag = value; } }
 
         // 惑星のタグ名
         public string PlanetTag { get { return planetTag; } private set { planetTag = value; } } 
@@ -133,4 +143,8 @@ public class Date : ScriptableObject
         // 明かりを灯す速さ
         public float SpeedSwitchOn { get { return speedSwitchOn; } private set { speedSwitchOn = value; } }
 
+        // ----------------------------------------------------------------
+
+        // 星の効果音を鳴らすプレイヤーと星の距離
+        public float Sound_PlayerStarDirection { get { return sound_PlayerStarDirection; } private set { sound_PlayerStarDirection = value; } }
 }

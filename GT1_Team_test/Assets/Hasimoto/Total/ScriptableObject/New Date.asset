@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e7794934f44d4f99f4a78041365fb, type: 3}
   m_Name: New Date
   m_EditorClassIdentifier: 
+  playerTag: player
   planetTag: Planet
   starTag: dust
   bigStarRadius: 62.5
@@ -19,7 +20,7 @@ MonoBehaviour:
   direction_Max: 90
   direction_Miu: 90
   lifeTotal: 5
-  starJustFallRatio: 0.5
+  starJustFallRatio: 1
   timeCreate_Max: 0.5
   timeCreate_Miu: 0.5
   timeMove_Max: 5
@@ -34,3 +35,4 @@ MonoBehaviour:
   degreeY_Miu: 0.05
   lightPos: {x: 0, y: 55, z: 0}
   speedSwitchOn: 0.5
+  sound_PlayerStarDirection: 20

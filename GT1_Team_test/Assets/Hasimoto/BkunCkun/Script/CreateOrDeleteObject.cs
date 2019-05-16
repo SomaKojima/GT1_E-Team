@@ -24,6 +24,9 @@ public class CreateOrDeleteObject : MonoBehaviour
     // 一度話しかけたか
     private bool IsOnce = false;
     private bool IsClear = false;
+    // お願い事を聞いたか
+    private bool Iswish = false;
+
 
     void Start()
     {
@@ -40,7 +43,7 @@ public class CreateOrDeleteObject : MonoBehaviour
         // プレイヤーが持っている星の数
         int playercount = player.GetComponent<collision>().GetDustCount();
 
-        if ((IsSpeak) && (playercount >= starCount))
+        if ((IsSpeak) && (playercount >= starCount)&&(Iswish))
         {
             // 出現するモデル : 表示する、 消えるモデル : 非表示する
             obj.SetActive(IsAppear);
@@ -52,6 +55,7 @@ public class CreateOrDeleteObject : MonoBehaviour
     /// 取得・設定関数
     /// </summary>
     public bool IsPlayerSpeakBkun { get { return IsSpeak; } set { IsSpeak = value; } }
+    public bool IsWish { get { return Iswish; } set { Iswish = value; } }
 
     // -----------------------------------------------------------------------------------------
 
@@ -72,19 +76,21 @@ public class CreateOrDeleteObject : MonoBehaviour
 
             // 一度も話しかけていないか
             if (!IsOnce) IsOnce = true;     // 一度B君に話しかけた状態にする
-            else IsSpeak = false;           // プレイヤーがB君に話しかけていない状態にする
+            else
+            {
+                IsSpeak = false;           // プレイヤーがB君に話しかけていない状態にする
+                Iswish = true;               // お願いことを聞いた
+            }
         }
     }
-
     // オブジェクトに当たり終わった
     void OnTriggerExit(Collider col)
     {
         if (col.tag == "player")
         {
-            Debug.Log("当たった");
-
             // プレイヤーがB君に話しかけていない
             IsSpeak = false;
+            if(IsOnce) Iswish = true;
             // 一度も話しかけていない状態に戻す
             IsOnce = false;
         }

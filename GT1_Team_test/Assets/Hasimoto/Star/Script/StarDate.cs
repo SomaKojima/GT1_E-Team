@@ -63,6 +63,11 @@ public class StarDate : MonoBehaviour
         private Vector3 oncePos = Vector3.zero;
         // ○星を投げたか
         private bool Isthrow = false;
+        // 星が惑星に当たった時に効果音を鳴らすか
+        private bool Issound_HitPlanet = true;
+        // 星が画面内にあるか
+        private bool IsinTheScreen;
+
 
     /// <summary>
     /// 取得・設定関数
@@ -102,5 +107,22 @@ public class StarDate : MonoBehaviour
         public Vector3 OncePos { get { return oncePos; } set { oncePos = value; } }
         // ○星を投げたか
         public bool IsThrow { get { return Isthrow; } set { Isthrow = value; } }
+
+        // 星が惑星に当たった時に効果音を鳴らすか
+        public bool IsSound_HitPlanet { get { return Issound_HitPlanet; } set { Issound_HitPlanet = value; } }
+
+        //  星が画面内にあるか
+        public bool IsInTheScreen { get { return IsinTheScreen; } private set { IsinTheScreen = value; } }
+
+
+    /// <summary>
+    /// その他の関数
+    /// </summary>
+
+        // 星が画面内に存在する
+        void OnBecameInvisible() { IsinTheScreen = false; }
+
+        // 星が画面外に存在する
+        void OnBecameVisible() { IsinTheScreen = true; }
 
 }
