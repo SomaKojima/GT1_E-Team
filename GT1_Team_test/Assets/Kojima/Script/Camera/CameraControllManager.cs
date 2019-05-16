@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
+public class CameraControllManager : MonoBehaviour
 {
     public enum CameraMode
     {
+        Start,
         Nomal,
         Talk
     }
@@ -15,21 +16,17 @@ public class CameraController : MonoBehaviour
     public GameObject player;
     // ターゲットが吸い寄せられている惑星
     public GameObject planet;
-
-    // 話しかける時の位置
-    public Transform talkPosition;
-    // 話しかける相手
-    public Transform talkTarget;
-
     // カメラのモード
     public CameraMode cameraMode = CameraMode.Nomal;
     // カメラとターゲットの最大距離
     public float max_distance = 5;
     // カメラのローカル座標（ターゲットの座標）Y軸のオフセット
     public float offset_y = 10;
+    // 開始時の追いかける相手
+    public List<GameObject> targets = new List<GameObject>();
+
     // プレイヤーの状態を取得するためプレイヤーのコントローラー
     PlayerController playerController;
-
 
     // カメラの上方向
     Vector3 up = Vector3.forward;
@@ -38,7 +35,8 @@ public class CameraController : MonoBehaviour
     NormalCamera normalCamera = new NormalCamera();
     // 話す用のカメラ
     TalkCamera talkCamera = new TalkCamera();
-
+    // 開始用のカメラ
+    StartCamera startCamera = new StartCamera();
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +46,11 @@ public class CameraController : MonoBehaviour
         normalCamera.max_distance = max_distance;
         normalCamera.offset_y = offset_y;
 
-        // 話す用のカメラの設定
-        talkCamera.Start(this.gameObject, talkPosition, talkTarget, player);
+        // 開始カメラの設定
+        startCamera.max_distance = max_distance;
+        startCamera.offset_y = offset_y;
+        startCamera.targets = targets;
+        startCamera.Start(this.gameObject, planet, player);
 
         // プレイヤーのコンポーネントを取得
         playerController = player.GetComponent<PlayerController>();
@@ -63,14 +64,21 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch (playerController.Mode)
+        if (cameraMode == CameraMode.Start)
         {
-            case PlayerController.PlayerMode.Normal:
-                normalCamera.Update();
-                break;
-            case PlayerController.PlayerMode.Talk:
-                talkCamera.Update();
-                break;
+            startCamera.Update();
+        }
+        else
+        {
+            switch (playerController.Mode)
+            {
+                case PlayerController.PlayerMode.Normal:
+                    normalCamera.Update();
+                    break;
+                case PlayerController.PlayerMode.Talk:
+                    talkCamera.Update();
+                    break;
+            }
         }
     }
 
@@ -83,8 +91,8 @@ public class CameraController : MonoBehaviour
     {
         if (!talkChara) return false;
         cameraMode = CameraMode.Talk;
-        talkTarget = talkChara;
-        talkPosition = cameraPos;
+
+        talkCamera.Start(this.gameObject, cameraPos, talkChara, player);
         return true;
     }
 }

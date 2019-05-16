@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class SelectButton : MonoBehaviour
 {
     public string name;
+    public string sceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +25,11 @@ public class SelectButton : MonoBehaviour
     public void OnPointerEnter()
     {
         GameObject.Find("SelectPlanetManager").GetComponent<SelectPlanetManager>().ChangePlanet(name);
+    }
+
+    // クリック
+    public void OnClick()
+    {
+        SceneManager.LoadScene(sceneName);
     }
 }

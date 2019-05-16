@@ -66,7 +66,7 @@ public class collision : MonoBehaviour
             //if ()
             {
                 restartTime = 0;
-                startPos = this.transform.position;
+                //startPos = this.transform.position;
             }
         }
 
@@ -102,7 +102,6 @@ public class collision : MonoBehaviour
                 dustCounter = 0;
             }
             restartTime = 0;
-            Debug.Log("penalty"); // ログを表示する
         }
 
         
@@ -114,7 +113,6 @@ public class collision : MonoBehaviour
         {
             dustFlag = true;
             Destroy(collision.gameObject);
-            //Debug.Log(dustCounter); // ログを表示する
         }
     }
 

@@ -11,8 +11,11 @@ public class PlayerController : MonoBehaviour
     };
 
     public GameObject camera;
+    public CameraControllManager cameraControll;
     public GameObject planet;
     public collision col;
+    public GameObject cameraPos;
+    
 
     Rigidbody rigid;
     PlayerMode mode;
@@ -37,6 +40,19 @@ public class PlayerController : MonoBehaviour
         if (col.GetTalkFlag())
         {
             mode = PlayerMode.Talk;
+
+
+            // 話す用のカメラの設定
+            Transform pos = null;
+            // 子オブジェクトを全て取得する
+            foreach (Transform childTransform in col.GetTarget().transform.parent.transform)
+            {
+                if (childTransform.name == "TalkTargetPos")
+                {
+                    cameraControll.ChangeTalkMode(childTransform, cameraPos.transform);
+                    break;
+                }
+            }
         }
         else
         {
