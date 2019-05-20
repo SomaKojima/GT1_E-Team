@@ -63,7 +63,8 @@ public class talk : MonoBehaviour
     {
         if (col.tag == "player")
         {
-            //icon.SetActive(true);
+            icon.SetActive(true);
+            icon.GetComponent<UIController>().SetTarget(this.gameObject.transform);
             Debug.Log("talk.ok"); // ログを表示する
         }
     }
@@ -74,7 +75,7 @@ public class talk : MonoBehaviour
         {
             talkFlag = false;
             flag = true;
-            //icon.SetActive(false);
+            icon.SetActive(false);
             text.SetActive(false);
             mw.SetActive(false);
             UI.SetActive(true);
