@@ -9423,7 +9423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916f85d85f7447e42a87bc30ecc1c91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Date: {fileID: 11400000, guid: 38d96ade11952c24f9af8256affd4540, type: 2}
+  _Date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
 --- !u!114 &1934888250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9437,7 +9437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 1488315294}
-  _Date: {fileID: 11400000, guid: 38d96ade11952c24f9af8256affd4540, type: 2}
+  _Date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
 --- !u!4 &1934888251
 Transform:
   m_ObjectHideFlags: 0
@@ -9492,7 +9492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f705a40a4c7c15e4dbdfc5e43544b7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  date: {fileID: 11400000, guid: 38d96ade11952c24f9af8256affd4540, type: 2}
+  date: {fileID: 11400000, guid: e53bd526cadf84842afb7e27ed535544, type: 2}
   effectPrefab_starhitplanet: {fileID: 7598248363392230487, guid: d1c91a330bf510b47b7b930f1aa1cee9,
     type: 3}
   Star_SpotLight: {fileID: 1587353415714136873, guid: 18a88254d779aba4687f5fdb6b7450ee,
