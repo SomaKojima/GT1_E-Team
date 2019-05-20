@@ -18,8 +18,6 @@ public class StarMain : MonoBehaviour
     public GameObject starPrefab;
     [Tooltip("データ")]
     public Date _Date;
-    [Tooltip("星が惑星に当たった効果音")]
-    public AudioClip sound;
 
     // 星による関数
     private StarFunction starfuc;
