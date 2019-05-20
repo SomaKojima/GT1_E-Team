@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField]
     private Transform targetTfm;
 
     private RectTransform myRectTfm;
@@ -21,5 +20,10 @@ public class UIController : MonoBehaviour
     {
         myRectTfm.position
             = RectTransformUtility.WorldToScreenPoint(Camera.main, targetTfm.position + offset);
+    }
+
+    public void SetTarget(Transform tfm)
+    {
+        targetTfm=tfm;
     }
 }

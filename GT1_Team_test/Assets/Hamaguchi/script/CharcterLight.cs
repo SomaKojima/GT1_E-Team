@@ -18,8 +18,8 @@ public class CharcterLight : MonoBehaviour
     {
         if(this.gameObject.GetComponent<CreateOrDeleteObject>().GetClearFlag())
         {
-            //Debug.Log("oioio");
-            slight.SetActive(true);
+            Debug.Log("oioio");
+            slight.GetComponent<Light>().spotAngle = 30;
         }
     }
 }
