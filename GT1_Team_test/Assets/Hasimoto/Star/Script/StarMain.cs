@@ -9,10 +9,11 @@ using Kind = StarDate.Kind;
 /// 星の中心
 /// </summary>
 public class StarMain : MonoBehaviour
-{ 
-        
+{        
     // 惑星
     private GameObject planet;
+    // プレイヤー
+    private GameObject player;
     [Tooltip("星")]
     public GameObject starPrefab;
     [Tooltip("データ")]
@@ -32,6 +33,7 @@ public class StarMain : MonoBehaviour
     // 星をまとめるオブジェクト
     private GameObject starParentObj;
 
+
 #if false
     // 現在惑星上に生存している小さい星の位置
     //(Shaderの仕様書により型をVector4)
@@ -46,6 +48,9 @@ public class StarMain : MonoBehaviour
 
         // 惑星を呼ぶ
         planet = GameObject.FindGameObjectWithTag(_Date.PlanetTag);
+
+        // プレイヤーを呼ぶ
+        player = GameObject.FindGameObjectWithTag(_Date.PlayerTag);
 
         // 新しい星を作成する時間
         timecreate = Random.Range(_Date.TimeCreate_Miu, _Date.TimeCreate_Max);
@@ -85,7 +90,7 @@ public class StarMain : MonoBehaviour
 #endif
 
         // 光を星に向かせる
-        // FaceLightStar();
+        FaceLightStar();
 
         // 時間を計る
         time += Time.deltaTime;
@@ -257,8 +262,6 @@ public class StarMain : MonoBehaviour
     /// </summary>
     private void FaceLightStar()
     {
-        // 
-
 
         // 光を惑星に向かせる
         foreach (GameObject star in GameObject.FindGameObjectsWithTag(_Date.StarTag))
@@ -266,6 +269,7 @@ public class StarMain : MonoBehaviour
             // 星のデータ
             StarDate starDate = star.GetComponent<StarDate>();
 
+            // [星のオブジェクト]の子に[光のオブジェクト]が含まれている
             foreach (Transform child in star.transform)
             {
                 // 光のデータ
@@ -276,9 +280,13 @@ public class StarMain : MonoBehaviour
                 {
                     // 星と惑星の距離と向き
                     Vector3 range = planet.transform.position - star.transform.position;
+                    // その向きを正規化する
+                    range.Normalize();
+
                     // 光を回転する
-                    Quaternion look = Quaternion.LookRotation(range);
-                    light.transform.localRotation = look;
+                    light.transform.localRotation = Quaternion.LookRotation(range);
+                    // 光の位置をずらす
+                    light.transform.position = star.transform.position - range * 20;//仮:20
                 }
             }
         }
@@ -436,6 +444,34 @@ public class StarMain : MonoBehaviour
             if ((hit.collider.tag == "Tree") || (hit.collider.tag == "Rock"))
             {
                 Destroy(star);
+            }
+            else
+            {
+                // 星のデータ
+                StarDate stardate = star.GetComponent<StarDate>();
+
+                // 音を鳴らす
+                if(stardate.IsSound_HitPlanet)
+                {
+                    // プレイヤーと星の距離を求める
+                   float len =  Vector3.Distance(player.transform.position, star.transform.position);
+
+                    // 星が画面内に存在する場合
+                    if(len < _Date.Sound_PlayerStarDirection)
+                    {
+                        Debug.Log("画面内");
+                        // 音を鳴らす
+                        SoundManager.Instance.PlaySe("StarHitPlanet");
+                    }
+                    else
+                    {
+                        Debug.Log("画面外");
+                    }
+                                        
+                    // 音が鳴らないように設定する
+                    stardate.IsSound_HitPlanet = false;
+                }
+               
             }
 
         }

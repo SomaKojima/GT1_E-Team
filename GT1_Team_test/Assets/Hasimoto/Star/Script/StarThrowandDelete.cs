@@ -11,6 +11,10 @@ public class StarThrowandDelete : MonoBehaviour
     [SerializeField] private Date date;
     // 星が惑星に当たった時に描画するエフェクト
     [SerializeField] private GameObject effectPrefab_starhitplanet;
+    // 星が惑星に当たった時に惑星上に光るスポットライト 
+    [SerializeField] private GameObject Star_SpotLight;
+    // 惑星とスポットライトの距離
+    [SerializeField] private float radian = 3.0f;
     // 惑星
     private GameObject planet;
 
@@ -52,6 +56,18 @@ public class StarThrowandDelete : MonoBehaviour
                 // 位置や向きを決める
                 newEffect.GetComponent<StarEffect_HitPlanet>().DecideDirection(star, planet);
 
+                // ----------------------------------------------------------------------------------------------------------------
+
+                // 惑星上に光るスポットライトを作成する
+                GameObject newSpotLight = Instantiate(Star_SpotLight, Vector3.zero, Quaternion.identity) as GameObject;
+
+                // そのライトに名前を付ける
+                newSpotLight.name = "ThrowStar_SpotLight";
+
+                // 位置や向きを決める
+                DecideDirection(newSpotLight, star, planet);
+
+                // ----------------------------------------------------------------------------------------------------------------
                 // 星を消す
                 Destroy(star);
             }
@@ -95,6 +111,22 @@ public class StarThrowandDelete : MonoBehaviour
             return false;
         }
       
+    }
+
+    public void DecideDirection(GameObject spotlight, GameObject star, GameObject planet)
+    {
+        // 惑星に対しての向きを取得する
+        Vector3 dic = planet.transform.position - star.transform.position;
+
+        // その向きを正規化する
+        dic.Normalize();
+
+        // 位置を決める
+        spotlight.transform.position = star.transform.position - dic * radian;
+
+        // 惑星に対しての向きに回転する
+        spotlight.transform.localRotation = Quaternion.LookRotation(dic);
+
     }
 
 }
