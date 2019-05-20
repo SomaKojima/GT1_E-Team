@@ -17,6 +17,8 @@ public class talk : MonoBehaviour
     private GameObject GameDirecter;
     [SerializeField]
     private GameObject panel;
+    [SerializeField]
+    private GameObject comp;
 
     public int clearStarCount = 10;
 
@@ -30,6 +32,7 @@ public class talk : MonoBehaviour
     public static int clearWish;
     private  bool talkFlag = false;
     private bool firstFlag = false;
+    private bool compFlag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +63,8 @@ public class talk : MonoBehaviour
     {
         if (col.tag == "player")
         {
-            //icon.SetActive(true);
+            icon.SetActive(true);
+            icon.GetComponent<UIController>().SetTarget(this.gameObject.transform);
             Debug.Log("talk.ok"); // ログを表示する
         }
     }
@@ -71,7 +75,7 @@ public class talk : MonoBehaviour
         {
             talkFlag = false;
             flag = true;
-            //icon.SetActive(false);
+            icon.SetActive(false);
             text.SetActive(false);
             mw.SetActive(false);
             UI.SetActive(true);
@@ -107,19 +111,35 @@ public class talk : MonoBehaviour
                         else if (this.gameObject.name == "areaB")
                         {
                             text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
-                            col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
+                            if (!compFlag)
+                            {
+                                col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
+                                comp.SetActive(true);
+                                compFlag = true;
+                                Debug.Log("doaho"); // ログを表示する
+
+                            }
                         }
                         else if (this.gameObject.name == "areaC")
                         {
                             text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
-                            col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
+                            if (!compFlag)
+                            {
+                                col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
+                                comp.SetActive(true);
+                                compFlag = true;
+                            }
                         }
                     }
                     else
                     {
                         if (this.gameObject.name == "areaA")
                         {
-                            text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            if (!compFlag)
+                            {
+                                text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            }
+                           
                             Debug.Log("talk.now"); // ログを表示する
                             col.gameObject.GetComponent<collision>().SetFlagA();
                             
@@ -128,12 +148,26 @@ public class talk : MonoBehaviour
                         }
                         else if (this.gameObject.name == "areaB")
                         {
-                            text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            if (!compFlag)
+                            {
+                                text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            }
+                            else
+                            {
+                                text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                            }
                             col.gameObject.GetComponent<collision>().SetFlagB();
                         }
                         else if (this.gameObject.name == "areaC")
                         {
-                            text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            if (!compFlag)
+                            {
+                                text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
+                            }
+                            else
+                            {
+                                text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                            }
                             col.gameObject.GetComponent<collision>().SetFlagC();
                         }
                     }
