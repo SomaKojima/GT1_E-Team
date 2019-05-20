@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 1752397061030697037}
   - component: {fileID: 2688634903933480031}
   - component: {fileID: 3310954446578910277}
+  - component: {fileID: 2547390303804696344}
+  - component: {fileID: 3526744088119936021}
   m_Layer: 0
   m_Name: Up
   m_TagString: Untagged
@@ -204,3 +206,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &2547390303804696344
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480005606302007588}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5.75061
+  m_Height: 11.639108
+  m_Direction: 1
+  m_Center: {x: -0.97743165, y: 0.25631303, z: 6.459387}
+--- !u!114 &3526744088119936021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480005606302007588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a0efb4fde70664194c0a26e35cc430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
