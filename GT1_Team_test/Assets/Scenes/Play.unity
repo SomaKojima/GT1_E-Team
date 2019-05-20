@@ -4678,10 +4678,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 534669902}
-  cameraControll: {fileID: 0}
+  cameraControll: {fileID: 534669907}
   planet: {fileID: 1256711358}
   col: {fileID: 1159897426}
-  cameraPos: {fileID: 0}
+  cameraPos: {fileID: 1490473318}
   speed: 80
   MaxSpeed: 5
   rotation_speed: 0.3
