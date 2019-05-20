@@ -19,10 +19,17 @@ MonoBehaviour:
   smallStarRadius: 1
   direction_Max: 90
   direction_Miu: 90
+<<<<<<< HEAD
   lifeTotal: 5
   starJustFallRatio: 0.5
   timeCreate_Max: 2
   timeCreate_Miu: 2
+=======
+  lifeTotal: 15
+  starJustFallRatio: 0.5
+  timeCreate_Max: 3
+  timeCreate_Miu: 3
+>>>>>>> title
   timeMove_Max: 5
   timeMove_Miu: 5
   timeFall_Max: 3
