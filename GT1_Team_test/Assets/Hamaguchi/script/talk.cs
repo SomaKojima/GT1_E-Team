@@ -97,6 +97,7 @@ public class talk : MonoBehaviour
                     {
                         if (this.gameObject.name == "areaA")
                         {
+
                             text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
                             Debug.Log("game clear"); // ログを表示する
                                                      //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
@@ -106,11 +107,21 @@ public class talk : MonoBehaviour
                         }
                         else if (this.gameObject.name == "areaB")
                         {
+                            // ハシモト------------------------------------------------------------------
+                            // 願いことが叶って、オブジェクトを表示もしくは非表示する
+                            transform.root.gameObject.GetComponent<CreateOrDeleteObject>().Clear();
+                            //---------------------------------------------------------------------------
+
                             text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
                             col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                         }
                         else if (this.gameObject.name == "areaC")
                         {
+                            // ハシモト------------------------------------------------------------------
+                            // 願いことが叶って、オブジェクトを表示もしくは非表示する
+                            transform.root.gameObject.GetComponent<CreateOrDeleteObject>().Clear();
+                            //---------------------------------------------------------------------------
+
                             text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
                             col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                         }
