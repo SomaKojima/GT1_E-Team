@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene 1.unity
     guid: e0405e25bd4406e43870cc15f309bff6
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Himi/Scenes/SampleScene.unity
     guid: 769abbd80c6cab142b4a2cc47cb87db0
   - enabled: 1
     path: Assets/Scenes/Select.unity
