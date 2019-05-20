@@ -19,7 +19,7 @@ MonoBehaviour:
   smallStarRadius: 1
   direction_Max: 90
   direction_Miu: 90
-  lifeTotal: 5
+  lifeTotal: 15
   starJustFallRatio: 0.5
   timeCreate_Max: 2
   timeCreate_Miu: 2
@@ -35,4 +35,4 @@ MonoBehaviour:
   degreeY_Miu: 0.05
   lightPos: {x: 0, y: 55, z: 0}
   speedSwitchOn: 0.5
-  sound_PlayerStarDirection: 20
+  sound_PlayerStarDirection: 15

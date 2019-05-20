@@ -29,20 +29,20 @@ public class Date : ScriptableObject
         private float smallStarRadius = 1.0f;
 
         [Header("現在、星と惑星の距離"), SerializeField]
-        private float direction_Max = 95.0f;
+        private float direction_Max = 90.0f;
         [SerializeField]
-        private float direction_Miu = 95.0f;
+        private float direction_Miu = 90.0f;
 
         [Header("永遠に動き続ける星の数"), SerializeField]
-        private int lifeTotal = 5;
+        private int lifeTotal = 15;
 
         [Header("すぐに惑星に落ちる星の割合"), SerializeField, Range(0.0f, 1.0f)]
         private float starJustFallRatio = 0.5f;
 
         [Header("新しい星を作成する時間"), SerializeField]
-        private float timeCreate_Max = 0.4f;
+        private float timeCreate_Max = 2.0f;
         [SerializeField]
-        private float timeCreate_Miu = 0.4f;
+        private float timeCreate_Miu = 2.0f;
 
         [Header("星が宇宙上に動く時間"), SerializeField]
         private float timeMove_Max = 5.0f;
@@ -55,9 +55,9 @@ public class Date : ScriptableObject
         private float timeFall_Miu = 3.0f;
         
         [Header("星が惑星上に滞在する時間"), SerializeField]
-        private float timeState_Max = 180.0f;
+        private float timeState_Max = 10.0f;
         [SerializeField]
-        private float timeState_Miu = 180.0f;
+        private float timeState_Miu = 10.0f;
 
         [Header("◆それぞれの角速度")]
         [Header("1フレームにX軸(もしくはZ軸)に進む角速度"),SerializeField]
@@ -74,7 +74,7 @@ public class Date : ScriptableObject
 
         [Header("◆明かりを灯す処理")]
         [Tooltip("明かりを灯す中点"),SerializeField]
-        private Vector3 lightPos = new Vector3(33.0f, 55.0f, 0.0f);
+        private Vector3 lightPos = new Vector3(0.0f, 55.0f, 0.0f);
 
         [Tooltip("明かりを灯す速さ"),SerializeField]
         private float speedSwitchOn = 0.5f;
