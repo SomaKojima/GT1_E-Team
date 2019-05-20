@@ -172,6 +172,11 @@ public class collision : MonoBehaviour
         return dustCounter;
     }
 
+    public void SetDustCount(int star)
+    {
+        dustCounter-=star;
+    }
+
     public void Clear()
     {
         clear = true;
