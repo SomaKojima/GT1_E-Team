@@ -107,10 +107,12 @@ public class talk : MonoBehaviour
                         else if (this.gameObject.name == "areaB")
                         {
                             text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                            col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                         }
                         else if (this.gameObject.name == "areaC")
                         {
                             text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                            col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                         }
                     }
                     else
@@ -120,6 +122,8 @@ public class talk : MonoBehaviour
                             text.GetComponent<Text>().text = "星のかけらをあと" + (clearStarCount - col.gameObject.GetComponent<collision>().GetDustCount()) + "つ持ってきてね";
                             Debug.Log("talk.now"); // ログを表示する
                             col.gameObject.GetComponent<collision>().SetFlagA();
+                            
+
                             //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
                         }
                         else if (this.gameObject.name == "areaB")
