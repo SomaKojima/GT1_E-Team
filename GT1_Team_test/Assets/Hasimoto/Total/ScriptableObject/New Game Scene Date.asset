@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 104e7794934f44d4f99f4a78041365fb, type: 3}
-  m_Name: New Date
+  m_Script: {fileID: 11500000, guid: 09ba7708c91eb9b43a6c2ded2e411c91, type: 3}
+  m_Name: New Game Scene Date
   m_EditorClassIdentifier: 
   playerTag: player
   planetTag: Planet

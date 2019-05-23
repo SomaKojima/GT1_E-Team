@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerLight : MonoBehaviour
 {
     // データ
-    public Date _Date;
+    public GameSceneDate _Date;
     // 人の周りに光を灯す半径
     [SerializeField]
     private float radius = 5.0f;

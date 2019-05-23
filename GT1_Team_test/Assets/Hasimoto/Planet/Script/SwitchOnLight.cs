@@ -12,7 +12,7 @@ public class SwitchOnLight : MonoBehaviour
     // 惑星
     private GameObject planet;
     // データ
-    public Date _Date;
+    public GameSceneDate _Date;
 
     // 進んだ距離
     private float speed = 0.0f;
