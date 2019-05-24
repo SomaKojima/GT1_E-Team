@@ -4,10 +4,10 @@ using UnityEngine;
 
 
 /// <summary>
-/// データ一覧
+/// ゲームシーンで使われるデータ一覧
 /// </summary>
-[CreateAssetMenu(menuName = "Original_PoopSheet")]
-public class Date : ScriptableObject
+[CreateAssetMenu(menuName = "Original_PoopSheet/GameSceneDate")]
+public class GameSceneDate : ScriptableObject
 {
     /// <summary>
     /// メンバー変数

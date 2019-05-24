@@ -8,7 +8,7 @@ using UnityEngine;
 public class StarThrowandDelete : MonoBehaviour
 {
     // データ
-    [SerializeField] private Date date;
+    [SerializeField] private GameSceneDate date;
     // 星が惑星に当たった時に描画するエフェクト
     [SerializeField] private GameObject effectPrefab_starhitplanet;
     // 星が惑星に当たった時に惑星上に光るスポットライト 

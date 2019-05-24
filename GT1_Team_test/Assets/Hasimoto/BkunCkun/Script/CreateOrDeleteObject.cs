@@ -42,7 +42,7 @@ public class CreateOrDeleteObject : MonoBehaviour
     {
         // プレイヤーが持っている星の数
         int playercount = player.GetComponent<collision>().GetDustCount();
-
+        playercount = 100;
         if ((IsSpeak) && (playercount >= starCount)&&(Iswish))
         {
             // 出現するモデル : 表示する、 消えるモデル : 非表示する
@@ -59,8 +59,6 @@ public class CreateOrDeleteObject : MonoBehaviour
 
     // -----------------------------------------------------------------------------------------
 
-    // テスト
-
     /// <summary>
     /// 当たり判定
     /// </summary>
@@ -73,7 +71,6 @@ public class CreateOrDeleteObject : MonoBehaviour
 
             // プレイヤーがB君に話しかけた状態にする
             IsSpeak = true;
-
             // 一度も話しかけていないか
             if (!IsOnce) IsOnce = true;     // 一度B君に話しかけた状態にする
             else
@@ -90,7 +87,7 @@ public class CreateOrDeleteObject : MonoBehaviour
         {
             // プレイヤーがB君に話しかけていない
             IsSpeak = false;
-            if(IsOnce) Iswish = true;
+             if(IsOnce) Iswish = true;
             // 一度も話しかけていない状態に戻す
             IsOnce = false;
         }
@@ -104,5 +101,16 @@ public class CreateOrDeleteObject : MonoBehaviour
     public bool GetClearFlag()
     {
         return IsClear;
+    }
+    
+    /// <summary>
+    /// ○○○君の願いに叶うと、モデルが出現するもしくは消える
+    /// </summary>
+    public void Clear()
+    {
+        // 出現するモデル : 表示する、 消えるモデル : 非表示する
+        obj.SetActive(IsAppear);
+        // 願い事が叶った
+        IsClear = true;
     }
 }
