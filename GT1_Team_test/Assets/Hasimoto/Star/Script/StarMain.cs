@@ -17,7 +17,7 @@ public class StarMain : MonoBehaviour
     [Tooltip("星")]
     public GameObject starPrefab;
     [Tooltip("データ")]
-    public Date _Date;
+    public GameSceneDate _Date;
 
     // 星による関数
     private StarFunction starfuc;
@@ -73,21 +73,6 @@ public class StarMain : MonoBehaviour
 
         // 星が動く
         Move();
-
-#if false
-        // リストをスプライトへ渡す
-        if (starslistpos.Count > 0)
-        {
-            Debug.Log("合計:" + starslistpos.Count);
-
-            // リストのサイズスプライトへ渡す
-            planet.GetComponent<Renderer>().material.SetVectorArray("_LightPos", starslistpos);
-            planet.GetComponent<Renderer>().material.SetInt("_ArrayLength", starslistpos.Count);
-        }
-        // リストをリセットする
-        starslistpos.Clear();
-        i = 0;
-#endif
 
         // 光を星に向かせる
         FaceLightStar();
@@ -209,25 +194,6 @@ public class StarMain : MonoBehaviour
                 }
                 else
                 {
-#if false
-                            
-                    // 惑星上に存在している星
-                    if((startime >= timeMoveFalling) && ((starDate.StarKind == Kind.MOVEANDFALL) || (starDate.StarKind == Kind.JUSTFALL)))
-                    {
-                        Debug.Log("出来上がり" + i + "番目"+" 位置"+ star.transform.position);
-
-                        // 現在惑星上に生存している小さい星の位置を保存する
-                        Vector4 temp = new Vector4(star.transform.position.x, star.transform.position.y, star.transform.position.z, 0.0f);
-                        Debug.Log("tmp:"+temp);
-                        starslistpos.Add(temp);
-
-                        // テスト
-                        //starslistpos.Add(new Vector4(29.2f, 56f, -1.7f, 0.0f));
-                        //starslistpos.Add(new Vector4(35f, 50f, -1.7f, -2.0f));
-                    }
-                    //Debug.Log(i + "番目" + " 最大時間:" + timeMoveFalling + " 現在の時間:" + timeMoveFalling + " 種類" + starDate.StarKind);
-                    i++;
-#endif
                     // 星の生存時間を計る
                     starDate.Time += Time.deltaTime;
                 }
@@ -439,7 +405,6 @@ public class StarMain : MonoBehaviour
         }
         else
         {
-            //Debug.Log(star.name);
             // 石もしくは木の種類に当たった場合オブジェクトを消す
             if ((hit.collider.tag == "Tree") || (hit.collider.tag == "Rock"))
             {
@@ -459,15 +424,10 @@ public class StarMain : MonoBehaviour
                     // 星が画面内に存在する場合
                     if(len < _Date.Sound_PlayerStarDirection)
                     {
-                        Debug.Log("画面内");
                         // 音を鳴らす
                         SoundManager.Instance.PlaySe("StarHitPlanet");
                     }
-                    else
-                    {
-                        Debug.Log("画面外");
-                    }
-                                        
+
                     // 音が鳴らないように設定する
                     stardate.IsSound_HitPlanet = false;
                 }

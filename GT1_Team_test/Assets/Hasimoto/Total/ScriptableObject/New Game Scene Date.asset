@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ba7708c91eb9b43a6c2ded2e411c91, type: 3}
+  m_Name: New Game Scene Date
+  m_EditorClassIdentifier: 
+  playerTag: player
+  planetTag: Planet
+  starTag: dust
+  bigStarRadius: 62.5
+  smallStarRadius: 1
+  direction_Max: 90
+  direction_Miu: 90
+  lifeTotal: 15
+  starJustFallRatio: 0.5
+  timeCreate_Max: 2
+  timeCreate_Miu: 2
+  timeMove_Max: 5
+  timeMove_Miu: 5
+  timeFall_Max: 3
+  timeFall_Miu: 3
+  timeState_Max: 10
+  timeState_Miu: 10
+  degreeXZ_Max: 1
+  degreeXZ_Miu: 0.05
+  degreeY_Max: 1
+  degreeY_Miu: 0.05
+  lightPos: {x: 0, y: 55, z: 0}
+  speedSwitchOn: 0.5
+  sound_PlayerStarDirection: 15

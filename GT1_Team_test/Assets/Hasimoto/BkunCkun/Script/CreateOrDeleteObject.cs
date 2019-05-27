@@ -43,11 +43,8 @@ public class CreateOrDeleteObject : MonoBehaviour
         // プレイヤーが持っている星の数
         int playercount = player.GetComponent<collision>().GetDustCount();
         playercount = 100;
-        Debug.Log(gameObject.name+":"+ starCount+"  "+"現在:"+ playercount+ "  IsSpeak:" + IsSpeak+ "  Iswish:"+Iswish);
-
         if ((IsSpeak) && (playercount >= starCount)&&(Iswish))
         {
-            Debug.Log("出現");
             // 出現するモデル : 表示する、 消えるモデル : 非表示する
             obj.SetActive(IsAppear);
             IsClear = true;
@@ -74,7 +71,6 @@ public class CreateOrDeleteObject : MonoBehaviour
 
             // プレイヤーがB君に話しかけた状態にする
             IsSpeak = true;
-            Debug.Log("前" + IsSpeak);
             // 一度も話しかけていないか
             if (!IsOnce) IsOnce = true;     // 一度B君に話しかけた状態にする
             else
@@ -91,8 +87,7 @@ public class CreateOrDeleteObject : MonoBehaviour
         {
             // プレイヤーがB君に話しかけていない
             IsSpeak = false;
-            Debug.Log("後"+IsSpeak);
-            if(IsOnce) Iswish = true;
+             if(IsOnce) Iswish = true;
             // 一度も話しかけていない状態に戻す
             IsOnce = false;
         }
