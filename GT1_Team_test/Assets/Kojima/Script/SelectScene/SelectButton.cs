@@ -25,6 +25,7 @@ public class SelectButton : MonoBehaviour
     public void OnPointerEnter()
     {
         GameObject.Find("SelectPlanetManager").GetComponent<SelectPlanetManager>().ChangePlanet(name);
+        GameObject.Find("cursor").GetComponent<SelectSceneCorsor>().target = this.GetComponent<RectTransform>();
     }
 
     // クリック

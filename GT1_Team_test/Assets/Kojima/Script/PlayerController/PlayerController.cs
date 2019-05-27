@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     public enum PlayerMode
     {
         Normal,
-        Talk
+        Talk,
+        Clear
     };
 
     public GameObject camera;
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else if (col.GetClear() && !col.GetTalkFlag())
+        {
+            mode = PlayerMode.Clear;
+        }
         else
         {
             mode = PlayerMode.Normal;
@@ -64,6 +69,8 @@ public class PlayerController : MonoBehaviour
                 NormalModeUpdate();
                 break;
             case PlayerMode.Talk:
+                break;
+            case PlayerMode.Clear:
                 break;
         }
     }

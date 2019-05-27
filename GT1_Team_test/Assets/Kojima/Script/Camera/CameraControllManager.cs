@@ -8,7 +8,8 @@ public class CameraControllManager : MonoBehaviour
     {
         Start,
         Nomal,
-        Talk
+        Talk,
+        Goal
     }
     /// <summary>
     /// カメラのターゲット    
@@ -25,6 +26,11 @@ public class CameraControllManager : MonoBehaviour
     // 開始時の追いかける相手
     public List<GameObject> targets = new List<GameObject>();
 
+    // ゴール時の座標
+    public GameObject GoalTargetPos;
+    public GameObject panel;
+    public float interval;
+
     // プレイヤーの状態を取得するためプレイヤーのコントローラー
     PlayerController playerController;
 
@@ -37,6 +43,8 @@ public class CameraControllManager : MonoBehaviour
     TalkCamera talkCamera = new TalkCamera();
     // 開始用のカメラ
     StartCamera startCamera = new StartCamera();
+    // ゴール時のカメラ
+    GoalCamera goalCamera = new GoalCamera();
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +59,14 @@ public class CameraControllManager : MonoBehaviour
         startCamera.offset_y = offset_y;
         startCamera.targets = targets;
         startCamera.Start(this.gameObject, planet, player);
+
+        // ゴールカメラの設定
+        goalCamera.max_distance = max_distance;
+        goalCamera.offset_y = offset_y;
+        goalCamera.interval = interval;
+        goalCamera.panel = panel;
+        goalCamera.Start(this.gameObject, planet, GoalTargetPos);
+
 
         // プレイヤーのコンポーネントを取得
         playerController = player.GetComponent<PlayerController>();
@@ -68,6 +84,10 @@ public class CameraControllManager : MonoBehaviour
         {
             startCamera.Update();
         }
+        else if (cameraMode == CameraMode.Goal)
+        {
+            goalCamera.Update();
+        }
         else
         {
             switch (playerController.Mode)
@@ -77,6 +97,9 @@ public class CameraControllManager : MonoBehaviour
                     break;
                 case PlayerController.PlayerMode.Talk:
                     talkCamera.Update();
+                    break;
+                case PlayerController.PlayerMode.Clear:
+                    goalCamera.Update();
                     break;
             }
         }
