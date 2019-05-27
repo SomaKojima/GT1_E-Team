@@ -63,9 +63,10 @@ public class sirube : MonoBehaviour
 
             count = 0.0f;
 
-            
+            transform.rotation = startMarker.rotation;
 
-            
+
+
         }
 
         if (flag)
