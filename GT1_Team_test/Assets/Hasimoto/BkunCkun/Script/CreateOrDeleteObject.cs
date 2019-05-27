@@ -25,7 +25,7 @@ public class CreateOrDeleteObject : MonoBehaviour
     private bool IsOnce = false;
     private bool IsClear = false;
     // お願い事を聞いたか
-    private bool Iswish = false;
+    private bool Iswish = true;
 
 
     void Start()
