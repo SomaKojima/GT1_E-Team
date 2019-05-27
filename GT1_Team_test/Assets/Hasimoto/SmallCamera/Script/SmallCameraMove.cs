@@ -4,35 +4,32 @@ using UnityEngine;
 
 public class SmallCameraMove : MonoBehaviour
 {
-    // カメラとターゲットの最大距離
-    [SerializeField]
-    private float max_distance = 5;
-    // カメラのローカル座標（ターゲットの座標）Y軸のオフセット
-    [SerializeField]
-    private float offset_y = 10;
+    // ミニマップ
+    public GameObject miniMap;
 
-    // ノーマルカメラ
-    private NormalCamera normalCamera = new NormalCamera();
-
+    // 向き
+    private Quaternion angle = Quaternion.identity;
 
     void Start()
     {
-        // プレイヤー
-        GameObject player = GameObject.FindGameObjectWithTag("player");
-
-        // プラネット
-        GameObject planet = GameObject.FindGameObjectWithTag("Planet");
-
-        // 通常カメラの設定
-        normalCamera.Start(this.gameObject, player, planet);        // 初期設定
-        normalCamera.max_distance = max_distance;                   // カメラとターゲットの最大距離
-        normalCamera.offset_y = offset_y;                           // カメラのローカル座標（ターゲットの座標）Y軸のオフセット
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 常にノーマルのカメラで画面を映す
-        normalCamera.Update();
     }
+
+    // 向きと回転を合わせる & ミニマップを表示、非表示する
+    public void FitMainCamera(GameObject mainmcamera,bool minimapflag)
+    {
+        // 位置
+        this.transform.position = mainmcamera.transform.position;
+
+        // 向き
+        transform.rotation = mainmcamera.transform.rotation;
+
+        // ミニマップを表示、非表示する
+        miniMap.SetActive(minimapflag);
+    }
+
 }

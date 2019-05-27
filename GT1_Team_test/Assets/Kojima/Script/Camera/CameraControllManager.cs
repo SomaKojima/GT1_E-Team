@@ -80,6 +80,12 @@ public class CameraControllManager : MonoBehaviour
                     break;
             }
         }
+
+        // ハシモト------------------------------------------------------------------
+        // ミニマップのカメラの位置と向きをメインカメラ
+        GameObject.Find("SmallCamera").GetComponent<SmallCameraMove>().FitMainCamera(gameObject,true);
+        //---------------------------------------------------------------------------
+
     }
 
     /// <summary>
