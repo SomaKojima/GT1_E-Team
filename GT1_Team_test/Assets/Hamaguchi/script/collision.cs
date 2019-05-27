@@ -11,6 +11,8 @@ public class collision : MonoBehaviour
     private Light slight;
     [SerializeField]
     private int dustCounter = 3;
+    [SerializeField]
+    private GameObject musi;
     private bool flagA = false;
     private bool flagB = false;
     private bool flagC = false;
@@ -81,6 +83,15 @@ public class collision : MonoBehaviour
                         rimitTime = 0;
                         rightTime = 0;
                         dustCounter-=3;
+                    }
+                }
+                else if (raycastResult.gameObject.name == "board2")
+                {
+                    if (dustCounter > 4)
+                    {
+                        musi.SetActive(true);
+                        musi.GetComponent<sirube>().Set();
+                        dustCounter -= 5;
                     }
                 }
             }

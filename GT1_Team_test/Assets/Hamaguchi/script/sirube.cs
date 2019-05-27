@@ -4,152 +4,111 @@ using UnityEngine;
 
 public class sirube : MonoBehaviour
 {
-    public enum PlayerMode
-    {
-        Normal,
-        Talk
-    };
 
-    public GameObject planet;
-    public collision col;
+    //スタートと終わりの目印
+    public Transform startMarker;
+    public Transform AendMarker;
+    public Transform BendMarker;
+    public Transform CendMarker;
 
-    Rigidbody rigid;
-    PlayerMode mode;
+    // スピード
+    public float speed = 1.0F;
 
-    [SerializeField]
-    float speed = 5.0f;
-    [SerializeField]
-    float MaxSpeed = 5.0f;
+    //二点間の距離を入れる
+    private float distance_two;
+    private Vector3 Spos;
+    private Vector3 Epos;
 
-    [SerializeField]
-    float rotation_speed = 0.3f;
+    private float count=0.0f;
 
-    // Start is called before the first frame update
+    private bool flag = false;
+
+
     void Start()
     {
-        rigid = GetComponent<Rigidbody>();
+        //二点間の距離を代入(スピード調整に使う)
+        //Spos = startMarker;
+        //Epos = endMarker;
+
+        //distance_two = Vector3.Distance(Spos.position, Epos.position);
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (col.GetTalkFlag())
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            mode = PlayerMode.Talk;
+            transform.position = startMarker.position;
 
+            Spos = startMarker.position;
+            Epos = AendMarker.position;
 
-            // 話す用のカメラの設定
-            Transform pos = null;
-            // 子オブジェクトを全て取得する
-            foreach (Transform childTransform in col.GetTarget().transform.parent.transform)
+            distance_two = Vector3.Distance(Spos, Epos);
+
+            float dis = Vector3.Distance(Spos, BendMarker.position);
+            if(distance_two> dis)
             {
+                Epos = BendMarker.position;
+                distance_two = Vector3.Distance(Spos, Epos);
+            }
+
+            dis = Vector3.Distance(Spos, CendMarker.position);
+            if (distance_two > dis)
+            {
+                Epos = CendMarker.position;
+                distance_two = Vector3.Distance(Spos, Epos);
+            }
+
+            flag = true;
+
+            count = 0.0f;
+
+            
+
+            
+        }
+
+        if (flag)
+        {
+            count += Time.deltaTime;
+            // 現在の位置
+            float present_Location = (count * speed) / distance_two;
+
+            // オブジェクトの移動
+            transform.position = Vector3.Slerp(Spos, Epos, present_Location);
+
+            if(present_Location>0.99f)
+            {
+                this.gameObject.SetActive(false);
             }
         }
-        else
-        {
-            mode = PlayerMode.Normal;
-        }
-        switch (mode)
-        {
-            case PlayerMode.Normal:
-                NormalModeUpdate();
-                break;
-            case PlayerMode.Talk:
-                break;
-        }
     }
 
-    private void FixedUpdate()
+    public void Set()
     {
+        transform.position = startMarker.position;
 
-    }
+        Spos = startMarker.position;
+        Epos = AendMarker.position;
 
-    // 通常のモードの更新処理
-    private void NormalModeUpdate()
-    {
-        // 移動
-        Vector3 vel = Vector3.zero;
-        
-    }
+        distance_two = Vector3.Distance(Spos, Epos);
 
-
-    /// <summary>
-    /// プレイヤー視点で移動する
-    /// </summary>
-    /// <param name="vel"></param>
-    /// <returns></returns>
-    bool PlayerMove(out Vector3 vel)
-    {
-        vel = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        float dis = Vector3.Distance(Spos, BendMarker.position);
+        if (distance_two > dis)
         {
-            vel.z = speed;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            vel.x = speed;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            vel.x = -speed;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            vel.z = -speed;
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            rigid.velocity = Vector3.zero;
-        }
-        else
-        {
-            // 何もキーが押されていなければ関数を終わる
-            return false;
-        }
-        vel = this.transform.rotation * vel;
-
-        float dist = rigid.velocity.magnitude;
-        if (dist < MaxSpeed)
-        {
-            rigid.AddForce(vel);
-            return true;
-        }
-        return false;
-    }
-
-
-    /// <summary>
-    /// プレイヤーの回転
-    /// </summary>
-    /// <param name="dir">dirの向きに回転</param>
-    void PlayerRotation(Vector3 dir)
-    {
-        if (dir == Vector3.zero) return;
-        Quaternion q = Quaternion.identity;
-
-        // 角度を求める
-        float cosine = Vector3.Dot(dir, this.transform.forward);
-
-        // 向いている向きと進む向きが同じ場合は何もしない
-        if (cosine > 0.99f) return;
-
-        float radian = Mathf.Acos(cosine);
-        float angle = Mathf.Rad2Deg * radian;
-
-        // 時計回りの回転
-        q = Quaternion.AngleAxis(angle, Vector3.up);
-        // 反時計回転をする時（左回転）軸を変えて計算をし直す
-        if (Vector3.Dot(dir, this.transform.right) < 0)
-        {
-            q = Quaternion.AngleAxis(angle, Vector3.down);
+            Epos = BendMarker.position;
+            distance_two = Vector3.Distance(Spos, Epos);
         }
 
-        this.transform.rotation = this.transform.rotation * q;
-    }
+        dis = Vector3.Distance(Spos, CendMarker.position);
+        if (distance_two > dis)
+        {
+            Epos = CendMarker.position;
+            distance_two = Vector3.Distance(Spos, Epos);
+        }
 
-    public PlayerMode Mode
-    {
-        get { return mode; }
-        set { mode = value; }
+        flag = true;
+
+        count = 0.0f;
     }
 }
