@@ -192,6 +192,10 @@ public class collision : MonoBehaviour
     {
         clear = true;
     }
+    public bool GetClear()
+    {
+        return clear;
+    }
 
     public bool GetTalkFlag()
     {
