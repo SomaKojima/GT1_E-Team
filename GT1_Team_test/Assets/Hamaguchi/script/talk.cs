@@ -54,7 +54,7 @@ public class talk : MonoBehaviour
                 clearWish = 1;
                 clearTime = UI.GetComponent<PlayerUI>().GetTime();
                 clearDust = UI.GetComponent<PlayerUI>().GetDust();
-                panel.GetComponent<FadeController>().SetFlag(3);
+                //panel.GetComponent<FadeController>().SetFlag(3);
             }
         }
     }
