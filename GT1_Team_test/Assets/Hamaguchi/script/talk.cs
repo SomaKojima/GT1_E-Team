@@ -103,6 +103,13 @@ public class talk : MonoBehaviour
                         {
 
                             text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
+
+                            // ハシモト------------------------------------------------------------------
+                            // 惑星全体を灯す準備を行う
+                            GameObject.Find("Director").GetComponent<SwitchOnLight>().Initialize_SwitchOn(this.gameObject.transform.position);
+                            //---------------------------------------------------------------------------
+
+
                             Debug.Log("game clear"); // ログを表示する
                                                      //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
                             GameDirecter.SetActive(true);

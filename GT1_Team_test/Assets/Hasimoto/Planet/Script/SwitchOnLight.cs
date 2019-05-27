@@ -9,15 +9,20 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SwitchOnLight : MonoBehaviour
 {
-    // 惑星
-    private GameObject planet;
-    // データ
+   // データ
     public GameSceneDate _Date;
 
+    // 惑星
+    private GameObject planet;
     // 進んだ距離
     private float speed = 0.0f;
     // 直径
     private float diameter = 0.0f;
+
+    // 惑星に明かりに灯すか
+    private bool IsswitchOn = false;
+    // A君がいる位置
+    private Vector3 akunPos;
 
     void Start()
     {
@@ -35,18 +40,37 @@ public class SwitchOnLight : MonoBehaviour
 
     void Update()
     {
+        // 惑星に明かりに灯す 
+        if(IsswitchOn) SwitchOnPlanet();
+
+    }
+
+    /// <summary>
+    /// 惑星に明かりに灯す準備を行う
+    /// </summary>
+    /// <param name="AkunPos">A君がいる位置</param>
+    public void Initialize_SwitchOn(Vector3 AkunPos)
+    {
         // 惑星に明かりに灯す
-        //SwitchOnPlanet();
+        IsswitchOn = true;
+
+        // A君がいる位置を取得する
+        akunPos = AkunPos;
     }
 
     /// <summary>
     /// 惑星に明かりに灯す
     /// </summary>
-    public void SwitchOnPlanet()
+    private void SwitchOnPlanet()
     {
         // 常に明かりの領域を広げる
         speed += _Date.SpeedSwitchOn;
+
         // 反映させる
-        planet.GetComponent<Renderer>().material.SetFloat("_Radiuas", speed);
+        planet.GetComponent<Renderer>().material.SetFloat("_Radiuas", speed);         // 速さ
+        planet.GetComponent<Renderer>().material.SetFloat("_LightPosX", akunPos.x);   //  灯す位置 X
+        planet.GetComponent<Renderer>().material.SetFloat("_LightPosY", akunPos.y);   //  灯す位置 Y
+        planet.GetComponent<Renderer>().material.SetFloat("_LightPosZ", akunPos.z);   //  灯す位置 Z
     }
+
 }
