@@ -12,6 +12,10 @@ public class SwitchOnLight : MonoBehaviour
    // データ
     public GameSceneDate _Date;
 
+    // 惑星全体にほんのわずかに灯す光
+    public GameObject Final_DirectionLight;
+
+
     // 惑星
     private GameObject planet;
     // 進んだ距離
@@ -23,6 +27,7 @@ public class SwitchOnLight : MonoBehaviour
     private bool IsswitchOn = false;
     // A君がいる位置
     private Vector3 akunPos;
+
 
     void Start()
     {
@@ -36,6 +41,9 @@ public class SwitchOnLight : MonoBehaviour
 
         // 直径を設定する
         diameter = _Date.BigStarRadius * 2;
+
+        //  惑星全体にほんのわずかに灯す光を非表示する
+        Final_DirectionLight.SetActive(false);
     }
 
     void Update()
@@ -56,6 +64,9 @@ public class SwitchOnLight : MonoBehaviour
 
         // A君がいる位置を取得する
         akunPos = AkunPos;
+
+        //  惑星全体にほんのわずかに灯す光を表示する
+        Final_DirectionLight.SetActive(true);
     }
 
     /// <summary>
