@@ -8,12 +8,16 @@ public class PlayerUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject DustCounter;
-   [SerializeField]
+    [SerializeField]
+    private GameObject Timer;
+    [SerializeField]
     private GameObject missionA;
     [SerializeField]
     private GameObject missionB;
     [SerializeField]
     private GameObject missionC;
+    [SerializeField]
+    private float rimitTime = 0;
     [SerializeField]
     private GameObject player;
     [SerializeField]

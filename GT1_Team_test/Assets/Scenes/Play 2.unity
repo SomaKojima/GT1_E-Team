@@ -869,9 +869,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DustCounter: {fileID: 1743168701}
+  Timer: {fileID: 949871174}
   missionA: {fileID: 1097974088}
   missionB: {fileID: 2078744197}
   missionC: {fileID: 1008986688}
+  rimitTime: 180
   player: {fileID: 1890219514}
   nMission: {fileID: 2087192898}
   panel: {fileID: 473114954}
