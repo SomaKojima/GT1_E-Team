@@ -127,11 +127,11 @@ public class talk : MonoBehaviour
 
                             if(stage==1)
                             {
-                                text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                                text.GetComponent<Text>().text = "ありがとう！これで水浴びができるよ！";
                             }
                             else
                             {
-                                text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                                text.GetComponent<Text>().text = "ありがとう！これで水浴びができるよ！";
                             }
                             
                             if (!compFlag)
@@ -154,11 +154,11 @@ public class talk : MonoBehaviour
 
                             if (stage == 1)
                             {
-                                text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                                text.GetComponent<Text>().text = "ありがとう！これでAくんに合えるぞ！";
                             }
                             else
                             {
-                                text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                                text.GetComponent<Text>().text = "ありがとう！これでAくんに合えるぞ！";
                             }
                             if (!compFlag)
                             {
@@ -193,11 +193,11 @@ public class talk : MonoBehaviour
                             {
                                 if (stage == 1)
                                 {
-                                    text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                                    text.GetComponent<Text>().text = "ありがとう！これで水浴びができるよ！";
                                 }
                                 else
                                 {
-                                    text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                                    text.GetComponent<Text>().text = "ありがとう！これで水浴びができるよ！";
                                 }
                             }
                             col.gameObject.GetComponent<collision>().SetFlagB();
@@ -212,11 +212,11 @@ public class talk : MonoBehaviour
                             {
                                 if (stage == 1)
                                 {
-                                    text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                                    text.GetComponent<Text>().text = "ありがとう！これでAくんに合えるぞ！";
                                 }
                                 else
                                 {
-                                    text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                                    text.GetComponent<Text>().text = "ありがとう！これでAくんに合えるぞ！";
                                 }
                             }
                             col.gameObject.GetComponent<collision>().SetFlagC();
@@ -234,12 +234,12 @@ public class talk : MonoBehaviour
                         {
                             if (stage == 1)
                             {
-                                text.GetComponent<Text>().text = "木をここら辺に生やしたいんだけど…";
+                                text.GetComponent<Text>().text = "暑い…水浴びができる池を出現させてくれないか？";
 
                             }
                             else
                             {
-                                text.GetComponent<Text>().text = "木をここら辺に生やしたいんだけど…";
+                                text.GetComponent<Text>().text = "暑い…水浴びができる池を出現させてくれないか？";
 
                             }
                             firstFlag = true;
@@ -248,12 +248,12 @@ public class talk : MonoBehaviour
                         {
                             if (stage == 1)
                             {
-                                text.GetComponent<Text>().text = "この岩を壊すのに協力してくれないか？";
+                                text.GetComponent<Text>().text = "Aくんが砂嵐に囲まれているんだ…！助けてくれ！";
 
                             }
                             else
                             {
-                                text.GetComponent<Text>().text = "この岩を壊すのに協力してくれないか？";
+                                text.GetComponent<Text>().text = "Aくんが砂嵐に囲まれているんだ…！助けてくれ！";
 
                             }
                             firstFlag = true;
