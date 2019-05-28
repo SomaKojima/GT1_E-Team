@@ -33,6 +33,8 @@ public class talk : MonoBehaviour
     private  bool talkFlag = false;
     private bool firstFlag = false;
     private bool compFlag = false;
+    [SerializeField]
+    private int stage = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -123,7 +125,15 @@ public class talk : MonoBehaviour
                             transform.root.gameObject.GetComponent<CreateOrDeleteObject>().Clear();
                             //---------------------------------------------------------------------------
 
-                            text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                            if(stage==1)
+                            {
+                                text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                            }
+                            else
+                            {
+                                text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                            }
+                            
                             if (!compFlag)
                             {
                                 col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
@@ -140,7 +150,16 @@ public class talk : MonoBehaviour
                             transform.root.gameObject.GetComponent<CreateOrDeleteObject>().Clear();
                             //---------------------------------------------------------------------------
 
-                            text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                            
+
+                            if (stage == 1)
+                            {
+                                text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                            }
+                            else
+                            {
+                                text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                            }
                             if (!compFlag)
                             {
                                 col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
@@ -172,7 +191,14 @@ public class talk : MonoBehaviour
                             }
                             else
                             {
-                                text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                                if (stage == 1)
+                                {
+                                    text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                                }
+                                else
+                                {
+                                    text.GetComponent<Text>().text = "大きな木がにょきにょきと！！";
+                                }
                             }
                             col.gameObject.GetComponent<collision>().SetFlagB();
                         }
@@ -184,7 +210,14 @@ public class talk : MonoBehaviour
                             }
                             else
                             {
-                                text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                                if (stage == 1)
+                                {
+                                    text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                                }
+                                else
+                                {
+                                    text.GetComponent<Text>().text = "やったぁ、岩が壊れたよ";
+                                }
                             }
                             col.gameObject.GetComponent<collision>().SetFlagC();
                         }
@@ -199,12 +232,30 @@ public class talk : MonoBehaviour
                         }
                         else if (this.gameObject.name == "areaB")
                         {
-                            text.GetComponent<Text>().text = "木をここら辺に生やしたいんだけど…";
+                            if (stage == 1)
+                            {
+                                text.GetComponent<Text>().text = "木をここら辺に生やしたいんだけど…";
+
+                            }
+                            else
+                            {
+                                text.GetComponent<Text>().text = "木をここら辺に生やしたいんだけど…";
+
+                            }
                             firstFlag = true;
                         }
                         else if (this.gameObject.name == "areaC")
                         {
-                            text.GetComponent<Text>().text = "この岩を壊すのに協力してくれないか？";
+                            if (stage == 1)
+                            {
+                                text.GetComponent<Text>().text = "この岩を壊すのに協力してくれないか？";
+
+                            }
+                            else
+                            {
+                                text.GetComponent<Text>().text = "この岩を壊すのに協力してくれないか？";
+
+                            }
                             firstFlag = true;
                         }
                     }
