@@ -65,7 +65,6 @@ public class PlayerUI : MonoBehaviour
         //Timer.GetComponent<Text>().text = "" + ((int)rimitTime / 60).ToString("00") + ":" + ((int)rimitTime % 60).ToString("00");
         if(Input.GetKeyDown(KeyCode.G))
         {
-            Timer.GetComponent<Text>().text = "終了です";
             //SceneManager.LoadScene("GameOver");
             panel.GetComponent<FadeController>().SetFlag(2);
         }
@@ -305,7 +304,7 @@ public class PlayerUI : MonoBehaviour
 
     public float GetTime()
     {
-        return rimitTime;
+        return 0;
     }
 
     public int GetDust()
