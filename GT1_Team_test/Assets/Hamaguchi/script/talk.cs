@@ -47,6 +47,7 @@ public class talk : MonoBehaviour
     {
        if(clear)
         {
+            UI.SetActive(false);
             ambient.r++;
             ambient.b++;
             ambient.g++;
