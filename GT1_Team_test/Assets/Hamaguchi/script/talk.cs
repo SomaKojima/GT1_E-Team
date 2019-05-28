@@ -127,7 +127,7 @@ public class talk : MonoBehaviour
 
                             if(stage==1)
                             {
-                                text.GetComponent<Text>().text = "ありがとう！これで水浴びができるよ！";
+                                text.GetComponent<Text>().text = "大きな木がにょきにょきと！";
                             }
                             else
                             {
@@ -154,7 +154,7 @@ public class talk : MonoBehaviour
 
                             if (stage == 1)
                             {
-                                text.GetComponent<Text>().text = "ありがとう！これでAくんに合えるぞ！";
+                                text.GetComponent<Text>().text = "やったぁ、岩が壊れたぞ！";
                             }
                             else
                             {
@@ -193,7 +193,7 @@ public class talk : MonoBehaviour
                             {
                                 if (stage == 1)
                                 {
-                                    text.GetComponent<Text>().text = "ありがとう！これで水浴びができるよ！";
+                                    text.GetComponent<Text>().text = "大きな木がにょきにょきと！";
                                 }
                                 else
                                 {
@@ -212,7 +212,7 @@ public class talk : MonoBehaviour
                             {
                                 if (stage == 1)
                                 {
-                                    text.GetComponent<Text>().text = "ありがとう！これでAくんに合えるぞ！";
+                                    text.GetComponent<Text>().text = "やったぁ、岩が壊れたぞ！";
                                 }
                                 else
                                 {
@@ -234,7 +234,7 @@ public class talk : MonoBehaviour
                         {
                             if (stage == 1)
                             {
-                                text.GetComponent<Text>().text = "暑い…水浴びができる池を出現させてくれないか？";
+                                text.GetComponent<Text>().text = "この辺に木を生やしたんだけど…";
 
                             }
                             else
@@ -248,7 +248,7 @@ public class talk : MonoBehaviour
                         {
                             if (stage == 1)
                             {
-                                text.GetComponent<Text>().text = "Aくんが砂嵐に囲まれているんだ…！助けてくれ！";
+                                text.GetComponent<Text>().text = "この岩を壊すのを手伝ってくれないか？";
 
                             }
                             else
