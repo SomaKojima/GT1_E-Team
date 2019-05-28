@@ -5619,6 +5619,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b689bba4fab69a74b991bae364e836f1, type: 3}
+--- !u!4 &1712073640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6380850892905188221, guid: b689bba4fab69a74b991bae364e836f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1712073639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1738238182
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,7 +6037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fedb23b94c1db944b5280f6ea60d84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMarker: {fileID: 0}
+  startMarker: {fileID: 1712073640}
   AendMarker: {fileID: 1562661080}
   BendMarker: {fileID: 1508966920}
   CendMarker: {fileID: 3630555061917928512}
