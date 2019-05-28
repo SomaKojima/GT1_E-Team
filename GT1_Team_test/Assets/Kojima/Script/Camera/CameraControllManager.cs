@@ -80,6 +80,13 @@ public class CameraControllManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // ハシモト------------------------------------------------------------------
+        // ミニマップを表示もしくは非表示を決めるフラグ
+        bool minimappflag = false;
+        
+        //---------------------------------------------------------------------------
+
+
         if (cameraMode == CameraMode.Start)
         {
             startCamera.Update();
@@ -94,6 +101,11 @@ public class CameraControllManager : MonoBehaviour
             {
                 case PlayerController.PlayerMode.Normal:
                     normalCamera.Update();
+                    // ハシモト------------------------------------------------------------------
+                    // ミニマップを表示する
+                    minimappflag = true;
+                    //---------------------------------------------------------------------------
+
                     break;
                 case PlayerController.PlayerMode.Talk:
                     talkCamera.Update();
@@ -103,6 +115,12 @@ public class CameraControllManager : MonoBehaviour
                     break;
             }
         }
+
+        // ハシモト------------------------------------------------------------------
+        // ミニマップのカメラの位置と向きをメインカメラ
+        GameObject.Find("SmallCamera").GetComponent<SmallCameraMove>().FitMainCamera(gameObject, minimappflag);
+        //---------------------------------------------------------------------------
+
     }
 
     /// <summary>

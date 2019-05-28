@@ -6,7 +6,7 @@
 	Properties
 	{
 		_MainTex("Albedo (RGB)", 2D) = "white" {}
-		[HDR]_EmissionColor("Emission Color",Color) = (0,0,0)
+		[HDR]_AfterEmissionColor("Emission Color",Color) = (255,255,255)
 	}
 
 		SubShader
@@ -24,7 +24,7 @@
 		#include "UnityCG.cginc"
 
 		sampler2D _MainTex;
-		float4 _EmissionColor;
+		float4 _AfterEmissionColor;
 
 		// ----------------------------------------------------------------------------------------
 		//			Surface Shader
@@ -62,15 +62,14 @@
 				// 黒の度合い
 				float gray = texturecolor.r * 0.3f + texturecolor.g * 0.6f + texturecolor.b * 0.1f;
 				// 光の強さ	 
-				float4 emmsioncolor = _EmissionColor * 4;//(gray <= 0.5f) ? _EmissionColor * 4 : _EmissionColor;
+				float4 emmsioncolor = _AfterEmissionColor;//(gray <= 0.5f) ? _AfterEmissionColor * 4 : _AfterEmissionColor;
 
 				// 光を加える
-				o.Albedo *=_EmissionColor;
+				o.Albedo *=_AfterEmissionColor;
 				// テスト用に白色にする
 				//o.Albedo = fixed4(1.0f,1.0f,1.0f,1.0f);
 
 			}
-
 		}
 		ENDCG
 	}
