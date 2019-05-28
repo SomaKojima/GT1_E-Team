@@ -17,6 +17,8 @@ TagManager:
   - shootingstarPrefab
   - START
   - Result_ClearFont
+  - Game_StarSpotLight
+  - Game_SpotLight
   layers:
   - Default
   - TransparentFX

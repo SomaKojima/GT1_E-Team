@@ -67,6 +67,9 @@ public class SwitchOnLight : MonoBehaviour
 
         //  惑星全体にほんのわずかに灯す光を表示する
         Final_DirectionLight.SetActive(true);
+
+        // 惑星に存在するスプットライトを暗くする
+        CreateBlackSpotLight();
     }
 
     /// <summary>
@@ -82,6 +85,34 @@ public class SwitchOnLight : MonoBehaviour
         planet.GetComponent<Renderer>().material.SetFloat("_LightPosX", akunPos.x);   //  灯す位置 X
         planet.GetComponent<Renderer>().material.SetFloat("_LightPosY", akunPos.y);   //  灯す位置 Y
         planet.GetComponent<Renderer>().material.SetFloat("_LightPosZ", akunPos.z);   //  灯す位置 Z
+    }
+
+    /// <summary>
+    /// 惑星に存在するスプットライトを暗くする
+    /// </summary>
+    private void CreateBlackSpotLight()
+    {
+        // スプットライトを探す
+        GameObject[] spotlight01= GameObject.FindGameObjectsWithTag("Light");
+        GameObject[] spotlight02 = GameObject.FindGameObjectsWithTag("Game_SpotLight");
+
+        foreach (GameObject obj in spotlight01)
+        {
+            // ライトのデータ
+            Light light = obj.GetComponent<Light>();
+
+            // ライトの色を黒くする
+            light.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        }
+
+        foreach (GameObject obj in spotlight02)
+        {
+            // ライトのデータ
+            Light light = obj.GetComponent<Light>();
+
+            // ライトの色を黒くする
+            light.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+        }
     }
 
 }

@@ -1399,7 +1399,7 @@ MonoBehaviour:
   player: {fileID: 1166844689}
   planet: {fileID: 1859461912}
   cameraMode: 1
-  max_distance: 10
+  max_distance: 5
   offset_y: 20
   targets: []
   GoalTargetPos: {fileID: 1982803295}
@@ -6579,6 +6579,16 @@ PrefabInstance:
       propertyPath: musi
       value: 
       objectReference: {fileID: 111139541}
+    - target: {fileID: 6380850891870537871, guid: b689bba4fab69a74b991bae364e836f1,
+        type: 3}
+      propertyPath: dustCounter
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380850892645210028, guid: b689bba4fab69a74b991bae364e836f1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Game_SpotLight
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b689bba4fab69a74b991bae364e836f1, type: 3}
 --- !u!4 &2097460395 stripped
@@ -17798,6 +17808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7797351744908794648, guid: 830885766d36c044ebd515c501eb590b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Game_SpotLight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 830885766d36c044ebd515c501eb590b, type: 3}

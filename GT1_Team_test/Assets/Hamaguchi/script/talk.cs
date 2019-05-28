@@ -109,6 +109,8 @@ public class talk : MonoBehaviour
                             // ハシモト------------------------------------------------------------------
                             // 惑星全体を灯す準備を行う
                             GameObject.Find("Director").GetComponent<SwitchOnLight>().Initialize_SwitchOn(this.gameObject.transform.position);
+                            
+
                             //---------------------------------------------------------------------------
 
 
