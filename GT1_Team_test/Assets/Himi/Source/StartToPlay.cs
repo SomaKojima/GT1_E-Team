@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class StartToPlay : MonoBehaviour
 {
     public SelectCursor button;
-    public string sceneName;
+
+    public bool isChengeSceneFlag;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class StartToPlay : MonoBehaviour
         if(button.m_collideTag == "START" &&
             Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene(sceneName);
+            isChengeSceneFlag = true;
         }
     }
 }
