@@ -16,10 +16,12 @@ public class PlayerController : MonoBehaviour
     public GameObject planet;
     public collision col;
     public GameObject cameraPos;
+    public Animator animator;
     
 
     Rigidbody rigid;
     PlayerMode mode;
+
 
     [SerializeField]
     float speed = 5.0f;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         if (col.GetTalkFlag())
         {
+            animator.SetBool("walk", false);
             mode = PlayerMode.Talk;
 
 
@@ -125,9 +128,11 @@ public class PlayerController : MonoBehaviour
         }
         if(dir == Vector3.zero)
         {
+            animator.SetBool("walk", false);
             // 何もキーが押されていなければ関数を終わる
             return false;
         }
+        animator.SetBool("walk", true);
         // 正規化
         dir = dir.normalized;
         // カメラ向きに合わせる
@@ -190,8 +195,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             // 何もキーが押されていなければ関数を終わる
+            animator.SetBool("walk", false);
             return false;
         }
+        animator.SetBool("walk", true);
         vel = this.transform.rotation * vel;
 
         float dist = rigid.velocity.magnitude;
