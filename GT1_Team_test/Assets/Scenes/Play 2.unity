@@ -5363,7 +5363,7 @@ GameObject:
   - component: {fileID: 1648149727}
   - component: {fileID: 1648149726}
   m_Layer: 0
-  m_Name: area
+  m_Name: areaB
   m_TagString: area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5752,7 +5752,7 @@ GameObject:
   - component: {fileID: 1760802942}
   - component: {fileID: 1760802941}
   m_Layer: 0
-  m_Name: area
+  m_Name: areaA
   m_TagString: area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7375,7 +7375,7 @@ GameObject:
   - component: {fileID: 3630555062191562589}
   - component: {fileID: 3630555062191562586}
   m_Layer: 0
-  m_Name: area
+  m_Name: areaC
   m_TagString: area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
