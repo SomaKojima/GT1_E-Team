@@ -92,6 +92,8 @@ public class talk : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                SoundManager.Instance.PlaySe("TalkSE");
+
                 talkFlag = true;
                 if (flag)
                 {
@@ -115,6 +117,7 @@ public class talk : MonoBehaviour
                             //---------------------------------------------------------------------------
                             UI.SetActive(false);
 
+                            SoundManager.Instance.PlaySe("MissionClear");
                             Debug.Log("game clear"); // ログを表示する
                                                      //GameDirecter.gameObject.GetComponent<SwitchOnLight>().SwitchOnPlanet();
                             GameDirecter.SetActive(true);
@@ -142,6 +145,8 @@ public class talk : MonoBehaviour
                                 col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                                 comp.SetActive(true);
                                 compFlag = true;
+                                SoundManager.Instance.PlaySe("MissionClear");
+                                
                                 Debug.Log("doaho"); // ログを表示する
 
                             }
@@ -167,6 +172,8 @@ public class talk : MonoBehaviour
                             {
                                 col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                                 comp.SetActive(true);
+                                SoundManager.Instance.PlaySe("MissionClear");
+
                                 compFlag = true;
                             }
                         }
@@ -232,6 +239,8 @@ public class talk : MonoBehaviour
                         {
                             text.GetComponent<Text>().text = "この星を救うためには、☆の力が必要なんだ";
                             firstFlag = true;
+                            SoundManager.Instance.PlaySe("MissionArart");
+
                         }
                         else if (this.gameObject.name == "areaB")
                         {
@@ -246,6 +255,8 @@ public class talk : MonoBehaviour
 
                             }
                             firstFlag = true;
+                            SoundManager.Instance.PlaySe("MissionArart");
+
                         }
                         else if (this.gameObject.name == "areaC")
                         {
@@ -260,6 +271,8 @@ public class talk : MonoBehaviour
 
                             }
                             firstFlag = true;
+                            SoundManager.Instance.PlaySe("MissionArart");
+
                         }
                     }
                 }
