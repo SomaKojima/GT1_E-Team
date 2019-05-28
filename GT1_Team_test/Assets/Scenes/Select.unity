@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0053341524, g: 0.011647884, b: 0.062226262, a: 1}
+  m_IndirectSpecularColor: {r: 0.005381493, g: 0.011699386, b: 0.062249687, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -119,6 +119,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3081400023178006216, guid: 50608a21a537dd546a46e1f9c1af5fce,
+        type: 3}
+      propertyPath: m_Name
+      value: flash_star
+      objectReference: {fileID: 0}
     - target: {fileID: 3081400023178006219, guid: 50608a21a537dd546a46e1f9c1af5fce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,11 +178,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3081400023178006216, guid: 50608a21a537dd546a46e1f9c1af5fce,
-        type: 3}
-      propertyPath: m_Name
-      value: flash_star
       objectReference: {fileID: 0}
     - target: {fileID: 3081400023178006261, guid: 50608a21a537dd546a46e1f9c1af5fce,
         type: 3}
@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &112776905
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
