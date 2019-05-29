@@ -83,6 +83,7 @@ public class collision : MonoBehaviour
                         rimitTime = 0;
                         rightTime = 0;
                         dustCounter-=3;
+                        SoundManager.Instance.PlaySe("PlayerFlash");
                     }
                 }
                 else if (raycastResult.gameObject.name == "board2")
@@ -99,6 +100,8 @@ public class collision : MonoBehaviour
         if (dustFlag)
         {
             dustCounter++;
+            SoundManager.Instance.PlaySe("StarGet");
+           
             dustFlag = false;
         }
 
@@ -108,7 +111,8 @@ public class collision : MonoBehaviour
             this.transform.position = startPos;
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             dustCounter -= 3;
-            if(dustCounter<0)
+            SoundManager.Instance.PlaySe("PlayerFall");
+            if (dustCounter<0)
             {
                 dustCounter = 0;
             }
