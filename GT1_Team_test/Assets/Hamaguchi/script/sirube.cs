@@ -36,38 +36,7 @@ public class sirube : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            transform.position = startMarker.position;
-
-            Spos = startMarker.position;
-            Epos = AendMarker.position;
-
-            distance_two = Vector3.Distance(Spos, Epos);
-
-            float dis = Vector3.Distance(Spos, BendMarker.position);
-            if(distance_two> dis)
-            {
-                Epos = BendMarker.position;
-                distance_two = Vector3.Distance(Spos, Epos);
-            }
-
-            dis = Vector3.Distance(Spos, CendMarker.position);
-            if (distance_two > dis)
-            {
-                Epos = CendMarker.position;
-                distance_two = Vector3.Distance(Spos, Epos);
-            }
-
-            flag = true;
-
-            count = 0.0f;
-
-            transform.rotation = startMarker.rotation;
-
-
-
-        }
+       
 
         if (flag)
         {
@@ -85,7 +54,7 @@ public class sirube : MonoBehaviour
         }
     }
 
-    public void Set()
+    public void Set(bool flagB,bool flagC)
     {
         transform.position = startMarker.position;
 
@@ -94,20 +63,27 @@ public class sirube : MonoBehaviour
 
         distance_two = Vector3.Distance(Spos, Epos);
 
-        float dis = Vector3.Distance(Spos, BendMarker.position);
-        if (distance_two > dis)
+        float dis = 0;
+
+        if (!flagB)
         {
-            Epos = BendMarker.position;
-            distance_two = Vector3.Distance(Spos, Epos);
+            dis = Vector3.Distance(Spos, BendMarker.position);
+            if (distance_two > dis)
+            {
+                Epos = BendMarker.position;
+                distance_two = Vector3.Distance(Spos, Epos);
+            }
         }
 
-        dis = Vector3.Distance(Spos, CendMarker.position);
-        if (distance_two > dis)
+        if (!flagC)
         {
-            Epos = CendMarker.position;
-            distance_two = Vector3.Distance(Spos, Epos);
+            dis = Vector3.Distance(Spos, CendMarker.position);
+            if (distance_two > dis)
+            {
+                Epos = CendMarker.position;
+                distance_two = Vector3.Distance(Spos, Epos);
+            }
         }
-
         flag = true;
 
         count = 0.0f;

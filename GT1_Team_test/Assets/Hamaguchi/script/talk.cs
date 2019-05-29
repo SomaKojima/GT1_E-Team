@@ -149,7 +149,8 @@ public class talk : MonoBehaviour
                                 comp.SetActive(true);
                                 compFlag = true;
                                 SoundManager.Instance.PlaySe("MissionClear");
-                                
+                                col.gameObject.GetComponent<collision>().SetFlagB2();
+
                                 Debug.Log("doaho"); // ログを表示する
 
                             }
@@ -175,6 +176,7 @@ public class talk : MonoBehaviour
                                 col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                                 comp.SetActive(true);
                                 SoundManager.Instance.PlaySe("MissionClear");
+                                col.gameObject.GetComponent<collision>().SetFlagC2();
 
                                 compFlag = true;
                             }
