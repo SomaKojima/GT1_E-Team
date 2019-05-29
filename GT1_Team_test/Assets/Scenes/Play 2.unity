@@ -1517,7 +1517,7 @@ MonoBehaviour:
   targets: []
   GoalTargetPos: {fileID: 245857837}
   panel: {fileID: 473114954}
-  interval: 0
+  interval: 5
 --- !u!1001 &546263375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5903,7 +5903,7 @@ PrefabInstance:
     - target: {fileID: 6380850891870537871, guid: b689bba4fab69a74b991bae364e836f1,
         type: 3}
       propertyPath: dustCounter
-      value: 100
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6380850892645210028, guid: b689bba4fab69a74b991bae364e836f1,
         type: 3}
