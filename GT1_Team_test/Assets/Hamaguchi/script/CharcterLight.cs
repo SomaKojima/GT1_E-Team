@@ -25,6 +25,7 @@ public class CharcterLight : MonoBehaviour
 
             Debug.Log("oioio");
             slight.GetComponent<Light>().spotAngle = 30;
+            slight.GetComponent<SphereCollider>().enabled = true;
         }
     }
 }
