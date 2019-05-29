@@ -11710,4 +11710,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73da6b90f5eda0f4a8acbd82c73d0ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGM_Name: TitleAndResult_BGM
+  BGM_Name: SelectAndResult_BGM
