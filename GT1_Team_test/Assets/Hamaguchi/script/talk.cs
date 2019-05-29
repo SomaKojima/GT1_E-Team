@@ -48,6 +48,7 @@ public class talk : MonoBehaviour
        if(clear)
         {
             UI.SetActive(false);
+            icon.SetActive(false);
             ambient.r++;
             ambient.b++;
             ambient.g++;
@@ -102,6 +103,7 @@ public class talk : MonoBehaviour
                     mw.SetActive(true);
                     text.SetActive(true);
                     UI.SetActive(false);
+                    icon.SetActive(false);
 
                     if ((col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)&&(firstFlag))
                     {
@@ -116,6 +118,7 @@ public class talk : MonoBehaviour
                             text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
 
                             UI.SetActive(false);
+                            icon.SetActive(false);
 
                             SoundManager.Instance.PlaySe("MissionClear");
                             Debug.Log("game clear"); // ログを表示する
@@ -282,6 +285,8 @@ public class talk : MonoBehaviour
                     flag = true;
                     text.SetActive(false);
                     mw.SetActive(false);
+                    icon.SetActive(true);
+
                     Debug.Log("talk.cancel"); // ログを表示する
                     if (this.gameObject.name == "areaB")
                     {
