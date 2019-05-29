@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             if (time > SE_TIME)
             {
                 time = 0;
-                SoundManager.Instance.PlaySe(SoundManager.Instance.GetSeIndex("Ashioto"), 0.1f);
+                SoundManager.Instance.PlaySe(SoundManager.Instance.GetSeIndex("Ashioto"), 1.0f);
             }
             animator.SetBool("walk", true);
             // 速度の向き
