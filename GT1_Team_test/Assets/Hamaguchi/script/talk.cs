@@ -102,7 +102,7 @@ public class talk : MonoBehaviour
                     text.SetActive(true);
                     UI.SetActive(false);
 
-                    if ((col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)&&(firstFlag))
+                    if ((col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)&&(firstFlag)&&(!clear))
                     {
                         if (this.gameObject.name == "areaA")
                         {
