@@ -24,6 +24,7 @@ public class collision : MonoBehaviour
     private float rimitTime = 5.0f;
     private float restartTime = 0.0f;
     private bool fallFlag = false;
+    private bool flashFlag = false;
 
     private GameObject target = null;
 
@@ -53,7 +54,11 @@ public class collision : MonoBehaviour
                 if (rimitTime<2.0f)
                 {
                     slight.spotAngle = 27.0f - (12.0f * (rimitTime / 2.0f));
-                }                
+                }             
+                else
+                {
+                    flashFlag = false;
+                }   
             }
         }
 
@@ -79,12 +84,16 @@ public class collision : MonoBehaviour
             {
                 if (raycastResult.gameObject.name == "board1")
                 {
-                    if (dustCounter > 2)
+                    if (!flashFlag)
                     {
-                        rimitTime = 0;
-                        rightTime = 0;
-                        dustCounter-=3;
-                        SoundManager.Instance.PlaySe("PlayerFlash");
+                        if (dustCounter > 2)
+                        {
+                            rimitTime = 0;
+                            rightTime = 0;
+                            dustCounter -= 3;
+                            SoundManager.Instance.PlaySe("PlayerFlash");
+                            flashFlag = true;
+                        }
                     }
                 }
                 else if (raycastResult.gameObject.name == "board2")
