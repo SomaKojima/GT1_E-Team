@@ -675,9 +675,10 @@ GameObject:
   - component: {fileID: 344768960}
   - component: {fileID: 344768962}
   - component: {fileID: 344768961}
+  - component: {fileID: 344768963}
   m_Layer: 0
   m_Name: ike
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,6 +724,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &344768963
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344768959}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 339.7827, y: 335.68625, z: 158.1851}
+  m_Center: {x: -8.43765, y: -7.0985107, z: -0.0000007606985}
 --- !u!1001 &349928117
 PrefabInstance:
   m_ObjectHideFlags: 0
