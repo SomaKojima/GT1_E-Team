@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
             // お互いを向かい合わせる
             Transform target = col.GetTarget().transform.parent;
+
+
             Vector3 vec = target.position - this.transform.position;
             vec.Normalize();
 
@@ -84,7 +86,8 @@ public class PlayerController : MonoBehaviour
 
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, q, 0.3f);
 
-            target.rotation = this.transform.rotation * Quaternion.AngleAxis(180.0f, this.transform.up);
+
+            target.rotation = this.transform.rotation * Quaternion.AngleAxis(180.0f, Vector3.up);
         }
         else if (col.GetClear() && !col.GetTalkFlag())
         {
