@@ -34,7 +34,7 @@ public class SelectButton : MonoBehaviour
      
         // ハシモト ------------------------------------------------------------------
         // 効果音を鳴らす
-        SoundManager.Instance.PlaySe("click");
+        SoundManager.Instance.PlaySe("click01");
         //----------------------------------------------------------------------------
 
         SceneManager.LoadScene(sceneName);

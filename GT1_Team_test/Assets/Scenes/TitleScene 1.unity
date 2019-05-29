@@ -10914,7 +10914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volume:
     bgm: 1
-    se: 1
+    se: 0.5
     mute: 0
 --- !u!114 &2946216987571837604
 MonoBehaviour:
@@ -10928,4 +10928,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73da6b90f5eda0f4a8acbd82c73d0ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGM_Name: TitleResult_BGM
+  BGM_Name: Title_BGM
