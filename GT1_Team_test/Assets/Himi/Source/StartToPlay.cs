@@ -21,6 +21,11 @@ public class StartToPlay : MonoBehaviour
             Input.GetMouseButtonDown(0))
         {
             isChengeSceneFlag = true;
+
+            // ハシモト ------------------------------------------------------------------
+            // 効果音を鳴らす
+            SoundManager.Instance.PlaySe("click");
+            //----------------------------------------------------------------------------
         }
     }
 }
