@@ -114,7 +114,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
 	//一旦queueに溜め込んで重複を回避しているので
 	//再生が1frame遅れる時がある
-	public void PlaySe(int index)
+	public void PlaySe(int index, float volumeScale = 1.0f)
 	{
 		if (0 > index || seClips.Length <= index)
 		{
@@ -128,8 +128,8 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
 		//seSource.Stop();
 		//seSource.clip = seClips[index];
-		//seSource.Play();
-		seSource.PlayOneShot(seClips[index]);
+		//seSource.Play();z
+		seSource.PlayOneShot(seClips[index], volumeScale);
 	}
 
 	public void StopSe()
