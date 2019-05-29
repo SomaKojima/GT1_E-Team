@@ -30,10 +30,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     float rotation_speed = 0.3f;
-    
+
+    float SE_TIME = 0.5f;
+    float time = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
+        time = SE_TIME;
         rigid = GetComponent<Rigidbody>();
     }
 
@@ -90,10 +94,22 @@ public class PlayerController : MonoBehaviour
         Vector3 vel = Vector3.zero;
         if (PlayerCameraMove(out vel))
         {
+            time += Time.deltaTime;
+            if (time > SE_TIME)
+            {
+                time = 0;
+                SoundManager.Instance.PlaySe(SoundManager.Instance.GetSeIndex("Ashioto"), 0.1f);
+            }
+            animator.SetBool("walk", true);
             // 速度の向き
             Vector3 dir = vel.normalized;
             // 回転
             PlayerRotation(dir);
+        }
+        else
+        {
+            time = SE_TIME;
+            animator.SetBool("walk", false);
         }
     }
 
@@ -128,11 +144,9 @@ public class PlayerController : MonoBehaviour
         }
         if(dir == Vector3.zero)
         {
-            animator.SetBool("walk", false);
             // 何もキーが押されていなければ関数を終わる
             return false;
         }
-        animator.SetBool("walk", true);
         // 正規化
         dir = dir.normalized;
         // カメラ向きに合わせる
@@ -195,10 +209,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             // 何もキーが押されていなければ関数を終わる
-            animator.SetBool("walk", false);
             return false;
         }
-        animator.SetBool("walk", true);
         vel = this.transform.rotation * vel;
 
         float dist = rigid.velocity.magnitude;
