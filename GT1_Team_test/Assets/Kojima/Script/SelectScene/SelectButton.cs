@@ -31,10 +31,12 @@ public class SelectButton : MonoBehaviour
     // クリック
     public void OnClick()
     {
-        SceneManager.LoadScene(sceneName);
+     
         // ハシモト ------------------------------------------------------------------
         // 効果音を鳴らす
         SoundManager.Instance.PlaySe("click");
         //----------------------------------------------------------------------------
+
+        SceneManager.LoadScene(sceneName);
     }
 }
