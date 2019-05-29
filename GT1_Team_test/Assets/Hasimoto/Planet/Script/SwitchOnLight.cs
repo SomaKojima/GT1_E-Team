@@ -23,6 +23,8 @@ public class SwitchOnLight : MonoBehaviour
     // 直径
     private float diameter = 0.0f;
 
+    // 「Zキー」を有効するか
+    private bool IsZkey=false;
     // 惑星に明かりに灯すか
     private bool IsswitchOn = false;
     // A君がいる位置
@@ -50,7 +52,6 @@ public class SwitchOnLight : MonoBehaviour
     {
         // 惑星に明かりに灯す 
         if(IsswitchOn) SwitchOnPlanet();
-
     }
 
     /// <summary>
