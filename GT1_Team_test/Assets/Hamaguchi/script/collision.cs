@@ -23,6 +23,7 @@ public class collision : MonoBehaviour
     private float rightTime = 10.0f;
     private float rimitTime = 5.0f;
     private float restartTime = 0.0f;
+    private bool fallFlag = false;
 
     private GameObject target = null;
 
@@ -106,17 +107,23 @@ public class collision : MonoBehaviour
         }
 
         float dis = Vector3.Distance(this.transform.position, Vector3.zero);
-        if(dis<40.0f)
+        //Debug.Log(dis);
+        if((dis < 58.0f)&&(!fallFlag))
+        {
+            SoundManager.Instance.PlaySe("PlayerFall");
+            fallFlag = true;
+        }
+        if (dis<40.0f)
         {
             this.transform.position = startPos;
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             dustCounter -= 3;
-            SoundManager.Instance.PlaySe("PlayerFall");
             if (dustCounter<0)
             {
                 dustCounter = 0;
             }
             restartTime = 0;
+            fallFlag = false;
         }
 
         
