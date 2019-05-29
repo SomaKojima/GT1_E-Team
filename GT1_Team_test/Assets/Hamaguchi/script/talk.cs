@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class talk : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class talk : MonoBehaviour
     [SerializeField]
     private int stage = 2;
 
+    float time = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +48,7 @@ public class talk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(clear)
+        if (clear)
         {
             UI.SetActive(false);
             icon.SetActive(false);
@@ -53,12 +56,18 @@ public class talk : MonoBehaviour
             ambient.b++;
             ambient.g++;
             RenderSettings.ambientLight = new Color(ambient.r / 120, ambient.g / 120, ambient.b / 120, 1);
-            if(ambient.r==140)
+            if (ambient.r == 140)
             {
                 clearWish = 1;
                 clearTime = UI.GetComponent<PlayerUI>().GetTime();
                 clearDust = UI.GetComponent<PlayerUI>().GetDust();
                 //panel.GetComponent<FadeController>().SetFlag(3);
+            }
+            time += Time.deltaTime;
+            if (time > 5.0f && Input.GetMouseButtonDown(0) ||
+                time > 10.0f)
+            {
+                SceneManager.LoadScene("ResultScene 1");
             }
         }
     }
