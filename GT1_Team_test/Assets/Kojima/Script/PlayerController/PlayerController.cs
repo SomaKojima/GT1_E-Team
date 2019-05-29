@@ -61,6 +61,30 @@ public class PlayerController : MonoBehaviour
                     break;
                 }
             }
+
+            // お互いを向かい合わせる
+            Transform target = col.GetTarget().transform.parent;
+            Vector3 vec = target.position - this.transform.position;
+            vec.Normalize();
+
+            Quaternion playerInv = Quaternion.Inverse(this.transform.rotation);
+
+            Vector3 localVec = playerInv * vec;
+
+            localVec = new Vector3(localVec.x, 0.0f, localVec.z);
+            localVec.Normalize();
+            
+            float cosine = Vector3.Dot(Vector3.forward, localVec);
+            Vector3 axis = this.transform.rotation * Vector3.Cross(Vector3.forward, localVec);
+            if (this.transform.position.y < 0)
+            {
+                axis = -axis;
+            }
+            Quaternion q = this.transform.rotation * Quaternion.AngleAxis(Mathf.Rad2Deg * Mathf.Acos(cosine), axis);
+
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, q, 0.3f);
+
+            target.rotation = this.transform.rotation * Quaternion.AngleAxis(180.0f, this.transform.up);
         }
         else if (col.GetClear() && !col.GetTalkFlag())
         {

@@ -27,7 +27,7 @@ public class PostureController : MonoBehaviour
 
         this.transform.rotation = q * this.transform.rotation;
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.name == "PostureCollision")
