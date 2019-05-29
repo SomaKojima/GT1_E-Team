@@ -92,11 +92,12 @@ public class talk : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                SoundManager.Instance.PlaySe("TalkSE");
-
+                
                 talkFlag = true;
                 if ((flag) && (!clear))
                 {
+                    SoundManager.Instance.PlaySe("TalkSE");
+
                     flag = false;
                     mw.SetActive(true);
                     text.SetActive(true);
