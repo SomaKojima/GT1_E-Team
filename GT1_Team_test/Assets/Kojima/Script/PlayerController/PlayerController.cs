@@ -149,19 +149,19 @@ public class PlayerController : MonoBehaviour
     {
         vel = Vector3.zero;
         Vector3 dir = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) )
+        if ( Input.GetKey(KeyCode.W) )
         {
             dir.y = 1;
         }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             dir.x = 1;
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             dir.x = -1;
         }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             dir.y = -1;
         }
@@ -200,48 +200,7 @@ public class PlayerController : MonoBehaviour
         rigid.AddForce(vel);
         return true;
     }
-
-    /// <summary>
-    /// プレイヤー視点で移動する
-    /// </summary>
-    /// <param name="vel"></param>
-    /// <returns></returns>
-    bool PlayerMove(out Vector3 vel)
-    {
-        vel = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            vel.z = speed;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            vel.x = speed;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            vel.x = -speed;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            vel.z = -speed;
-        }
-        else
-        {
-            // 何もキーが押されていなければ関数を終わる
-            return false;
-        }
-        vel = this.transform.rotation * vel;
-
-        float dist = rigid.velocity.magnitude;
-        if (dist < MaxSpeed)
-        {
-            rigid.AddForce(vel);
-            return true;
-        }
-        return false;
-    }
-
-
+    
     /// <summary>
     /// プレイヤーの回転
     /// </summary>

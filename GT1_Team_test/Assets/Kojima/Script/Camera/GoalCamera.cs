@@ -68,7 +68,7 @@ public class GoalCamera
         // ターゲットまでのベクトルとカメラの上方向で軸を作成
         Vector3 axis = Vector3.Cross(vec, camera.transform.up);
         // 惑星までのベクトルとaxisでカメラの上方向を作成
-        Vector3 up = Vector3.Cross(axis, vec2);
+        Vector3 up = Vector3.up;
 
         camera.transform.LookAt(planet.transform.position, up);
     }
