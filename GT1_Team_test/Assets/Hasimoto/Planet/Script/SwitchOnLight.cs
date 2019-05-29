@@ -102,7 +102,7 @@ public class SwitchOnLight : MonoBehaviour
             Light light = obj.GetComponent<Light>();
 
             // ライトの色を黒くする
-            light.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+            light.color = new Color(0.2f, 0.2f, 0.2f, 0.2f);
         }
 
         foreach (GameObject obj in spotlight02)
@@ -111,7 +111,7 @@ public class SwitchOnLight : MonoBehaviour
             Light light = obj.GetComponent<Light>();
 
             // ライトの色を黒くする
-            light.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+            light.color = new Color(0.2f, 0.2f, 0.2f, 0.2f);
         }
     }
 

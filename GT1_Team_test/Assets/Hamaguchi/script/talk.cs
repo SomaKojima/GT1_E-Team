@@ -107,14 +107,13 @@ public class talk : MonoBehaviour
                         if (this.gameObject.name == "areaA")
                         {
 
-                            text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
-
                             // ハシモト------------------------------------------------------------------
                             // 惑星全体を灯す準備を行う
                             GameObject.Find("Director").GetComponent<SwitchOnLight>().Initialize_SwitchOn(this.gameObject.transform.position);
-
-
                             //---------------------------------------------------------------------------
+
+                            text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
+
                             UI.SetActive(false);
 
                             SoundManager.Instance.PlaySe("MissionClear");
@@ -158,8 +157,7 @@ public class talk : MonoBehaviour
                             transform.root.gameObject.GetComponent<CreateOrDeleteObject>().Clear();
                             //---------------------------------------------------------------------------
 
-                            
-
+                           
                             if (stage == 1)
                             {
                                 text.GetComponent<Text>().text = "やったぁ、岩が壊れたぞ！";
