@@ -6744,7 +6744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00030517578, y: 0}
+  m_AnchoredPosition: {x: 0.00036621094, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097305160
@@ -6887,6 +6887,11 @@ PrefabInstance:
     - target: {fileID: 6380850891870537871, guid: b689bba4fab69a74b991bae364e836f1,
         type: 3}
       propertyPath: dustCounter
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380850891870537871, guid: b689bba4fab69a74b991bae364e836f1,
+        type: 3}
+      propertyPath: lightPower
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6380850892645210028, guid: b689bba4fab69a74b991bae364e836f1,

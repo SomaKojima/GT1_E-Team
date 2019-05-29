@@ -95,14 +95,14 @@ public class talk : MonoBehaviour
                 SoundManager.Instance.PlaySe("TalkSE");
 
                 talkFlag = true;
-                if (flag)
+                if ((flag) && (!clear))
                 {
                     flag = false;
                     mw.SetActive(true);
                     text.SetActive(true);
                     UI.SetActive(false);
 
-                    if ((col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)&&(firstFlag)&&(!clear))
+                    if ((col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)&&(firstFlag))
                     {
                         if (this.gameObject.name == "areaA")
                         {
