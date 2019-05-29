@@ -147,7 +147,7 @@ public class collision : MonoBehaviour
         }
         if (col.gameObject.tag == "Light")
         {
-            //slight.intensity = 0;
+            slight.intensity = 0;
         }
     }
 
@@ -155,7 +155,7 @@ public class collision : MonoBehaviour
     {
         if (col.gameObject.tag == "Light")
         {
-            slight.intensity = 5;
+            slight.intensity = 3;
         }
     }
 

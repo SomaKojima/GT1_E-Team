@@ -2346,7 +2346,7 @@ SphereCollider:
   m_GameObject: {fileID: 753474087}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 11.5
   m_Center: {x: 0, y: 0, z: 56}
@@ -4893,7 +4893,7 @@ SphereCollider:
   m_GameObject: {fileID: 1501131271}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 11.5
   m_Center: {x: 0, y: 0, z: 56}
@@ -5373,7 +5373,7 @@ SphereCollider:
   m_GameObject: {fileID: 1629542988}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 11.5
   m_Center: {x: 0, y: 0, z: 56}
@@ -5824,6 +5824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380850892645210029, guid: b689bba4fab69a74b991bae364e836f1,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b689bba4fab69a74b991bae364e836f1, type: 3}
