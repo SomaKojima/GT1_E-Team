@@ -165,10 +165,6 @@ public class PlayerController : MonoBehaviour
         {
             dir.y = -1;
         }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            rigid.velocity = Vector3.zero;
-        }
         if(dir == Vector3.zero)
         {
             // 何もキーが押されていなければ関数を終わる
@@ -228,10 +224,6 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             vel.z = -speed;
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            rigid.velocity = Vector3.zero;
         }
         else
         {
