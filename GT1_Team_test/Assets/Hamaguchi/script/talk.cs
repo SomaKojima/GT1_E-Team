@@ -34,6 +34,7 @@ public class talk : MonoBehaviour
     private  bool talkFlag = false;
     private bool firstFlag = false;
     private bool compFlag = false;
+    private bool clearFlag = false;
     [SerializeField]
     private int stage = 2;
 
@@ -104,7 +105,7 @@ public class talk : MonoBehaviour
             {
                 
                 talkFlag = true;
-                if ((flag) && (!clear))
+                if ((flag) && (!clearFlag))
                 {
                     SoundManager.Instance.PlaySe("TalkSE");
 
@@ -297,6 +298,10 @@ public class talk : MonoBehaviour
                     text.SetActive(false);
                     mw.SetActive(false);
                     icon.SetActive(true);
+                    if(clear)
+                    {
+                        clearFlag = true;
+                    }
 
                     Debug.Log("talk.cancel"); // ログを表示する
                     if (this.gameObject.name == "areaB")
