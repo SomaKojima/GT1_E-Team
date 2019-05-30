@@ -66,8 +66,7 @@ public class CameraControllManager : MonoBehaviour
         goalCamera.interval = interval;
         goalCamera.panel = panel;
         goalCamera.Start(this.gameObject, planet, GoalTargetPos);
-
-
+        
         // プレイヤーのコンポーネントを取得
         playerController = player.GetComponent<PlayerController>();
     }
@@ -90,10 +89,6 @@ public class CameraControllManager : MonoBehaviour
         if (cameraMode == CameraMode.Start)
         {
             startCamera.Update();
-        }
-        else if (cameraMode == CameraMode.Goal)
-        {
-            goalCamera.Update();
         }
         else
         {
