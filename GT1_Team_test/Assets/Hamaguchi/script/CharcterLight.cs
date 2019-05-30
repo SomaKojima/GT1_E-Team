@@ -16,11 +16,16 @@ public class CharcterLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.GetComponent<CreateOrDeleteObject>().GetClearFlag())
+        if(this.gameObject.name=="Akun")
+        {
+
+        }
+        else if(this.gameObject.GetComponent<CreateOrDeleteObject>().GetClearFlag())
         {
 
             Debug.Log("oioio");
             slight.GetComponent<Light>().spotAngle = 30;
+            slight.GetComponent<SphereCollider>().enabled = true;
         }
     }
 }

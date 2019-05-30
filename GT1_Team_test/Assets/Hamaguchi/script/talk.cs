@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class talk : MonoBehaviour
 {
@@ -33,8 +34,11 @@ public class talk : MonoBehaviour
     private  bool talkFlag = false;
     private bool firstFlag = false;
     private bool compFlag = false;
+    private bool clearFlag = false;
     [SerializeField]
     private int stage = 2;
+
+    float time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -45,19 +49,26 @@ public class talk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(clear)
+        if (clear)
         {
             UI.SetActive(false);
+            icon.SetActive(false);
             ambient.r++;
             ambient.b++;
             ambient.g++;
             RenderSettings.ambientLight = new Color(ambient.r / 120, ambient.g / 120, ambient.b / 120, 1);
-            if(ambient.r==140)
+            if (ambient.r == 140)
             {
                 clearWish = 1;
                 clearTime = UI.GetComponent<PlayerUI>().GetTime();
                 clearDust = UI.GetComponent<PlayerUI>().GetDust();
                 //panel.GetComponent<FadeController>().SetFlag(3);
+            }
+            time += Time.deltaTime;
+            if (time > 5.0f && Input.GetMouseButtonDown(0) ||
+                time > 10.0f)
+            {
+                SceneManager.LoadScene("ResultScene 1");
             }
         }
     }
@@ -92,15 +103,17 @@ public class talk : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
-                SoundManager.Instance.PlaySe("TalkSE");
-
+                
                 talkFlag = true;
-                if ((flag) && (!clear))
+                if ((flag) && (!clearFlag))
                 {
+                    SoundManager.Instance.PlaySe("TalkSE");
+
                     flag = false;
                     mw.SetActive(true);
                     text.SetActive(true);
                     UI.SetActive(false);
+                    icon.SetActive(false);
 
                     if ((col.gameObject.GetComponent<collision>().GetDustCount() >= clearStarCount)&&(firstFlag))
                     {
@@ -115,6 +128,7 @@ public class talk : MonoBehaviour
                             text.GetComponent<Text>().text = "ありがとう！！これで世界は救われた";
 
                             UI.SetActive(false);
+                            icon.SetActive(false);
 
                             SoundManager.Instance.PlaySe("MissionClear");
                             Debug.Log("game clear"); // ログを表示する
@@ -145,7 +159,8 @@ public class talk : MonoBehaviour
                                 comp.SetActive(true);
                                 compFlag = true;
                                 SoundManager.Instance.PlaySe("MissionClear");
-                                
+                                col.gameObject.GetComponent<collision>().SetFlagB2();
+
                                 Debug.Log("doaho"); // ログを表示する
 
                             }
@@ -171,6 +186,7 @@ public class talk : MonoBehaviour
                                 col.gameObject.GetComponent<collision>().SetDustCount(clearStarCount);
                                 comp.SetActive(true);
                                 SoundManager.Instance.PlaySe("MissionClear");
+                                col.gameObject.GetComponent<collision>().SetFlagC2();
 
                                 compFlag = true;
                             }
@@ -281,6 +297,12 @@ public class talk : MonoBehaviour
                     flag = true;
                     text.SetActive(false);
                     mw.SetActive(false);
+                    icon.SetActive(true);
+                    if(clear)
+                    {
+                        clearFlag = true;
+                    }
+
                     Debug.Log("talk.cancel"); // ログを表示する
                     if (this.gameObject.name == "areaB")
                     {

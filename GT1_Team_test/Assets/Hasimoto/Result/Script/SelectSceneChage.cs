@@ -11,8 +11,14 @@ public class SelectSceneChage : MonoBehaviour
     // リザルトシーンのデータ
     private ResultSceneDate date;
 
-    // 時間
-    private float time = 0.0f;
+    // 効果音を鳴らすか
+    private bool IsSound = false;
+
+    // 文字用の時間
+    private float fonttime = 0.0f;
+
+    // 効果音の時間
+    private float soundtime = 0.0f;
 
     void Start()
     {
@@ -22,21 +28,38 @@ public class SelectSceneChage : MonoBehaviour
 
     void Update()
     {
-        // クリアの文字がすべて表示され、なおかつキー操作がまだ有効ではない場合
-        if((date.IsClearFont_Appear) && (!(date.IsKey)))
+        if (!IsSound)
         {
-            // キー操作を有効するか
-            if (time >= date.KeyValidTime) date.IsKey = true;
-            
-            // 時間を計る
-            time++;
+            // クリアの文字がすべて表示され、なおかつキー操作がまだ有効ではない場合
+            if ((date.IsClearFont_Appear) && (!(date.IsKey)))
+            {
+                // キー操作を有効するか
+                if (fonttime >= date.KeyValidTime) date.IsKey = true;
+
+                // 時間を計る
+                fonttime++;
+            }
+
+            // 何かのキーで押された場合
+            if ((Input.anyKeyDown) && (date.IsKey))
+            {
+                // 効果音を鳴らす
+                IsSound = true;
+                SoundManager.Instance.PlaySe("click");
+            }
         }
-        
-        // 何かのキーで押された場合
-        if ((Input.anyKeyDown)&&(date.IsKey))
+        else
         {
-            // セレクトシーンに戻る
-            SceneManager.LoadScene(date.SelectScene_Name);
+            if(soundtime > 5)
+            {
+                // セレクトシーンに戻る
+                SceneManager.LoadScene(date.SelectScene_Name);
+
+            }
+
+
+            // 時間を計る
+            soundtime++;
         }
     }
 }

@@ -16,6 +16,9 @@ public class collision : MonoBehaviour
     private bool flagA = false;
     private bool flagB = false;
     private bool flagC = false;
+    private bool flagA2 = false;
+    private bool flagB2 = false;
+    private bool flagC2 = false;
     private Vector3 startPos;
     private bool dustFlag = false;
     private bool clear = false;
@@ -23,6 +26,9 @@ public class collision : MonoBehaviour
     private float rightTime = 10.0f;
     private float rimitTime = 5.0f;
     private float restartTime = 0.0f;
+    private bool fallFlag = false;
+    private bool flashFlag = false;
+    private bool sirubeFlag = false;
 
     private GameObject target = null;
 
@@ -52,7 +58,11 @@ public class collision : MonoBehaviour
                 if (rimitTime<2.0f)
                 {
                     slight.spotAngle = 27.0f - (12.0f * (rimitTime / 2.0f));
-                }                
+                }             
+                else
+                {
+                    flashFlag = false;
+                }   
             }
         }
 
@@ -78,24 +88,53 @@ public class collision : MonoBehaviour
             {
                 if (raycastResult.gameObject.name == "board1")
                 {
-                    if (dustCounter > 2)
+                    if (!flashFlag)
                     {
-                        rimitTime = 0;
-                        rightTime = 0;
-                        dustCounter-=3;
-                        SoundManager.Instance.PlaySe("PlayerFlash");
+                        if (dustCounter > 2)
+                        {
+                            rimitTime = 0;
+                            rightTime = 0;
+                            dustCounter -= 3;
+                            SoundManager.Instance.PlaySe("PlayerFlash");
+                            flashFlag = true;
+                        }
+                        else
+                        {
+                            SoundManager.Instance.PlaySe("Cancel");
+                        }
+                    }
+                    else
+                    {
+                        SoundManager.Instance.PlaySe("Cancel");
                     }
                 }
                 else if (raycastResult.gameObject.name == "board2")
                 {
-                    if (dustCounter > 4)
+                    if (!sirubeFlag)
                     {
-                        musi.SetActive(true);
-                        musi.GetComponent<sirube>().Set();
-                        dustCounter -= 5;
+                        if (dustCounter > 4)
+                        {
+                            musi.SetActive(true);
+                            musi.GetComponent<sirube>().Set(flagB2,flagC2);
+                            dustCounter -= 5;
+                            sirubeFlag = true;
+                        }
+                        else
+                        {
+                            SoundManager.Instance.PlaySe("Cancel");
+                        }
+                    }
+                    else
+                    {
+                        SoundManager.Instance.PlaySe("Cancel");
                     }
                 }
             }
+        }
+
+        if(musi.activeSelf==false)
+        {
+            sirubeFlag = false;
         }
         if (dustFlag)
         {
@@ -106,17 +145,23 @@ public class collision : MonoBehaviour
         }
 
         float dis = Vector3.Distance(this.transform.position, Vector3.zero);
-        if(dis<40.0f)
+        //Debug.Log(dis);
+        if((dis < 58.0f)&&(!fallFlag))
+        {
+            SoundManager.Instance.PlaySe("PlayerFall");
+            fallFlag = true;
+        }
+        if (dis<40.0f)
         {
             this.transform.position = startPos;
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             dustCounter -= 3;
-            SoundManager.Instance.PlaySe("PlayerFall");
             if (dustCounter<0)
             {
                 dustCounter = 0;
             }
             restartTime = 0;
+            fallFlag = false;
         }
 
         
@@ -140,7 +185,7 @@ public class collision : MonoBehaviour
         }
         if (col.gameObject.tag == "Light")
         {
-            //slight.intensity = 0;
+            slight.intensity = 0;
         }
     }
 
@@ -148,7 +193,7 @@ public class collision : MonoBehaviour
     {
         if (col.gameObject.tag == "Light")
         {
-            slight.intensity = 5;
+            slight.intensity = 3;
         }
     }
 
@@ -180,6 +225,36 @@ public class collision : MonoBehaviour
     public bool GetFlagC()
     {
         return flagC;
+    }
+
+    public void SetFlagA2()
+    {
+        flagA2 = true;
+    }
+
+    public bool GetFlagA2()
+    {
+        return flagA2;
+    }
+
+    public void SetFlagB2()
+    {
+        flagB2 = true;
+    }
+
+    public bool GetFlagB2()
+    {
+        return flagB2;
+    }
+
+    public void SetFlagC2()
+    {
+        flagC2 = true;
+    }
+
+    public bool GetFlagC2()
+    {
+        return flagC2;
     }
 
     public int GetDustCount()
