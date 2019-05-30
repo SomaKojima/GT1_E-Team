@@ -64,6 +64,9 @@ public class SwitchOnLight : MonoBehaviour
             // 惑星に存在するスプットライトを暗くする
             CreateBlackSpotLight();
 
+            // 既に明かりを灯す半径を設定する
+            speed = _Date.LightRadiua_Already;
+
         }
 
         // Zキーを押し終わったか
