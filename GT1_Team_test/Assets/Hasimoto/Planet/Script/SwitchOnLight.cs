@@ -25,6 +25,8 @@ public class SwitchOnLight : MonoBehaviour
 
     // 「Zキー」を有効するか
     private bool IsZkey=false;
+    // 「Zキー」を押し終わったか
+    private bool IsZkeyFinish = false;
     // 惑星に明かりに灯すか
     private bool IsswitchOn = false;
     // A君がいる位置
@@ -50,8 +52,28 @@ public class SwitchOnLight : MonoBehaviour
 
     void Update()
     {
+        // もう一度Zキーを押したか
+        if ((IsZkeyFinish) && (Input.GetKeyDown(KeyCode.Z)))
+        {
+            // 惑星に明かりに灯す準備を行う
+            IsswitchOn = true;
+            
+            //  惑星全体にほんのわずかに灯す光を表示する
+            Final_DirectionLight.SetActive(true);
+
+            // 惑星に存在するスプットライトを暗くする
+            CreateBlackSpotLight();
+
+            // 既に明かりを灯す半径を設定する
+            speed = _Date.LightRadiua_Already;
+
+        }
+
+        // Zキーを押し終わったか
+        if ((IsZkey) && (Input.GetKeyUp(KeyCode.Z))) IsZkeyFinish = true;
+
         // 惑星に明かりに灯す 
-        if(IsswitchOn) SwitchOnPlanet();
+        if (IsswitchOn) SwitchOnPlanet();
     }
 
     /// <summary>
@@ -60,18 +82,13 @@ public class SwitchOnLight : MonoBehaviour
     /// <param name="AkunPos">A君がいる位置</param>
     public void Initialize_SwitchOn(Vector3 AkunPos)
     {
-        // 惑星に明かりに灯す
-        IsswitchOn = true;
+        // Zキーを有効にする
+        IsZkey = true;
 
         // A君がいる位置を取得する
         akunPos = AkunPos;
 
-        //  惑星全体にほんのわずかに灯す光を表示する
-        Final_DirectionLight.SetActive(true);
-
-        // 惑星に存在するスプットライトを暗くする
-        CreateBlackSpotLight();
-    }
+     }
 
     /// <summary>
     /// 惑星に明かりに灯す

@@ -79,12 +79,14 @@ public class GameSceneDate : ScriptableObject
         [Tooltip("明かりを灯す速さ"),SerializeField]
         private float speedSwitchOn = 0.5f;
 
+        [Tooltip("既に明かりを灯す半径"), SerializeField]
+        private float lightradiua_already =10.0f;
+
         // ----------------------------------------------------------------
 
         [Tooltip("星の効果音を鳴らすプレイヤーと星の距離"), SerializeField]
         private float sound_PlayerStarDirection = 15.0f;
-
-
+       
     /// <summary>
     /// 取得関数
     /// </summary>
@@ -142,6 +144,8 @@ public class GameSceneDate : ScriptableObject
         public Vector3 LightPos { get { return lightPos; } private set{ lightPos = value; } }
         // 明かりを灯す速さ
         public float SpeedSwitchOn { get { return speedSwitchOn; } private set { speedSwitchOn = value; } }
+        // 既に明かりを灯す半径
+        public float LightRadiua_Already { get { return lightradiua_already; } private set { lightradiua_already = value; } }
 
         // ----------------------------------------------------------------
 
